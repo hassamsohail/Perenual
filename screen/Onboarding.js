@@ -60,7 +60,7 @@ const Onboarding = ({ navigation }) => {
       <View
         style={{
           height: Dimensions.get('window').height,
-          backgroundColor: 'white',
+          backgroundColor: '#F8F8F8',
         }}>
     <View style={styles.container}>
       <FlatList

@@ -5,6 +5,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Onboarding from './screen/Onboarding';
 import LoginSignUp from './screen/LoginSignUp';
+import SignUpOptions from './screen/SignUpOptions';
+import SignUp from './screen/SignUp';
+import Login from './screen/Login';
+import SignUpPhone from './screen/SignUpPhone';
+import Verify from './screen/Verify';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +65,41 @@ function App() {
             }}
             name="LoginSignUp"
             component={LoginSignUp}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="SignUpOptions"
+            component={SignUpOptions}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="SignUp"
+            component={SignUp}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="Login"
+            component={Login}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="SignUpPhone"
+            component={SignUpPhone}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="Verify"
+            component={Verify}
           />
         </Stack.Navigator>
       </NavigationContainer>
