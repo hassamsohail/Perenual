@@ -41,6 +41,7 @@ export default function Subscription({navigation}) {
   //   requestLocationPermission(); 
   // }, []);
 
+  
   // const getCurrentLocation = () => {
   //   Geolocation.getCurrentPosition(
   //     (position) => {
