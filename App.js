@@ -10,6 +10,7 @@ import SignUp from './screen/SignUp';
 import Login from './screen/Login';
 import SignUpPhone from './screen/SignUpPhone';
 import Verify from './screen/Verify';
+import Subscription from './screen/Subscription';
 
 const Stack = createNativeStackNavigator();
 
@@ -100,6 +101,13 @@ function App() {
             }}
             name="Verify"
             component={Verify}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="Subscription"
+            component={Subscription}
           />
         </Stack.Navigator>
       </NavigationContainer>

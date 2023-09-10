@@ -214,7 +214,11 @@ export default function Login({navigation}) {
       </View>
       <TouchableOpacity
           style={styles.button}
-          onPress={() => console.log('Button pressed')}>
+          onPress={()=>{
+            navigation.navigate("Subscription")
+        }}
+          
+          >
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
         <View
@@ -349,3 +353,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+
