@@ -10,66 +10,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import Geolocation from '@react-native-community/geolocation'; 
-// import axios from 'axios';
-// import RNPermission from 'react-native-permission';
 
 export default function Subscription({navigation}) {
-  // const API_KEY = '3dcc8937bcbcfec8ac51255f03f659ce';
-  // const [weatherData, setWeatherData] = useState(null);
-  // const requestLocationPermission = async () => {
-  //   try {
-  //     const granted = await RNPermission.request({
-  //       android: 'android.permission.ACCESS_FINE_LOCATION', // Android permission
-  //       ios: 'locationServices', // iOS permission
-  //     });
 
-  //     if (granted) {
-  //       getCurrentLocation(); // If permission is granted, get the current location
-  //     } else {
-  //       console.log('Location permission denied');
-  //       // Handle the case where the user denied location permission
-  //     }
-  //   } catch (error) {
-  //     console.error('Error requesting location permission:', error);
-  //   }
-  // };
-
-
-
-  // useEffect(() => {
-  //   requestLocationPermission(); 
-  // }, []);
-
-  
-  // const getCurrentLocation = () => {
-  //   Geolocation.getCurrentPosition(
-  //     (position) => {
-  //       const { latitude, longitude } = position.coords;
-  //       getWeatherDataByCoordinates(latitude, longitude);
-  //     },
-  //     (error) => {
-  //       console.error('Error getting current location:', error);
-  //     },
-  //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-  //   );
-  // };
-
-  // // Function to get weather data by coordinates
-  // const getWeatherDataByCoordinates = async (latitude, longitude) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
-  //     );
-  //     setWeatherData(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching weather data:', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCurrentLocation(); // Call this function to get weather data based on the user's location
-  // }, []);
   const data = [
     {
       id: '1',
@@ -198,16 +141,7 @@ export default function Subscription({navigation}) {
             marginTop:-50
           }}
         />
-{/* <View>
-  {weatherData ? (
-    <View>
-      <Text style={styles.weatherText}>Temperature: {weatherData.main.temp}°C</Text>
-      <Text style={styles.weatherText}>Weather: {weatherData.weather[0].description}</Text>
-    </View>
-  ) : (
-    <Text style={styles.loadingText}>Loading weather data...</Text>
-  )}
-</View> */}
+
 
         <Text
           style={{
@@ -247,12 +181,14 @@ style={{
 </View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => console.log('Button pressed')}>
+          // onPress={() => navigation.navigate("Tab")}
+          >
           <Text style={styles.buttonText}>Try Pro For Free</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button1}
           // onPress={() => navigation.navigate("")}
+          onPress={() => navigation.navigate("Tab")}
           >
           <Text style={styles.buttonText1}>Skip</Text>
         </TouchableOpacity>

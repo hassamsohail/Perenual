@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet , Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,9 +11,14 @@ import Login from './screen/Login';
 import SignUpPhone from './screen/SignUpPhone';
 import Verify from './screen/Verify';
 import Subscription from './screen/Subscription';
-
+import Mainscreen from './screen/Mainscreen';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MyPlants from './screen/MyPlants';
+import Reminder from './screen/Reminder';
+import Community from './screen/Community';
+import Survey from './screen/Survey';
 const Stack = createNativeStackNavigator();
-
+const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
   return (
     <View style={styles.container}>
@@ -109,11 +114,144 @@ function App() {
             name="Subscription"
             component={Subscription}
           />
+          
+          <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Tab"
+              component={TabNavi}
+            />
+              
+          <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Survey"
+              component={Survey}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
 }
+const TabNavi = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="MainScreen">
+      <Tab.Screen
+        name="Mainscreen"
+        component={Mainscreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={
+                  focused
+                    ? require('./assets/PlantCare.png')
+                    : require('./assets/PlantCareD.png')
+                }
+                style={{width: 24, height: 24, marginTop:5}}
+              />
+              <Text
+                style={
+                  focused
+                    ? {marginTop: 2, color: '#1BBFA0', fontSize: 12}
+                    : {marginTop: 2, color: '#9B9B9B', fontSize: 12}
+                }>
+               Plant Care
+              </Text>
+            </View>
+          ),
+          tabBarLabel: () => null, // Disable the default icon name
+        }}
+      />
+     <Tab.Screen
+        name="MyPlants"
+        component={MyPlants}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={
+                  focused
+                    ? require('./assets/MyPlants.png')
+                    : require('./assets/MyPlantsD.png')
+                }
+                style={{width: 24, height: 24, marginTop:5}}
+              />
+              <Text
+                style={
+                  focused
+                    ? {marginTop: 2, color: '#1BBFA0', fontSize: 12}
+                    : {marginTop: 2, color: '#9B9B9B', fontSize: 12}
+                }>
+              My Plants
+              </Text>
+            </View>
+          ),
+          tabBarLabel: () => null, // Disable the default icon name
+        }}
+      />
+     <Tab.Screen
+        name="Reminder"
+        component={Reminder}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={
+                  focused
+                    ? require('./assets/Reminder.png')
+                    : require('./assets/ReminderD.png')
+                }
+                style={{width: 24, height: 24, marginTop:5}}
+              />
+              <Text
+                style={
+                  focused
+                    ? {marginTop: 2, color: '#1BBFA0', fontSize: 12}
+                    : {marginTop: 2, color: '#9B9B9B', fontSize: 12}
+                }>
+             Reminder
+              </Text>
+            </View>
+          ),
+          tabBarLabel: () => null, // Disable the default icon name
+        }}
+      />
+     <Tab.Screen
+        name="Community"
+        component={Community}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={
+                  focused
+                    ? require('./assets/Comunity.png')
+                    : require('./assets/ComunityD.png')
+                }
+                style={{width: 24, height: 24, marginTop:5}}
+              />
+              <Text
+                style={
+                  focused
+                    ? {marginTop: 2, color: '#1BBFA0', fontSize: 12}
+                    : {marginTop: 2, color: '#9B9B9B', fontSize: 12}
+                }>
+             Reminder
+              </Text>
+            </View>
+          ),
+          tabBarLabel: () => null, // Disable the default icon name
+        }}
+      />
+     
+    </Tab.Navigator>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
