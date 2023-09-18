@@ -8,6 +8,8 @@ import {
   Dimensions,
   ScrollView,
   FlatList,
+  Platform,
+  Switch
 } from 'react-native';
 
 const {width} = Dimensions.get('window');
@@ -96,8 +98,46 @@ const Survey = ({navigation}) => {
     setSelectedRadio2(index);
   };
   const data3 = [
-    {id: '1', title: 'Water reminders'},
-    {id: '2', title: 'Water reminders'},
+    {
+      id: '1',
+      title: 'Water reminders',
+      imageSource: require('../assets/icon1.png'),
+    },
+    {
+      id: '2',
+      title: 'Find the right plant',
+      imageSource: require('../assets/icon2.png'),
+    },
+    {
+      id: '3',
+      title: 'Temperature info',
+      imageSource: require('../assets/icon3.png'),
+    },
+    {
+      id: '4',
+      title: 'Plant care info',
+      imageSource: require('../assets/icon4.png'),
+    },
+    {
+      id: '5',
+      title: 'Perfect light condition',
+      imageSource: require('../assets/icon5.png'),
+    },
+    {
+      id: '6',
+      title: 'Troubleshoot pets',
+      imageSource: require('../assets/icon6.png'),
+    },
+    {
+      id: '7',
+      title: 'Toxicity info',
+      imageSource: require('../assets/icon7.png'),
+    },
+    {
+      id: '8',
+      title: 'Propagating',
+      imageSource: require('../assets/icon8.png'),
+    },
 
     // Add more items as needed
   ];
@@ -112,18 +152,32 @@ const Survey = ({navigation}) => {
       setSelectedItems([...selectedItems, itemId]);
     }
   };
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
 
+  const toggleSwitch = () => {
+    setIsSwitchOn((previousState) => !previousState);
+  };
+  const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+
+  const toggleSwitch1 = () => {
+    setIsSwitchOn1((previousState) => !previousState);
+  };
   const renderItem = ({item}) => {
     const isSelected = selectedItems.includes(item.id);
 
     return (
       <TouchableOpacity
-        style={[styles.item, isSelected ? styles.selectedItem : null]}
+        style={[
+          styles.item,
+          isSelected && styles.selectedItem,
+          Platform.OS === 'android' && isSelected && styles.androidShadow,
+        ]}
         onPress={() => toggleItemSelection(item.id)}>
+        <Image source={item.imageSource} style={styles.itemImage} />
         <Text
           style={[
             styles.itemText,
-            isSelected ? styles.selectedItemText : null,
+            isSelected ? styles.selectedItemText : styles.selectedItemText1,
           ]}>
           {item.title}
         </Text>
@@ -214,6 +268,12 @@ const Survey = ({navigation}) => {
                 </View>
               </TouchableOpacity>
             ))}
+            <TouchableOpacity
+           onPress={()=>{
+            navigation.navigate("Mainscreen")
+           }}
+            >
+
             <Text
               style={{
                 marginTop: 40,
@@ -223,6 +283,8 @@ const Survey = ({navigation}) => {
               }}>
               I don’t have a plant yet
             </Text>
+            </TouchableOpacity>
+
           </View>
         </View>
 
@@ -445,6 +507,127 @@ const Survey = ({navigation}) => {
             with their plats
           </Text>
           <View style={{height: 16}} />
+
+          <View
+            style={{
+              width: '90%',
+              alignSelf: 'center',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexDirection:"row"
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Image
+                  source={require('../assets/notifications.png')}
+                  style={{
+                    width: 24,
+                    height: 24,
+                    marginRight: 10,
+                  }}
+                />
+
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: '600',
+                      color: '#161C1C',
+                    }}>
+                    Reminder
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      color: '#555555',
+                    }}>
+                    So you never forget to water ur plants
+                  </Text>
+                </View>
+              </View>
+              <Switch
+        trackColor={{ false: "#767577", true: "#1BBFA0" }}
+        thumbColor={isSwitchOn1 ? "#ffffff" : "#f4f3f4"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch1}
+        value={isSwitchOn1}
+      />
+
+     
+            </View>
+             <View
+      style={{
+        // borderBottomWidth:1
+        height:1,
+        marginTop:10,
+        marginBottom:10,
+        width:"100%",
+        backgroundColor:"#DCDCDC"
+      }}
+      />
+          </View>
+          <View
+            style={{
+              width: '90%',
+              alignSelf: 'center',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexDirection:"row"
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Image
+                  source={require('../assets/Camera.png')}
+                  style={{
+                    width: 24,
+                    height: 24,
+                    marginRight: 10,
+                  }}
+                />
+
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: '600',
+                      color: '#161C1C',
+                    }}>
+                    Camera access
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      color: '#555555',
+                    }}>
+                So you can identify plants in a snap
+                  </Text>
+                </View>
+              </View>
+              <Switch
+        trackColor={{ false: "#767577", true: "#1BBFA0" }}
+        thumbColor={isSwitchOn ? "#ffffff" : "#f4f3f4"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isSwitchOn}
+      />
+            </View>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -452,11 +635,21 @@ const Survey = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    selectedItem: {
-        backgroundColor: '#1BBFA0', // Change to the selected background color
-      },
+  selectedItem: {
+    backgroundColor: '#1BBFA0',
+
+    // Change to the selected background color
+  },
+  selectedItemText1: {
+    color: '#161C1C', // Change to the selected text color
+  },
   selectedItemText: {
-    color: 'white', // Change to the selected text color
+    color: '#fff', // Change to the selected text color
+  },
+  itemImage: {
+    width: 32, // Adjust the width and height as needed for your image
+    height: 32,
+    // marginBottom: 8, // Add spacing between the image and text
   },
   radioButton: {
     flexDirection: 'row',
@@ -499,15 +692,21 @@ const styles = StyleSheet.create({
   item: {
     width: '48%',
     height: 52,
-    backgroundColor: '#1BBFA0',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    marginTop: 10,
+    backgroundColor: '#fff',
+    paddingLeft: 8,
+    // justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 16,
-    margin: '1%', // Adjust margin as needed for spacing between items
+    margin: '1%',
+    elevation: 4, // Adjust margin as needed for spacing between items
   },
   itemText: {
     fontSize: 12,
     color: '#161C1C',
+    marginLeft: 4,
+    width: '80%',
   },
   title: {
     fontSize: 22,
@@ -568,6 +767,15 @@ const styles = StyleSheet.create({
     color: '#161C1C',
     fontSize: 18,
     fontWeight: 'normal',
+  },
+  androidShadow: {
+    elevation: 4, // Add elevation for shadow on Android
+  },
+  iosShadow: {
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
 });
 

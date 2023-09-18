@@ -1,7 +1,8 @@
-import React from 'react';
+import React , {useEffect, useState}from 'react';
 import {
   View,
   Text,
+ 
   ScrollView,
   Dimensions,
   Image,
@@ -10,10 +11,41 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import LinearGradient from 'react-native-linear-gradient';
 import FormInput from '../Components/FormInput';
+import Survey from './Survey';
 
 export default function Mainscreen({navigation}) {
+  const [hasSeenSurvey, setHasSeenSurvey] = useState(false);
+
+  // Use the useEffect hook to check if the user has seen the survey screen before
+  useEffect(() => {
+    // Check if the user has seen the survey in AsyncStorage
+    AsyncStorage.getItem('hasSeenSurvey').then((value) => {
+      if (value === 'true') {
+        setHasSeenSurvey(true);
+      }
+    });
+  }, []);
+
+  // Use the useEffect hook to navigate to the "Survey" screen after 10 seconds
+  useEffect(() => {
+    if (!hasSeenSurvey) {
+      const timer = setTimeout(() => {
+        navigation.navigate('Survey'); // Replace 'Survey' with the actual screen name
+        setHasSeenSurvey(true);
+
+        // Store in AsyncStorage that the user has seen the survey
+        AsyncStorage.setItem('hasSeenSurvey', 'true');
+      }, 10000); // 10000 milliseconds (10 seconds)
+
+      // Clear the timer if the component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, [navigation, hasSeenSurvey]);
+
   const [Phonenumber, setPhonenumber] = React.useState();
   const [search, setsearch] = React.useState();
   const plantData = [
@@ -107,7 +139,7 @@ export default function Mainscreen({navigation}) {
   return (
     <View
       style={{
-        height: Dimensions.get('window').height,
+        flex: 1, // Set the flex to 1
         backgroundColor: 'white',
       }}>
       <LinearGradient
@@ -288,7 +320,7 @@ export default function Mainscreen({navigation}) {
             right: '5%',
           }}
           onPress={()=>{
-            navigation.navigate("Survey")
+            // navigation.navigate("")
           }}
           >
           <View
