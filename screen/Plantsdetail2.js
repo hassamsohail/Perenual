@@ -6,21 +6,28 @@ import {
   TouchableOpacity,
   Dimensions,
   StyleSheet,
+  TextInput,
   FlatList,
   Modal,
   ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
+import ImagePicker from 'react-native-image-crop-picker';
 
-export default function Plantsdetail2() {
+export default function Plantsdetail2({navigation}) {
+  const [text, setText] = useState('');
+
+  const handleChangeText = inputText => {
+    setText(inputText);
+  };
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [showTimePicker, setShowTimePicker] = useState(false);
 
   const [indexofData, setindexofData] = useState(0);
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
   const [isBottomSheetVisible1, setIsBottomSheetVisible1] = useState(false);
-   // Control the visibility of the bottom sheet
+  // Control the visibility of the bottom sheet
   const [selectedRadio4, setSelectedRadio4] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedTime, setSelectedTime] = useState(new Date());
@@ -270,18 +277,36 @@ export default function Plantsdetail2() {
 
     // Add more data items as needed
   ];
+  const [imageUri, setImageUri] = useState('');
+  const [SelectedImageUri, setSelectedImageUri] = useState('');
+
+  const openImagePicker = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 300,
+      cropping: true,
+    })
+      .then(image => {
+        // The selected image is available in image.path
+        setImageUri(image.path);
+        setSelectedImageUri(image.path);
+      })
+      .catch(error => {
+        console.log('ImagePicker Error: ', error);
+      });
+  };
+
   const data5 = [
     {
       id: '1',
       name: 'Watering',
       date: '1 Des',
       time: '20:30',
-      status:"Done",
+      status: 'Done',
       schedule: 'Every 1 week',
       image: require('../assets/icon1.png'),
     },
-  
-   
+
     {
       id: '2',
       name: 'Note',
@@ -345,7 +370,7 @@ export default function Plantsdetail2() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.goBack();
+            navigation.navigate("EditPlant");
           }}>
           <View
             style={{
@@ -1210,125 +1235,123 @@ export default function Plantsdetail2() {
                 height: '78%',
                 marginTop: 10,
               }}>
-               
               <FlatList
                 data={data5}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => (
-
-                  <View
-                  style={{
-                    flexDirection:"row",
-                    width:"100%",
-                    alignItems
-                    :"center", justifyContent:"space-between"
-                  }}
-                  >
-<Text
-              style={{
-                fontSize: 16,
-
-                color: '#161C1C',
-                fontWeight: 'bold',
-                // alignSelf: 'center',
-
-                // marginTop: 6,
-              }}>
-              5 Aug
-            </Text>
-
-
-            <View
-            style={{
-              height:24, width:24, borderWidth:1, borderColor:"#C7C7C7", borderRadius:24, justifyContent:"center", alignItems:"center"
-            }}
-            >
- <View
-            style={{
-              height:12, width:12,  backgroundColor:"#9B9B9B", borderRadius:12
-            }}
-            >
-
-            </View>
-            </View>
                   <View
                     style={{
-                      marginBottom: 10,
-                      width: '60%',
-                      paddingLeft: 10,
-                      alignItems: 'center',
                       flexDirection: 'row',
-                      height: 77,
-                      borderWidth: 1,
-                      borderColor: '#EBEBEB',
-                      backgroundColor: '#fff',
-                      borderRadius: 16,
+                      width: '100%',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
                     }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+
+                        color: '#161C1C',
+                        fontWeight: 'bold',
+                        // alignSelf: 'center',
+
+                        // marginTop: 6,
+                      }}>
+                      5 Aug
+                    </Text>
+
                     <View
                       style={{
-                        width: '15%',
+                        height: 24,
+                        width: 24,
+                        borderWidth: 1,
+                        borderColor: '#C7C7C7',
+                        borderRadius: 24,
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}>
-                      <Image
-                        source={item.image}
-                        style={{
-                          height: 32,
-                          width: 32,
-                        }}
-                      />
-                    </View>
-
-                    <View>
                       <View
                         style={{
-                          width: '80%',
-                          // marginLeft: -10,
-                          flexDirection: 'row',
-                          justifyContent: 'space-between',
+                          height: 12,
+                          width: 12,
+                          backgroundColor: '#9B9B9B',
+                          borderRadius: 12,
+                        }}></View>
+                    </View>
+                    <View
+                      style={{
+                        marginBottom: 10,
+                        width: '60%',
+                        paddingLeft: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        height: 77,
+                        borderWidth: 1,
+                        borderColor: '#EBEBEB',
+                        backgroundColor: '#fff',
+                        borderRadius: 16,
+                      }}>
+                      <View
+                        style={{
+                          width: '15%',
                         }}>
-                        <View
-                          style={
-                            {
-                              // width:"100%"
-                            }
-                          }>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#161C1C',
-                            }}>
-                            {item.name}
-                          </Text>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#9B9B9B',
-                            }}>
-                            {item.schedule}
-                          </Text>
-                        </View>
+                        <Image
+                          source={item.image}
+                          style={{
+                            height: 32,
+                            width: 32,
+                          }}
+                        />
+                      </View>
+
+                      <View>
                         <View
                           style={{
-                            alignItems: 'flex-end',
-                            justifyContent:"center",
-                            
+                            width: '80%',
+                            // marginLeft: -10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
                           }}>
-                          <Text
+                          <View
+                            style={
+                              {
+                                // width:"100%"
+                              }
+                            }>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#161C1C',
+                              }}>
+                              {item.name}
+                            </Text>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#9B9B9B',
+                              }}>
+                              {item.schedule}
+                            </Text>
+                          </View>
+                          <View
                             style={{
-                              // marginLeft: 10,
-                              fontSize: 14,
-                              color: '#1BBFA0',
+                              alignItems: 'flex-end',
+                              justifyContent: 'center',
                             }}>
-                            {item.status}
-                          </Text>
-                         
+                            <Text
+                              style={{
+                                // marginLeft: 10,
+                                fontSize: 14,
+                                color: '#1BBFA0',
+                              }}>
+                              {item.status}
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
                   </View>
-                  </View>
-
                 )}
               />
               <TouchableOpacity
@@ -1351,7 +1374,7 @@ export default function Plantsdetail2() {
                     fontSize: 16, // Adjust the font size as needed
                     fontWeight: '600',
                   }}>
-                Write a note 
+                  Write a note
                 </Text>
               </TouchableOpacity>
               <Modal
@@ -1433,13 +1456,12 @@ export default function Plantsdetail2() {
                           marginTop: 10,
                           backgroundColor: '#E5E5E5',
                         }}></View>
-                     
 
                       <TouchableOpacity
                         onPress={() => setShowDatePicker(true)} // Show date picker when the text is pressed
                         style={{
                           height: 40,
-                          marginTop:20,
+                          marginTop: 20,
                           borderBottomWidth: 1,
                           borderColor: '#D9D6DF',
                           // justifyContent: 'center',
@@ -1472,15 +1494,74 @@ export default function Plantsdetail2() {
                           onChange={handleDateChange}
                         />
                       )}
+                      <TextInput
+                        style={styles.textInput}
+                        placeholder="How’s it growing?"
+                        placeholderTextColor="#A5A5A5"
+                        value={text}
+                        onChangeText={handleChangeText}
+                      />
+<View
+style={{
+  height:"5%"
+}}
+/>
 
-                    
+<TouchableOpacity
+            onPress={openImagePicker}
+            style={{
+              height: 103,
+              width: '100%',
+              alignSelf: 'center',
+              backgroundColor: '#DEF2ED',
+              justifyContent: 'center',
+              borderRadius:20,
+              
+
+            }}>
+            {imageUri ? (
+              <Image
+                source={{uri: imageUri}}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius:20,
+
+
+                }}
+              />
+            ) : (
+              <View
+                style={{
+                  backgroundColor: '#DEF2ED',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  // borderRadius: 88,
+                 
+                  height: 103,
+                  borderRadius:20,
+
+                }}>
+                <Image
+                  source={require('../assets/element.png')}
+                  style={{
+                    width: '90%',
+                    // marginTop: 70,
+                    borderRadius:20,
+                    height: 90,
+                  }}
+                />
+              </View>
+            )}
+          </TouchableOpacity>
                     </View>
                   </View>
                 </View>
-                
               </Modal>
             </View>
-          </View>):null}
+          </View>
+        ) : null}
       </View>
       <View
         style={{
@@ -1583,6 +1664,23 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#003399',
     marginRight: 10,
+  },
+  container: {
+    height: 200,
+    width: '90%',
+    borderColor: '#76D9C6',
+    borderWidth: 1,
+  },
+  textInput: {
+    borderColor: '#76D9C6',
+    borderWidth: 1,
+    marginTop:20,
+    // flex: 1,
+    height: 100,
+    width: '100%',
+    padding: 10,
+    borderRadius:16,
+    color: 'black',
   },
   checkedCheckbox: {
     backgroundColor: '#003399',

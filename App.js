@@ -27,6 +27,7 @@ import Light from './screen/Light';
 import Humidity from './screen/Humidity';
 import Task from './screen/Task';
 import Plantsdetail2 from './screen/Plantsdetail2';
+import EditPlant from './screen/EditPlant';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -209,6 +210,13 @@ function App() {
               }}
               name="Plantsdetail2"
               component={Plantsdetail2}
+            />
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="EditPlant"
+              component={EditPlant}
             />
         </Stack.Navigator>
       </NavigationContainer>
