@@ -231,7 +231,9 @@ export default function SignUp({navigation}) {
       </View>
       <TouchableOpacity
           style={styles.button}
-          onPress={() => console.log('Button pressed')}>
+          onPress={() => {
+            navigation.navigate('Tab');
+          }}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <View

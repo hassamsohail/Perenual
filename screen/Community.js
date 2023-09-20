@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Video from 'react-native-video';

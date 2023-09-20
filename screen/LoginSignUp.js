@@ -76,7 +76,9 @@ export default function LoginSignUp({navigation}) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => console.log('Button pressed')}>
+          onPress={() => {
+            navigation.navigate('Login');
+          }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
         <TouchableOpacity

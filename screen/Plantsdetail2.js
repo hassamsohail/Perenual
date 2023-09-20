@@ -370,7 +370,7 @@ export default function Plantsdetail2({navigation}) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("EditPlant");
+            navigation.navigate('EditPlant');
           }}>
           <View
             style={{
@@ -1501,60 +1501,55 @@ export default function Plantsdetail2({navigation}) {
                         value={text}
                         onChangeText={handleChangeText}
                       />
-<View
-style={{
-  height:"5%"
-}}
-/>
+                      <View
+                        style={{
+                          height: '5%',
+                        }}
+                      />
 
-<TouchableOpacity
-            onPress={openImagePicker}
-            style={{
-              height: 103,
-              width: '100%',
-              alignSelf: 'center',
-              backgroundColor: '#DEF2ED',
-              justifyContent: 'center',
-              borderRadius:20,
-              
+                      <TouchableOpacity
+                        onPress={openImagePicker}
+                        style={{
+                          height: 103,
+                          width: '100%',
+                          alignSelf: 'center',
+                          backgroundColor: '#DEF2ED',
+                          justifyContent: 'center',
+                          borderRadius: 20,
+                        }}>
+                        {imageUri ? (
+                          <Image
+                            source={{uri: imageUri}}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: 20,
+                            }}
+                          />
+                        ) : (
+                          <View
+                            style={{
+                              backgroundColor: '#DEF2ED',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              width: '100%',
+                              // borderRadius: 88,
 
-            }}>
-            {imageUri ? (
-              <Image
-                source={{uri: imageUri}}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius:20,
-
-
-                }}
-              />
-            ) : (
-              <View
-                style={{
-                  backgroundColor: '#DEF2ED',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '100%',
-                  // borderRadius: 88,
-                 
-                  height: 103,
-                  borderRadius:20,
-
-                }}>
-                <Image
-                  source={require('../assets/element.png')}
-                  style={{
-                    width: '90%',
-                    // marginTop: 70,
-                    borderRadius:20,
-                    height: 90,
-                  }}
-                />
-              </View>
-            )}
-          </TouchableOpacity>
+                              height: 103,
+                              borderRadius: 20,
+                            }}>
+                            <Image
+                              source={require('../assets/element.png')}
+                              style={{
+                                width: '90%',
+                                // marginTop: 70,
+                                borderRadius: 20,
+                                height: 90,
+                              }}
+                            />
+                          </View>
+                        )}
+                      </TouchableOpacity>
                     </View>
                   </View>
                 </View>
@@ -1674,12 +1669,12 @@ const styles = StyleSheet.create({
   textInput: {
     borderColor: '#76D9C6',
     borderWidth: 1,
-    marginTop:20,
+    marginTop: 20,
     // flex: 1,
     height: 100,
     width: '100%',
     padding: 10,
-    borderRadius:16,
+    borderRadius: 16,
     color: 'black',
   },
   checkedCheckbox: {
