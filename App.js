@@ -17,6 +17,16 @@ import MyPlants from './screen/MyPlants';
 import Reminder from './screen/Reminder';
 import Community from './screen/Community';
 import Survey from './screen/Survey';
+import SearchToAdd from './screen/SearchToAdd';
+import ScanToAdd from './screen/ScanToAdd';
+import PlantDetail from './screen/PlantDetail';
+import ScanSearch from './screen/ScanSearch';
+import AddManuallyPlants from './screen/AddManuallyPlants';
+import Height from './screen/Height';
+import Light from './screen/Light';
+import Humidity from './screen/Humidity';
+import Task from './screen/Task';
+import Plantsdetail2 from './screen/Plantsdetail2';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -129,6 +139,76 @@ function App() {
               }}
               name="Survey"
               component={Survey}
+            />
+               <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="SearchToAdd"
+              component={SearchToAdd}
+            />
+              <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="ScanToAdd"
+              component={ScanToAdd}
+            />
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="PlantDetail"
+              component={PlantDetail}
+            />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="ScanSearch"
+              component={ScanSearch}
+            />
+              <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="AddManuallyPlants"
+              component={AddManuallyPlants}
+            />
+              <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Height"
+              component={Height}
+            />
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Light"
+              component={Light}
+            />
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Humidity"
+              component={Humidity}
+            />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Task"
+              component={Task}
+            />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Plantsdetail2"
+              component={Plantsdetail2}
             />
         </Stack.Navigator>
       </NavigationContainer>
