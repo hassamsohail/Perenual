@@ -171,9 +171,9 @@ export default function Mainscreen({navigation}) {
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-          // onPress={()=>{
-          //     navigation.goBack()
-          // }}
+          onPress={()=>{
+              navigation.navigate("Profile")
+          }}
           >
             <View
               style={{

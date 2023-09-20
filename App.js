@@ -28,6 +28,7 @@ import Humidity from './screen/Humidity';
 import Task from './screen/Task';
 import Plantsdetail2 from './screen/Plantsdetail2';
 import EditPlant from './screen/EditPlant';
+import Profile from './screen/Profile';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -218,6 +219,13 @@ function App() {
               name="EditPlant"
               component={EditPlant}
             />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="Profile"
+              component={Profile}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -329,7 +337,7 @@ const TabNavi = () => {
                     ? {marginTop: 2, color: '#1BBFA0', fontSize: 12}
                     : {marginTop: 2, color: '#9B9B9B', fontSize: 12}
                 }>
-             Reminder
+             Community
               </Text>
             </View>
           ),

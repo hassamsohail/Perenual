@@ -124,9 +124,9 @@ export default function MyPlants({navigation}) {
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-          // onPress={()=>{
-          //     navigation.goBack()
-          // }}
+            onPress={()=>{
+              navigation.navigate("Profile")
+          }}
           >
             <View
               style={{

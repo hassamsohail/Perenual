@@ -7,16 +7,11 @@ import {
   Dimensions,
   Image,
   StyleSheet,
-  FlatList,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-crop-picker';
-import FormInput from '../Components/FormInput';
 import FormInput2 from '../Components/FormInput2';
 
 export default function EditPlant({navigation}) {
@@ -88,67 +83,7 @@ export default function EditPlant({navigation}) {
           width: '100%',
           alignSelf: 'center',
         }}>
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            zIndex: 10,
-            left: 20,
-          }}
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <View
-            style={{
-              height: 37,
-              width: 62,
-              // borderWidth: 1,
-              backgroundColor: '#1BBFA0',
-              // borderColor: '#1BBFA0',
-              // backgroundColor: '#fff',
-              borderRadius: 12,
-              justifyContent: 'center',
-
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 12,
-                color: '#fff',
-                textAlign: 'center',
-              }}>
-              Save
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            zIndex: 10,
-            right: 20,
-          }}
-          onPress={handleDeletePress}>
-          <View
-            style={{
-              height: 40,
-              width: 40,
-              // borderWidth: 1,
-              elevation: 3,
-              borderColor: '#E0E0E0',
-              backgroundColor: '#fff',
-              borderRadius: 12,
-              justifyContent: 'center',
-
-              alignItems: 'center',
-            }}>
-            <Image
-              source={require('../assets/Delete.png')}
-              style={{
-                width: 24,
-                height: 24,
-              }}
-            />
-          </View>
-        </TouchableOpacity>
+        
         <Modal
           animationType="slide"
           transparent={true}
