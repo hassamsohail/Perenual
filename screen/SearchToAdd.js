@@ -66,17 +66,17 @@ export default function SearchToAdd({navigation}) {
       id: '1',
       image: require('../assets/Plant1.png'),
       location: 'Asplenium nidus',
-      name: "Bird’s Aspleniaceae",
-    //   nextWatering: 'Next: water on Aug 12',
+      name: 'Bird’s Aspleniaceae',
+      //   nextWatering: 'Next: water on Aug 12',
     },
     {
       id: '2',
       image: require('../assets/Plant2.png'),
       location: 'Sansevieria trifasciata',
-      name: "Snake Plant",
-    //   OverdueWatering: 'Overdue: water on Aug 1',
+      name: 'Snake Plant',
+      //   OverdueWatering: 'Overdue: water on Aug 1',
     },
-    
+
     // Add more plant data objects as needed
   ];
 
@@ -84,79 +84,71 @@ export default function SearchToAdd({navigation}) {
     const textColor = item.nextWatering ? '#1BBFA0' : '#E74C3C';
 
     return (
-        <View
-        >
-<TouchableOpacity
-onPress={()=>{
-  navigation.navigate("PlantDetail")
-}}
->
-
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16, // Add margin between items
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('PlantDetail');
           }}>
-          <Image
-            source={item.image}
-            style={{
-              width: 80,
-              height: 80,
-            }}
-          />
-
           <View
             style={{
-              marginLeft: 10,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 16, // Add margin between items
             }}>
-            
-            <Text
+            <View
               style={{
-                fontSize: 16,
-                color: '#161C1C',
-                fontWeight: '500',
+                flexDirection: 'row',
+                alignItems: 'center',
               }}>
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#9B9B9B',
-              }}>
-              {item.location}
-            </Text>
-           
-          </View>
-        </View>
-        {/* <Image
+              <Image
+                source={item.image}
+                style={{
+                  width: 80,
+                  height: 80,
+                }}
+              />
+
+              <View
+                style={{
+                  marginLeft: 10,
+                }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    color: '#161C1C',
+                    fontWeight: '500',
+                  }}>
+                  {item.name}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#9B9B9B',
+                  }}>
+                  {item.location}
+                </Text>
+              </View>
+            </View>
+            {/* <Image
           source={require('../assets/menu1.png')} // You can replace this with the correct source
           style={{
             width: 24,
             height: 24,
           }}
         /> */}
+          </View>
+
+          <View
+            style={{
+              width: '100%',
+              height: 1,
+              backgroundColor: '#E5E5E5',
+              marginBottom: 20,
+            }}
+          />
+        </TouchableOpacity>
       </View>
-
-
-      <View
-      style={{
-        width:"100%",
-        height:1,
-        backgroundColor:"#E5E5E5"
-        , marginBottom:20
-      }}
-      />
-</TouchableOpacity>
-
-      </View>
-
     );
   };
 
@@ -182,10 +174,9 @@ onPress={()=>{
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-          onPress={()=>{
-              navigation.goBack()
-          }}
-          >
+            onPress={() => {
+              navigation.goBack();
+            }}>
             <View
               style={{
                 height: 40,
@@ -212,9 +203,7 @@ onPress={()=>{
               height: 20,
             }}
           />
-         
 
-         
           <View
             style={{
               width: '100%',
@@ -254,33 +243,32 @@ onPress={()=>{
           </View>
 
           <View
-          style=
-          {{
-            flexDirection:"row",
-            justifyContent:"space-between",
-            width:"100%", alignItems:"center"
-          }}
-          >
-<Text
-                style={{
-                  fontSize: 16,
-                  color: '#161C1C',
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: '#161C1C',
                 //   alignSelf: 'center',
-                fontWeight:"700",
-                  marginTop: 10,
-                }}>
+                fontWeight: '700',
+                marginTop: 10,
+              }}>
               Based On Your Location
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#1BBFA0',
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                color: '#1BBFA0',
                 //   alignSelf: 'center',
-                fontWeight:"500",
-                  marginTop: 10,
-                }}>
-            View all
-              </Text>
+                fontWeight: '500',
+                marginTop: 10,
+              }}>
+              View all
+            </Text>
           </View>
           <View
             style={{
@@ -327,35 +315,34 @@ onPress={()=>{
               </Text>
             </View>
           )}
-          
+
           <View
-          style=
-          {{
-            flexDirection:"row",
-            justifyContent:"space-between",
-            width:"100%", alignItems:"center"
-          }}
-          >
-<Text
-                style={{
-                  fontSize: 16,
-                  color: '#161C1C',
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: '#161C1C',
                 //   alignSelf: 'center',
-                fontWeight:"700",
-                  marginTop: 10,
-                }}>
-            All Plants
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#1BBFA0',
+                fontWeight: '700',
+                marginTop: 10,
+              }}>
+              All Plants
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                color: '#1BBFA0',
                 //   alignSelf: 'center',
-                fontWeight:"500",
-                  marginTop: 10,
-                }}>
-            Sort by
-              </Text>
+                fontWeight: '500',
+                marginTop: 10,
+              }}>
+              Sort by
+            </Text>
           </View>
           <View
             style={{
@@ -403,9 +390,6 @@ onPress={()=>{
             </View>
           )}
         </View>
-       
-       
-       
       </LinearGradient>
     </View>
   );

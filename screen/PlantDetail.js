@@ -1336,7 +1336,7 @@ export default function PlantDetail({navigation}) {
                 keyExtractor={item => item.id}
               />
             </View>
-            <Text style={styles.loginDescription1}>Date of Birth</Text>
+            <Text style={styles.loginDescription1}>Select a Date</Text>
             <TouchableOpacity
               onPress={() => setShowDatePicker(true)} // Show date picker when the text is pressed
               style={{
