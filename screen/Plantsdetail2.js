@@ -1477,6 +1477,7 @@ export default function Plantsdetail2() {
                     </View>
                   </View>
                 </View>
+                
               </Modal>
             </View>
           </View>):null}
