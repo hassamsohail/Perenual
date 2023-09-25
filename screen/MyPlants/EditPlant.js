@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-crop-picker';
-import FormInput2 from '../Components/FormInput2';
+import FormInput2 from '../../Components/FormInput2';
 
 export default function EditPlant({navigation}) {
   const [PlantName, setPlantName] = React.useState();
@@ -157,7 +157,7 @@ export default function EditPlant({navigation}) {
                 height: 240,
               }}>
               <Image
-                source={require('../assets/Group.png')}
+                source={require('../../assets/Group.png')}
                 style={{
                   width: '70%',
                   marginTop: 70,
@@ -276,7 +276,7 @@ export default function EditPlant({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/N.png')}
+                source={require('../../assets/N.png')}
                 style={{
                   width: 32,
                   height: 32,
@@ -326,7 +326,7 @@ export default function EditPlant({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/W.png')}
+                source={require('../../assets/W.png')}
                 style={{
                   width: 32,
                   height: 32,
@@ -376,7 +376,7 @@ export default function EditPlant({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/L.png')}
+                source={require('../../assets/L.png')}
                 style={{
                   width: 32,
                   height: 32,
@@ -426,7 +426,7 @@ export default function EditPlant({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/H.png')}
+                source={require('../../assets/H.png')}
                 style={{
                   width: 32,
                   height: 32,

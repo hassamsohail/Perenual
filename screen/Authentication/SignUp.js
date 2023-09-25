@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import FormInput from "../Components/FormInput";
+import FormInput from "../../Components/FormInput";
 
 export default function SignUp({navigation}) {
     const [username, setuserName] = React.useState();
@@ -21,7 +21,7 @@ export default function SignUp({navigation}) {
     {
       id: '1',
       text: 'Sign up with Google',
-      imageSource: require('../assets/GoogleS.png'),
+      imageSource: require('../../assets/GoogleS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -29,7 +29,7 @@ export default function SignUp({navigation}) {
     {
       id: '2',
       text: 'Sign up with Apple account',
-      imageSource: require('../assets/AppleS.png'),
+      imageSource: require('../../assets/AppleS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -37,7 +37,7 @@ export default function SignUp({navigation}) {
     {
       id: '3',
       text: 'Sign up with Facebook',
-      imageSource: require('../assets/FacebookS.png'),
+      imageSource: require('../../assets/FacebookS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -45,7 +45,7 @@ export default function SignUp({navigation}) {
     {
       id: '4',
       text: 'Sign up with mobile phone number',
-      imageSource: require('../assets/MessageS.png'),
+      imageSource: require('../../assets/MessageS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -53,7 +53,7 @@ export default function SignUp({navigation}) {
     {
       id: '5',
       text: 'Sign up with email',
-      imageSource: require('../assets/MailS.png'),
+      imageSource: require('../../assets/MailS.png'),
       backgroundColor: '#1BBFA0',
       borderColor: '#1BBFA0',
       color: '#fff',
@@ -62,19 +62,19 @@ export default function SignUp({navigation}) {
   const data1 = [
     {
       id: '1',
-      image: require('../assets/Facebook.png'),
+      image: require('../../assets/Facebook.png'),
     },
     {
       id: '2',
-      image: require('../assets/Apple.png'),
+      image: require('../../assets/Apple.png'),
     },
     {
       id: '3',
-      image: require('../assets/google.png'),
+      image: require('../../assets/google.png'),
     },
     {
       id: '4',
-      image: require('../assets/message.png'),
+      image: require('../../assets/message.png'),
     },
     // Add more data items as needed
   ];
@@ -127,7 +127,7 @@ export default function SignUp({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -175,7 +175,7 @@ export default function SignUp({navigation}) {
       </View>
 
       <Image
-        source={require('../assets/Tree.png')}
+        source={require('../../assets/Tree.png')}
         style={{
           position: 'absolute',
           right: 0,

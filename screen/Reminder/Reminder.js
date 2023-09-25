@@ -22,19 +22,19 @@ export default function Reminder({navigation}) {
       id: '1',
       name: 'Watering',
      
-      image: require('../assets/icon1.png'),
+      image: require('../../assets/icon1.png'),
     },
     {
       id: '2',
       name: 'Fertilizer',
     
-      image: require('../assets/icon4.png'),
+      image: require('../../assets/icon4.png'),
     },
     {
       id: '3',
       name: 'Pruneing',
     
-      image: require('../assets/P.png'),
+      image: require('../../assets/P.png'),
     },
    
 
@@ -90,7 +90,7 @@ export default function Reminder({navigation}) {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../assets/menu.png')}
+                source={require('../../assets/menu.png')}
                 style={{
                   width: 24,
                   height: 24,
@@ -110,7 +110,7 @@ export default function Reminder({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/Cloud.png')}
+              source={require('../../assets/Cloud.png')}
               style={{
                 width: 24,
                 height: 24,
@@ -143,7 +143,7 @@ export default function Reminder({navigation}) {
               Good Morning
             </Text>
             <Image
-              source={require('../assets/Leaf.png')}
+              source={require('../../assets/Leaf.png')}
               style={{
                 width: 15,
                 height: 25,
@@ -262,7 +262,7 @@ export default function Reminder({navigation}) {
                      
                       
                              <Image
-              source={require('../assets/right.png')}
+              source={require('../../assets/right.png')}
               style={{
                 width:24,
                 height: 24,

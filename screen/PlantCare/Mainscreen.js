@@ -64,21 +64,21 @@ export default function Mainscreen({navigation}) {
   const plantData = [
     {
       id: '1',
-      image: require('../assets/Plant1.png'),
+      image: require('../../assets/Plant1.png'),
       location: 'Office',
       name: "Bird's Aspleniaceae",
       nextWatering: 'Next: water on Aug 12',
     },
     {
       id: '2',
-      image: require('../assets/Plant2.png'),
+      image: require('../../assets/Plant2.png'),
       location: 'Balcony',
       name: "Bird's Aspleniaceae",
       OverdueWatering: 'Overdue: water on Aug 1',
     },
     {
       id: '3',
-      image: require('../assets/Plant1.png'),
+      image: require('../../assets/Plant1.png'),
       location: 'Office',
       name: "Bird's Aspleniaceae",
       nextWatering: 'Next: water on Aug 12',
@@ -139,7 +139,7 @@ export default function Mainscreen({navigation}) {
           </View>
         </View>
         <Image
-          source={require('../assets/menu1.png')} // You can replace this with the correct source
+          source={require('../../assets/menu1.png')} // You can replace this with the correct source
           style={{
             width: 24,
             height: 24,
@@ -183,7 +183,7 @@ export default function Mainscreen({navigation}) {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../assets/menu.png')}
+                source={require('../../assets/menu.png')}
                 style={{
                   width: 24,
                   height: 24,
@@ -203,7 +203,7 @@ export default function Mainscreen({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/Cloud.png')}
+              source={require('../../assets/Cloud.png')}
               style={{
                 width: 24,
                 height: 24,
@@ -236,7 +236,7 @@ export default function Mainscreen({navigation}) {
               Good Morning
             </Text>
             <Image
-              source={require('../assets/Leaf.png')}
+              source={require('../../assets/Leaf.png')}
               style={{
                 width: 15,
                 height: 25,
@@ -264,7 +264,7 @@ export default function Mainscreen({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/Search.png')}
+                source={require('../../assets/Search.png')}
                 style={{
                   width: 18,
                   height: 18,
@@ -298,7 +298,7 @@ export default function Mainscreen({navigation}) {
                 alignSelf: 'center',
               }}>
               <Image
-                source={require('../assets/NotFounded.png')}
+                source={require('../../assets/NotFounded.png')}
                 style={{
                   width: 335,
                   height: 311,
@@ -330,7 +330,7 @@ export default function Mainscreen({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: 60, // Adjust the bottom value as needed
+            bottom: "13%", // Adjust the bottom value as needed
             right: '5%',
           }}
           onPress={openBottomSheet}>
@@ -351,7 +351,7 @@ export default function Mainscreen({navigation}) {
               shadowRadius: 2,
             }}>
             <Image
-              source={require('../assets/Add.png')}
+              source={require('../../assets/Add.png')}
               style={{
                 width: 18,
                 height: 18,
@@ -369,7 +369,7 @@ export default function Mainscreen({navigation}) {
             {/* Your bottom sheet content goes here */}
             <View style={styles.bottomSheet}>
               <Image
-                source={require('../assets/icon.png')}
+                source={require('../../assets/icon.png')}
                 style={{
                   height: 88,
                   width: 88,
@@ -420,7 +420,7 @@ export default function Mainscreen({navigation}) {
                       borderRadius: 16,
                     }}>
                     <Image
-                      source={require('../assets/S.png')}
+                      source={require('../../assets/S.png')}
                       style={{
                         height: 24,
                         width: 24,
@@ -461,7 +461,7 @@ export default function Mainscreen({navigation}) {
                       borderRadius: 16,
                     }}>
                     <Image
-                      source={require('../assets/scan.png')}
+                      source={require('../../assets/scan.png')}
                       style={{
                         height: 24,
                         width: 24,

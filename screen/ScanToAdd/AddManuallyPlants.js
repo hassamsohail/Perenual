@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-crop-picker';
-import FormInput from '../Components/FormInput';
+import FormInput from '../../Components/FormInput';
 
 export default function AddManuallyPlants({navigation}) {
   const [PlantName, setPlantName] = React.useState();
@@ -87,7 +87,7 @@ export default function AddManuallyPlants({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/ArrowLeft.png')}
+                source={require('../../assets/ArrowLeft.png')}
                 style={{
                   width: 8,
                   height: 15,
@@ -165,7 +165,7 @@ export default function AddManuallyPlants({navigation}) {
                   height: 240,
                 }}>
                 <Image
-                  source={require('../assets/Group.png')}
+                  source={require('../../assets/Group.png')}
                   style={{
                     width: '70%',
                     marginTop: 70,

@@ -61,17 +61,17 @@ export default function Community({navigation}) {
   const data1 = [
     {
       key: '1',
-      imageSource: require('../assets/b1.png'),
+      imageSource: require('../../assets/b1.png'),
       text: 'Transplanting plants in new pots',
     },
     {
       key: '2',
-      imageSource: require('../assets/b1.png'),
+      imageSource: require('../../assets/b1.png'),
       text: 'Transplanting plants in new pots',
     },
     {
       key: '3',
-      imageSource: require('../assets/b1.png'),
+      imageSource: require('../../assets/b1.png'),
       text: 'Transplanting plants in new pots',
     },
     // Add more items as needed
@@ -147,7 +147,7 @@ export default function Community({navigation}) {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../assets/menu.png')}
+                source={require('../../assets/menu.png')}
                 style={{
                   width: 24,
                   height: 24,
@@ -167,7 +167,7 @@ export default function Community({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/Cloud.png')}
+              source={require('../../assets/Cloud.png')}
               style={{
                 width: 24,
                 height: 24,
@@ -200,7 +200,7 @@ export default function Community({navigation}) {
               Good Morning
             </Text>
             <Image
-              source={require('../assets/Leaf.png')}
+              source={require('../../assets/Leaf.png')}
               style={{
                 width: 15,
                 height: 25,
@@ -297,7 +297,7 @@ export default function Community({navigation}) {
               </View>
 
               <Video
-                source={require('../assets/vedio.mp4')} // Replace with the actual path to your local video file
+                source={require('../../assets/vedio.mp4')} // Replace with the actual path to your local video file
                 style={{
                   height: 200,
                   width: '100%',
@@ -370,7 +370,7 @@ export default function Community({navigation}) {
                       //  justifyContent:"space-between"
                     }}>
                     <Image
-                      source={require('../assets/user.png')}
+                      source={require('../../assets/user.png')}
                       style={{
                         width: 40,
                         height: 40,
@@ -405,7 +405,7 @@ export default function Community({navigation}) {
                     </View>
                   </View>
                   <Image
-                    source={require('../assets/menu1.png')}
+                    source={require('../../assets/menu1.png')}
                     style={{
                       width: 15,
                       height: 25,
@@ -413,7 +413,7 @@ export default function Community({navigation}) {
                   />
                 </View>
                 <Image
-                  source={require('../assets/Ha.png')}
+                  source={require('../../assets/Ha.png')}
                   style={{
                     width: '100%',
                     alignSelf: 'center',
@@ -430,7 +430,7 @@ export default function Community({navigation}) {
                     alignItems: 'center',
                   }}>
                   <Image
-                    source={require('../assets/Comment.png')}
+                    source={require('../../assets/Comment.png')}
                     style={{
                       width: 24,
                       // alignSelf:"center",
@@ -453,7 +453,7 @@ export default function Community({navigation}) {
                     2
                   </Text>
                   <Image
-                    source={require('../assets/Heart.png')}
+                    source={require('../../assets/Heart.png')}
                     style={{
                       width: 24,
                       // alignSelf:"center",
@@ -602,7 +602,7 @@ export default function Community({navigation}) {
 
                 }}>
                 <Image
-                  source={require('../assets/element.png')}
+                  source={require('../../assets/element.png')}
                   style={{
                     width: '90%',
                     // marginTop: 70,
@@ -640,7 +640,8 @@ export default function Community({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: 60, // Adjust the bottom value as needed
+            bottom: "13%", // Adjust the bottom value as needed
+            // Adjust the bottom value as needed
             right: '5%',
           }}
           onPress={openBottomSheet}
@@ -663,7 +664,7 @@ export default function Community({navigation}) {
               shadowRadius: 2,
             }}>
             <Image
-              source={require('../assets/Add.png')}
+              source={require('../../assets/Add.png')}
               style={{
                 width: 18,
                 height: 18,

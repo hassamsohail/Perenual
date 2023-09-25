@@ -25,25 +25,25 @@ export default function ScanToAdd({navigation}) {
       id: '1',
       name: 'Rubber plant',
       scientificName: 'Peperomia obtusifolia',
-      imageSource: require('../assets/PS.png'),
+      imageSource: require('../../assets/PS.png'),
     },
     {
       id: '2',
       name: 'Rubber plant',
       scientificName: 'Peperomia obtusifolia',
-      imageSource: require('../assets/PS.png'),
+      imageSource: require('../../assets/PS.png'),
     },
     {
       id: '3',
       name: 'Rubber plant',
       scientificName: 'Peperomia obtusifolia',
-      imageSource: require('../assets/PS.png'),
+      imageSource: require('../../assets/PS.png'),
     },
     {
       id: '4',
       name: 'Rubber plant',
       scientificName: 'Peperomia obtusifolia',
-      imageSource: require('../assets/PS.png'),
+      imageSource: require('../../assets/PS.png'),
     },
     // Add more data objects for additional items
   ];
@@ -126,7 +126,7 @@ export default function ScanToAdd({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/ArrowLeft.png')}
+                source={require('../../assets/ArrowLeft.png')}
                 style={{
                   width: 8,
                   height: 15,
@@ -177,7 +177,7 @@ export default function ScanToAdd({navigation}) {
        <View
        style={{
         position:"absolute",
-        bottom:0,
+        bottom:"10%",
 width:"100%"
        }}
        >

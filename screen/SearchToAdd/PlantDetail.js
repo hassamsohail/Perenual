@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import FormInput1 from '../Components/FormInput1';
+import FormInput1 from '../../Components/FormInput1';
 import ImagePicker from 'react-native-image-crop-picker';
-import FormInput from '../Components/FormInput';
+import FormInput from '../../Components/FormInput';
 import Slider from 'react-native-slider'; // Import the Slider component
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
 
@@ -125,52 +125,52 @@ export default function PlantDetail({navigation}) {
   const [username, setuserName] = React.useState();
 
   const image = [
-    require('../assets/Slide1.png'),
-    require('../assets/Slide1.png'),
-    require('../assets/Slide1.png'),
+    require('../../assets/Slide1.png'),
+    require('../../assets/Slide1.png'),
+    require('../../assets/Slide1.png'),
   ];
   const data = [
     {
       id: '1',
       title: 'Watering',
       frequency: 'Bright Direct',
-      imageSource: require('../assets/icon1.png'),
+      imageSource: require('../../assets/icon1.png'),
     },
     {
       id: '2',
       title: 'Lighting',
       frequency: 'Frequent',
-      imageSource: require('../assets/icon5.png'),
+      imageSource: require('../../assets/icon5.png'),
     },
     {
       id: '3',
       title: 'Pruning',
       frequency: 'Every 1 year',
-      imageSource: require('../assets/P.png'),
+      imageSource: require('../../assets/P.png'),
     },
     {
       id: '4',
       title: 'Growth Rate',
       frequency: 'High',
-      imageSource: require('../assets/icon4.png'),
+      imageSource: require('../../assets/icon4.png'),
     },
     {
       id: '5',
       title: 'Repotting',
       frequency: 'Every 1 year',
-      imageSource: require('../assets/R.png'),
+      imageSource: require('../../assets/R.png'),
     },
     {
       id: '6',
       title: 'Temperature',
       frequency: 'From 20°F to 55°F',
-      imageSource: require('../assets/icon3.png'),
+      imageSource: require('../../assets/icon3.png'),
     },
     {
       id: '7',
       title: 'Leaf',
       frequency: 'Yes',
-      imageSource: require('../assets/icon2.png'),
+      imageSource: require('../../assets/icon2.png'),
     },
 
     // Add more items to your data array as needed
@@ -309,7 +309,7 @@ export default function PlantDetail({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -388,7 +388,7 @@ export default function PlantDetail({navigation}) {
               borderRadius: 16,
             }}>
             <Image
-              source={require('../assets/icon1.png')}
+              source={require('../../assets/icon1.png')}
               style={{
                 height: 32,
                 width: 32,
@@ -434,7 +434,7 @@ export default function PlantDetail({navigation}) {
               flexDirection: 'row',
             }}>
             <Image
-              source={require('../assets/icon5.png')}
+              source={require('../../assets/icon5.png')}
               style={{
                 height: 32,
                 width: 32,
@@ -488,7 +488,7 @@ export default function PlantDetail({navigation}) {
               borderRadius: 16,
             }}>
             <Image
-              source={require('../assets/icon2.png')}
+              source={require('../../assets/icon2.png')}
               style={{
                 height: 32,
                 width: 32,
@@ -534,7 +534,7 @@ export default function PlantDetail({navigation}) {
               flexDirection: 'row',
             }}>
             <Image
-              source={require('../assets/icon7.png')}
+              source={require('../../assets/icon7.png')}
               style={{
                 height: 32,
                 width: 32,
@@ -605,19 +605,19 @@ export default function PlantDetail({navigation}) {
             flexDirection: 'row',
           }}>
           <Image
-            source={require('../assets/A.png')}
+            source={require('../../assets/A.png')}
             style={{
               height: 70,
               width: 100,
             }}></Image>
           <Image
-            source={require('../assets/A.png')}
+            source={require('../../assets/A.png')}
             style={{
               height: 70,
               width: 100,
             }}></Image>
           <Image
-            source={require('../assets/A.png')}
+            source={require('../../assets/A.png')}
             style={{
               height: 70,
               width: 100,
@@ -766,14 +766,14 @@ export default function PlantDetail({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
                       borderRadius: 8,
                     }}></Image>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
@@ -789,14 +789,14 @@ export default function PlantDetail({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
                       borderRadius: 8,
                     }}></Image>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
@@ -854,7 +854,7 @@ export default function PlantDetail({navigation}) {
               source={
                 SelectedImageUri
                   ? {uri: SelectedImageUri}
-                  : require('../assets/icon4.png')
+                  : require('../../assets/icon4.png')
               }
               style={{
                 width: 88,
@@ -965,7 +965,7 @@ export default function PlantDetail({navigation}) {
               source={
                 SelectedImageUri
                   ? {uri: SelectedImageUri}
-                  : require('../assets/icon4.png')
+                  : require('../../assets/icon4.png')
               }
               style={{
                 width: 88,
@@ -1064,7 +1064,7 @@ export default function PlantDetail({navigation}) {
               source={
                 SelectedImageUri
                   ? {uri: SelectedImageUri}
-                  : require('../assets/icon4.png')
+                  : require('../../assets/icon4.png')
               }
               style={{
                 width: 88,
@@ -1163,7 +1163,7 @@ export default function PlantDetail({navigation}) {
               source={
                 SelectedImageUri
                   ? {uri: SelectedImageUri}
-                  : require('../assets/icon4.png')
+                  : require('../../assets/icon4.png')
               }
               style={{
                 width: 88,
@@ -1192,7 +1192,7 @@ export default function PlantDetail({navigation}) {
             </Text>
 
             <Image
-              source={require('../assets/Plot.png')}
+              source={require('../../assets/Plot.png')}
               style={{
                 width: '100%',
                 height: 230,
@@ -1260,7 +1260,7 @@ export default function PlantDetail({navigation}) {
               source={
                 SelectedImageUri
                   ? {uri: SelectedImageUri}
-                  : require('../assets/icon4.png')
+                  : require('../../assets/icon4.png')
               }
               style={{
                 width: 88,

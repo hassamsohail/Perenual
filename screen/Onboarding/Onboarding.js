@@ -48,7 +48,7 @@ const Onboarding = ({ navigation }) => {
       >
         {/* Slide 1 */}
         <View style={styles.slide}>
-          <Image source={require('../assets/onboarding1.png')} style={styles.image} resizeMode="cover" />
+          <Image source={require('../../assets/onboarding1.png')} style={styles.image} resizeMode="cover" />
           <View style={{ height: 16 }} />
           <Text style={styles.title}>Identify any plants</Text>
           <View style={{ height: 16 }} />
@@ -57,7 +57,7 @@ const Onboarding = ({ navigation }) => {
 
         {/* Slide 2 */}
         <View style={styles.slide}>
-          <Image source={require('../assets/onboarding2.png')} style={styles.image} resizeMode="cover" />
+          <Image source={require("../../assets/onboarding2.png")} style={styles.image} resizeMode="cover" />
           <View style={{ height: 16 }} />
           <Text style={styles.title}>Grow your garden with confidence</Text>
           <View style={{ height: 16 }} />
@@ -66,7 +66,7 @@ const Onboarding = ({ navigation }) => {
 
         {/* Slide 3 */}
         <View style={styles.slide}>
-          <Image source={require('../assets/onboarding3.png')} style={styles.image} resizeMode="cover" />
+          <Image source={require('../../assets/onboarding3.png')} style={styles.image} resizeMode="cover" />
           <View style={{ height: 16 }} />
           <Text style={styles.title}>Track watering easily</Text>
           <View style={{ height: 16 }} />

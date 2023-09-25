@@ -15,19 +15,19 @@ export default function LoginSignUp({navigation}) {
   const data = [
     {
       id: '1',
-      image: require('../assets/Facebook.png'),
+      image: require("../../assets/Facebook.png"),
     },
     {
       id: '2',
-      image: require('../assets/Apple.png'),
+      image: require("../../assets/Apple.png"),
     },
     {
       id: '3',
-      image: require('../assets/google.png'),
+      image: require("../../assets/google.png"),
     },
     {
       id: '4',
-      image: require('../assets/message.png'),
+      image: require('../../assets/message.png'),
     },
     // Add more data items as needed
   ];
@@ -56,7 +56,7 @@ export default function LoginSignUp({navigation}) {
           alignItems: 'center', // Center align content vertically
         }}>
         <Image
-          source={require('../assets/LoginSignUp.png')}
+          source={require('../../assets/LoginSignUp.png')}
           style={{
             width: '100%',
             height: (windowHeight * 47.5) / 100, // Make the height responsive

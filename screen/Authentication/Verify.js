@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -10,12 +10,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import FormInput from "../Components/FormInput";
+import OTPTextView from "react-native-otp-textinput";
 
-export default function SignUpPhone({navigation}) {
-    const [Phonenumber, setPhonenumber] = React.useState();
-
+export default function Verify({navigation, route}) {
+  
+    const { Phonenumber } = route.params;
  
+    const [otp, setOtp] = useState('');
   return (
     <ScrollView>
     <LinearGradient
@@ -49,7 +50,7 @@ export default function SignUpPhone({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -74,7 +75,7 @@ export default function SignUpPhone({navigation}) {
               color: '#161C1C',
               fontWeight: 'bold',
             }}>
-           Hi There! 
+        Verify it’s you
           </Text>
        
         </View>
@@ -84,12 +85,20 @@ export default function SignUpPhone({navigation}) {
             color: '#9B9B9B',
             fontWeight: 'normal',
           }}>
-        Sign up with phone number
+        We send a code to  {Phonenumber}
+        </Text>
+        <Text
+          style={{
+            fontSize: 13,
+            color: '#9B9B9B',
+            fontWeight: 'normal',
+          }}>
+       Enter it here to verify your identity
         </Text>
       </View>
 
       <Image
-        source={require('../assets/Tree.png')}
+        source={require('../../assets/Tree.png')}
         style={{
           position: 'absolute',
           right: 0,
@@ -112,27 +121,41 @@ export default function SignUpPhone({navigation}) {
       }}
       >
 
-       <FormInput
-          // style={styles.input}
-          onChangeText={(Phonenumber) => setPhonenumber(Phonenumber)}
-          // value={text}
-          labelValue={Phonenumber}
-          // secureTextEntry={true}
-          // keyboardType="email-address"
-          placeholder="Phone number"
-          autoCapitalize="none"
-          autocorrect={false}
-          keyboardType="numeric"
-        />
+<OTPTextView
+  containerStyle={styles.textInputContainer}
+  handleTextChange={(text) => setOtp(text)} // Update the OTP state
+  inputCount={5}
+  keyboardType="numeric"
+  tintColor="#1BBFA0" // Set your custom color here
+/>
+
         
       
       </View>
+      <View
+      style={{
+        height:"4%"
+      }}
+      />
+      <Text
+      style={{
+        fontSize:16, fontWeight:"bold", color:"#1BBFA0", textAlign:"center"
+      }}
+      >
+Resend Code
+      </Text>
+      <View
+      style={{
+        height:"10%"
+      }}
+      />
       <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Verify", {
-            Phonenumber: Phonenumber // Pass the phone number as a route parameter
-          })}>
-          <Text style={styles.buttonText}>Next</Text>
+          onPress={() => {
+            // Access the OTP in the state (otp) and do something with it
+            console.log('OTP entered:', otp);
+          }}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <View
         style={{

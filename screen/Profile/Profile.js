@@ -92,7 +92,7 @@ export default function Profile({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -125,7 +125,7 @@ export default function Profile({navigation}) {
 
 
             <Image
-              source={require('../assets/editt.png')}
+              source={require('../../assets/editt.png')}
               style={{
                 width: 24,
                 height: 24,
@@ -154,7 +154,7 @@ export default function Profile({navigation}) {
             alignSelf: 'center',
             marginTop: 10,
           }}
-          source={require('../assets/user.png')}></Image>
+          source={require('../../assets/user.png')}></Image>
 </TouchableOpacity>
 <Modal
                 transparent={true}
@@ -249,7 +249,7 @@ export default function Profile({navigation}) {
 
                 }}>
                 <Image
-                  source={require('../assets/user.png')}
+                  source={require('../../assets/user.png')}
                   style={{
                     width:80,
                     // marginTop: 70,
@@ -316,7 +316,7 @@ export default function Profile({navigation}) {
               alignSelf: 'center',
               marginTop: 10,
             }}
-            source={require('../assets/subscribe.png')}></Image>
+            source={require('../../assets/subscribe.png')}></Image>
         </TouchableOpacity>
 
         <View
@@ -387,7 +387,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/location.png')}></Image>
+                    source={require('../../assets/location.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -455,7 +455,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/earth.png')}></Image>
+                    source={require('../../assets/earth.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -542,7 +542,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Paint.png')}></Image>
+                    source={require('../../assets/Paint.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -608,7 +608,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Weather.png')}></Image>
+                    source={require('../../assets/Weather.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -693,7 +693,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/FA.png')}></Image>
+                    source={require('../../assets/FA.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -710,7 +710,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Outline.png')}></Image>
+                    source={require('../../assets/Outline.png')}></Image>
 
               </View>
             </View>
@@ -750,7 +750,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/SA.png')}></Image>
+                    source={require('../../assets/SA.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -767,7 +767,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Outline.png')}></Image>
+                    source={require('../../assets/Outline.png')}></Image>
               </View>
             </View>
             <View
@@ -813,7 +813,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Weather.png')}></Image>
+                    source={require('../../assets/Weather.png')}></Image>
                   <Text
                     style={{
                       fontSize: 14,
@@ -830,7 +830,7 @@ export default function Profile({navigation}) {
                       height: 24,
                       width: 24,
                     }}
-                    source={require('../assets/Outline.png')}></Image>
+                    source={require('../../assets/Outline.png')}></Image>
               </View>
             </View>
           </View>

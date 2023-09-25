@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function SearchToAdd({navigation}) {
+export default function ScanSearch({navigation}) {
   const [hasSeenSurvey, setHasSeenSurvey] = useState(false);
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false); // Control the visibility of the bottom sheet
 
@@ -64,14 +64,14 @@ export default function SearchToAdd({navigation}) {
   const plantData = [
     {
       id: '1',
-      image: require('../assets/Plant1.png'),
+      image: require('../../assets/Plant1.png'),
       location: 'Asplenium nidus',
       name: 'Bird’s Aspleniaceae',
       //   nextWatering: 'Next: water on Aug 12',
     },
     {
       id: '2',
-      image: require('../assets/Plant2.png'),
+      image: require('../../assets/Plant2.png'),
       location: 'Sansevieria trifasciata',
       name: 'Snake Plant',
       //   OverdueWatering: 'Overdue: water on Aug 1',
@@ -130,13 +130,6 @@ export default function SearchToAdd({navigation}) {
                 </Text>
               </View>
             </View>
-            {/* <Image
-          source={require('../assets/menu1.png')} // You can replace this with the correct source
-          style={{
-            width: 24,
-            height: 24,
-          }}
-        /> */}
           </View>
 
           <View
@@ -189,7 +182,7 @@ export default function SearchToAdd({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/ArrowLeft.png')}
+                source={require('../../assets/ArrowLeft.png')}
                 style={{
                   width: 8,
                   height: 15,
@@ -225,7 +218,7 @@ export default function SearchToAdd({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/Search.png')}
+                source={require('../../assets/Search.png')}
                 style={{
                   width: 18,
                   height: 18,
@@ -241,6 +234,35 @@ export default function SearchToAdd({navigation}) {
               />
             </View>
           </View>
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 10,
+            }}
+            
+            onPress={()=>{
+                navigation.navigate("AddManuallyPlants")
+            }}
+            >
+            <Text
+              style={{
+                fontSize: 14,
+                color: '#161C1C',
+                //   alignSelf: 'center',
+                fontWeight: '700',
+              }}>
+              Can find it? Add your own
+            </Text>
+            <Image
+              source={require('../../assets/ADDD.png')}
+              style={{
+                width: 24,
+                height: 24,
+                marginLeft: 10,
+              }}></Image>
+          </TouchableOpacity>
 
           <View
             style={{
@@ -257,7 +279,7 @@ export default function SearchToAdd({navigation}) {
                 fontWeight: '700',
                 marginTop: 10,
               }}>
-              Based On Your Location
+              Trending Plants
             </Text>
             <Text
               style={{
@@ -276,74 +298,6 @@ export default function SearchToAdd({navigation}) {
             }}
           />
 
-          {plantData.length > 0 ? (
-            <FlatList
-              data={plantData}
-              keyExtractor={item => item.id}
-              renderItem={renderPlantItem}
-            />
-          ) : (
-            <View
-              style={{
-                alignSelf: 'center',
-              }}>
-              <Image
-                source={require('../assets/NotFounded.png')}
-                style={{
-                  width: 335,
-                  height: 311,
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#161C1C',
-                  alignSelf: 'center',
-                  textAlign: 'center',
-                  marginTop: 20,
-                }}>
-                You have no plant to care. Add your first plant to start follow
-                its care and grow.
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#1BBFA0',
-                  alignSelf: 'center',
-                  marginTop: 10,
-                }}>
-                Tap + to add your plants
-              </Text>
-            </View>
-          )}
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#161C1C',
-                //   alignSelf: 'center',
-                fontWeight: '700',
-                marginTop: 10,
-              }}>
-              All Plants
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#1BBFA0',
-                //   alignSelf: 'center',
-                fontWeight: '500',
-                marginTop: 10,
-              }}>
-              Sort by
-            </Text>
-          </View>
           <View
             style={{
               height: 10,
@@ -362,7 +316,7 @@ export default function SearchToAdd({navigation}) {
                 alignSelf: 'center',
               }}>
               <Image
-                source={require('../assets/NotFounded.png')}
+                source={require('../../assets/NotFounded.png')}
                 style={{
                   width: 335,
                   height: 311,

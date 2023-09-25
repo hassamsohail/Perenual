@@ -20,14 +20,14 @@ export default function MyPlants({navigation}) {
   const plantData = [
     {
       id: '1',
-      image: require('../assets/Plant1.png'),
+      image: require('../../assets/Plant1.png'),
       location: 'Asplenium nidus',
       name: "Bird's Aspleniaceae",
       nextWatering: 'Next: water on Aug 12',
     },
     {
       id: '2',
-      image: require('../assets/Plant2.png'),
+      image: require('../../assets/Plant2.png'),
       location: 'Asplenium nidus',
       name: "Bird's Aspleniaceae",
       OverdueWatering: 'Overdue: water on Aug 1',
@@ -91,7 +91,7 @@ export default function MyPlants({navigation}) {
           </View>
         </View>
         <Image
-          source={require('../assets/menu1.png')} // You can replace this with the correct source
+          source={require('../../assets/menu1.png')} // You can replace this with the correct source
           style={{
             width: 24,
             height: 24,
@@ -136,7 +136,7 @@ export default function MyPlants({navigation}) {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../assets/menu.png')}
+                source={require('../../assets/menu.png')}
                 style={{
                   width: 24,
                   height: 24,
@@ -156,7 +156,7 @@ export default function MyPlants({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/Cloud.png')}
+              source={require('../../assets/Cloud.png')}
               style={{
                 width: 24,
                 height: 24,
@@ -189,7 +189,7 @@ export default function MyPlants({navigation}) {
               Good Morning
             </Text>
             <Image
-              source={require('../assets/Leaf.png')}
+              source={require('../../assets/Leaf.png')}
               style={{
                 width: 15,
                 height: 25,
@@ -209,7 +209,7 @@ export default function MyPlants({navigation}) {
               navigation.navigate('');
             }}>
                <Image
-                source={require('../assets/plus.png')}
+                source={require('../../assets/plus.png')}
                 style={{
                   width: 24,
                   height: 24,
@@ -255,14 +255,14 @@ export default function MyPlants({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
                       borderRadius: 8,
                     }}></Image>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
@@ -278,14 +278,14 @@ export default function MyPlants({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
                       borderRadius: 8,
                     }}></Image>
                   <Image
-                    source={require('../assets/A.png')}
+                    source={require('../../assets/A.png')}
                     style={{
                       height: 38,
                       width: 38,
@@ -344,7 +344,7 @@ export default function MyPlants({navigation}) {
                 alignSelf: 'center',
               }}>
               <Image
-                source={require('../assets/NotFounded.png')}
+                source={require('../../assets/NotFounded.png')}
                 style={{
                   width: 335,
                   height: 311,
@@ -376,7 +376,8 @@ export default function MyPlants({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: 60, // Adjust the bottom value as needed
+            bottom: "13%", // Adjust the bottom value as needed
+            // Adjust the bottom value as needed
             right: '5%',
           }}
           // onPress={}
@@ -399,7 +400,7 @@ export default function MyPlants({navigation}) {
               shadowRadius: 2,
             }}>
             <Image
-              source={require('../assets/Add.png')}
+              source={require('../../assets/Add.png')}
               style={{
                 width: 18,
                 height: 18,

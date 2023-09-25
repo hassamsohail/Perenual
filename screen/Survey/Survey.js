@@ -101,42 +101,42 @@ const Survey = ({navigation}) => {
     {
       id: '1',
       title: 'Water reminders',
-      imageSource: require('../assets/icon1.png'),
+      imageSource: require('../../assets/icon1.png'),
     },
     {
       id: '2',
       title: 'Find the right plant',
-      imageSource: require('../assets/icon2.png'),
+      imageSource: require('../../assets/icon2.png'),
     },
     {
       id: '3',
       title: 'Temperature info',
-      imageSource: require('../assets/icon3.png'),
+      imageSource: require('../../assets/icon3.png'),
     },
     {
       id: '4',
       title: 'Plant care info',
-      imageSource: require('../assets/icon4.png'),
+      imageSource: require('../../assets/icon4.png'),
     },
     {
       id: '5',
       title: 'Perfect light condition',
-      imageSource: require('../assets/icon5.png'),
+      imageSource: require('../../assets/icon5.png'),
     },
     {
       id: '6',
       title: 'Troubleshoot pets',
-      imageSource: require('../assets/icon6.png'),
+      imageSource: require('../../assets/icon6.png'),
     },
     {
       id: '7',
       title: 'Toxicity info',
-      imageSource: require('../assets/icon7.png'),
+      imageSource: require('../../assets/icon7.png'),
     },
     {
       id: '8',
       title: 'Propagating',
-      imageSource: require('../assets/icon8.png'),
+      imageSource: require('../../assets/icon8.png'),
     },
 
     // Add more items as needed
@@ -204,7 +204,7 @@ const Survey = ({navigation}) => {
           <Text style={styles.title}>Some quick questions</Text>
           <View style={{height: 25}} />
           <Image
-            source={require('../assets/pic1.png')}
+            source={require('../../assets/pic1.png')}
             style={styles.image}
             resizeMode="cover"
           />
@@ -294,7 +294,7 @@ const Survey = ({navigation}) => {
           <Text style={styles.title}>Some quick questions</Text>
           <View style={{height: 25}} />
           <Image
-            source={require('../assets/pic2.png')}
+            source={require('../../assets/pic2.png')}
             style={styles.image2}
             resizeMode="cover"
           />
@@ -371,7 +371,7 @@ const Survey = ({navigation}) => {
           <Text style={styles.title}>Some quick questions</Text>
           <View style={{height: 25}} />
           <Image
-            source={require('../assets/pic3.png')}
+            source={require('../../assets/pic3.png')}
             style={styles.image3}
             resizeMode="cover"
           />
@@ -451,7 +451,7 @@ const Survey = ({navigation}) => {
               alignSelf: 'center',
             }}>
             <Image
-              source={require('../assets/LeafNode.png')} // Replace with your image source
+              source={require('../../assets/LeafNode.png')} // Replace with your image source
               style={{
                 width: 60.42,
                 height: 78.85,
@@ -491,7 +491,7 @@ const Survey = ({navigation}) => {
               alignSelf: 'center',
             }}>
             <Image
-              source={require('../assets/LeafNode.png')}
+              source={require('../../assets/LeafNode.png')}
               style={{
                 width: 60.42,
                 height: 78.85,
@@ -527,7 +527,7 @@ const Survey = ({navigation}) => {
                   alignItems: 'center',
                 }}>
                 <Image
-                  source={require('../assets/notifications.png')}
+                  source={require('../../assets/notifications.png')}
                   style={{
                     width: 24,
                     height: 24,
@@ -593,7 +593,7 @@ const Survey = ({navigation}) => {
                   alignItems: 'center',
                 }}>
                 <Image
-                  source={require('../assets/Camera.png')}
+                  source={require('../../assets/Camera.png')}
                   style={{
                     width: 24,
                     height: 24,

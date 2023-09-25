@@ -16,7 +16,7 @@ export default function SignUpOptions({navigation}) {
     {
       id: '1',
       text: 'Sign up with Google',
-      imageSource: require('../assets/GoogleS.png'),
+      imageSource: require('../../assets/GoogleS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -24,7 +24,7 @@ export default function SignUpOptions({navigation}) {
     {
       id: '2',
       text: 'Sign up with Apple account',
-      imageSource: require('../assets/AppleS.png'),
+      imageSource: require('../../assets/AppleS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -32,7 +32,7 @@ export default function SignUpOptions({navigation}) {
     {
       id: '3',
       text: 'Sign up with Facebook',
-      imageSource: require('../assets/FacebookS.png'),
+      imageSource: require('../../assets/FacebookS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -40,7 +40,7 @@ export default function SignUpOptions({navigation}) {
     {
       id: '4',
       text: 'Sign up with mobile phone number',
-      imageSource: require('../assets/MessageS.png'),
+      imageSource: require('../../assets/MessageS.png'),
       backgroundColor: '#fff',
       borderColor: '#313638',
       color: '#161C1C',
@@ -48,7 +48,7 @@ export default function SignUpOptions({navigation}) {
     {
       id: '5',
       text: 'Sign up with email',
-      imageSource: require('../assets/MailS.png'),
+      imageSource: require('../../assets/MailS.png'),
       backgroundColor: '#1BBFA0',
       borderColor: '#1BBFA0',
       color: '#fff',
@@ -138,7 +138,7 @@ export default function SignUpOptions({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -186,7 +186,7 @@ export default function SignUpOptions({navigation}) {
       </View>
 
       <Image
-        source={require('../assets/Tree.png')}
+        source={require("../../assets/Tree.png")}
         style={{
           position: 'absolute',
           right: 0,

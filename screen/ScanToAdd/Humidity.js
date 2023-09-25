@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
-export default function Light({navigation}) {
+export default function Humidity({navigation}) {
   const [selectedRadio4, setSelectedRadio4] = useState(2);
 
   const handleRadioSelect4 = index => {
@@ -21,14 +21,12 @@ export default function Light({navigation}) {
   };
 
   const data4 = [
-    {id: '1', title: 'Mostly Shade'},
-    {id: '2', title: 'Medium light'},
-    {id: '3', title: 'Bright direct light'},
-    {id: '4', title: 'Bright indirect light'},
+    {id: '1', title: '10 % - 20 %'},
+    {id: '2', title: '20% - 40 %'},
+    {id: '3', title: '40% - 60%'},
+    {id: '4', title: 'More than 60%'},
 
-    // Add more data as needed
   ];
-  // Use the useEffect hook to navigate to the "Survey" screen after 10 seconds
 
   return (
     <View
@@ -69,7 +67,7 @@ export default function Light({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -89,7 +87,7 @@ export default function Light({navigation}) {
             fontWeight: '500',
             textAlign: 'center',
           }}>
-          Light
+          Humidity
         </Text>
 
         <View
@@ -107,7 +105,7 @@ export default function Light({navigation}) {
           }}>
           <View
             style={{
-              width: '55%',
+              width: '75%',
               height: 8,
               backgroundColor: '#1BBFA0',
               borderRadius: 100,
@@ -141,7 +139,7 @@ export default function Light({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/Sun.png')}
+              source={require('../../assets/Haze.png')}
               style={{
                 width: 24,
                 marginLeft: 10,
@@ -158,7 +156,7 @@ export default function Light({navigation}) {
                 fontWeight: '500',
                 textAlign: 'center',
               }}>
-              Ideal Light
+              Ideal Humidity
             </Text>
           </View>
           <View
@@ -180,9 +178,9 @@ export default function Light({navigation}) {
                 //   fontWeight: '500',
                 //   textAlign: 'center',
               }}>
-              Partial shade and partial sun refer to areas of your garden that
-              receive between four hours and six hours of sun each day. If your
-              plant calls for partial shade.
+              60% - 40%: in summer, the air humidity in most homes is around
+              this level, in which most indoor plants thrive. Some plants still
+              need some help, for example by misting.
             </Text>
 
             <View
@@ -198,10 +196,10 @@ export default function Light({navigation}) {
                   fontWeight: '500',
                   //   textAlign: 'center',
                 }}>
-                Partial Shade: 5 ft
+                Ideal Humidity : 60%
               </Text>
               <Image
-                source={require('../assets/SunF.png')}
+                source={require('../../assets/Rain.png')}
                 style={{
                   width: 150,
                   height: 118,
@@ -263,7 +261,7 @@ export default function Light({navigation}) {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate('Humidity');
+            navigation.navigate('Task');
           }}>
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>

@@ -11,7 +11,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import FormInput2 from '../Components/FormInput2';
+import FormInput2 from '../../Components/FormInput2';
 
 export default function Task({navigation}) {
   
@@ -25,27 +25,27 @@ export default function Task({navigation}) {
   const data = [
     {
       id: '1',
-      image: require("../assets/Water.png"),
+      image: require("../../assets/Water.png"),
       label: 'Water',
     },
     {
         id: '2',
-        image: require("../assets/Prune.png"),
+        image: require("../../assets/Prune.png"),
         label: 'Prune',
       },
       {
         id: '3',
-        image: require("../assets/Spray.png"),
+        image: require("../../assets/Spray.png"),
         label: 'Spray',
       },
       {
         id: '4',
-        image: require("../assets/Clean.png"),
+        image: require("../../assets/Clean.png"),
         label: 'Clean',
       },
       {
         id: '5',
-        image: require("../assets/Fertilize.png"),
+        image: require("../../assets/Fertilize.png"),
         label: 'Fertilize',
       },
     // Add more data items as needed
@@ -89,7 +89,7 @@ export default function Task({navigation}) {
               alignItems: 'center',
             }}>
             <Image
-              source={require('../assets/ArrowLeft.png')}
+              source={require('../../assets/ArrowLeft.png')}
               style={{
                 width: 8,
                 height: 15,
@@ -140,7 +140,7 @@ export default function Task({navigation}) {
         />
        
        <Image
-                source={require('../assets/Tasks.png')}
+                source={require('../../assets/Tasks.png')}
                 style={{
                   width: "100%",
             //   marginLeft:10,

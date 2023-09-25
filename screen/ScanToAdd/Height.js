@@ -72,7 +72,7 @@ export default function Height({navigation}) {
                 alignItems: 'center',
               }}>
               <Image
-                source={require('../assets/ArrowLeft.png')}
+                source={require('../../assets/ArrowLeft.png')}
                 style={{
                   width: 8,
                   height: 15,
@@ -147,7 +147,7 @@ export default function Height({navigation}) {
           >
 
 <Image
-                source={require('../assets/Ruler.png')}
+                source={require('../../assets/Ruler.png')}
                 style={{
                   width: 24,
               marginLeft:10,
@@ -206,7 +206,7 @@ alignItems:"center"
        Max Height : 80 cm
           </Text>
           <Image
-                source={require('../assets/LEf.png')}
+                source={require('../../assets/LEf.png')}
                 style={{
                   width: 137,
                   height: 118,
