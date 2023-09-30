@@ -70,14 +70,40 @@ export default function EditPlant({navigation}) {
     <ScrollView
       contentContainerStyle={{
         flexGrow: 1,
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: '#F8F8F8',
       }}>
-      <View
+         <View
         style={{
           height: 20,
         }}
       />
+         <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <View
+            style={{
+              height: 40,
+              width: 40,
+              borderWidth: 1,
+              borderColor: '#E0E0E0',
+              backgroundColor: '#fff',
+              borderRadius: 12,
+              marginLeft:15,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/ArrowLeft.png')}
+              style={{
+                width: 8,
+                height: 15,
+              }}
+            />
+          </View>
+        </TouchableOpacity>
+     
       <View
         style={{
           width: '100%',

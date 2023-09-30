@@ -398,7 +398,7 @@ export default function Plantsdetail2({navigation}) {
         source={require('../../assets/Bg.png')}
         style={{
           width: '100%',
-          marginTop: -60,
+          marginTop: -80,
           height: 340,
         }}>
         <Text

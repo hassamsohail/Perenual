@@ -88,7 +88,11 @@ export default function Subscription({navigation}) {
     </View>
   );
   return (
-    // <ScrollView>
+    <ScrollView
+    contentContainerStyle={{
+      flexGrow: 1,
+     
+    }}>
     <LinearGradient
       colors={['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']}
       style={{
@@ -189,7 +193,7 @@ export default function Subscription({navigation}) {
         }}
       />
     </LinearGradient>
-    // </ScrollView>
+   </ScrollView>
   );
 }
 const styles = StyleSheet.create({

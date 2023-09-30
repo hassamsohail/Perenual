@@ -17,6 +17,24 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function MyPlants({navigation}) {
+  const plantDataArray = [
+    {
+      id: '1',
+      name: 'Dining room',
+      description: '4 plant (1 need care)',
+    },
+    {
+      id: '2',
+      name: 'Kitchen',
+      description: '4 plant (1 need care)',
+    },
+    {
+      id: '3',
+      name: 'Dining room',
+      description: '4 plant (1 need care)',
+    },
+    // Add more data objects as needed
+  ];
   const plantData = [
     {
       id: '1',
@@ -32,7 +50,35 @@ export default function MyPlants({navigation}) {
       name: "Bird's Aspleniaceae",
       OverdueWatering: 'Overdue: water on Aug 1',
     },
- 
+    {
+      id: '3',
+      image: require('../../assets/Plant1.png'),
+      location: 'Asplenium nidus',
+      name: "Bird's Aspleniaceae",
+      nextWatering: 'Next: water on Aug 12',
+    },
+    {
+      id: '4',
+      image: require('../../assets/Plant2.png'),
+      location: 'Asplenium nidus',
+      name: "Bird's Aspleniaceae",
+      OverdueWatering: 'Overdue: water on Aug 1',
+    },
+    {
+      id: '5',
+      image: require('../../assets/Plant1.png'),
+      location: 'Asplenium nidus',
+      name: "Bird's Aspleniaceae",
+      nextWatering: 'Next: water on Aug 12',
+    },
+    {
+      id: '6',
+      image: require('../../assets/Plant1.png'),
+      location: 'Asplenium nidus',
+      name: "Bird's Aspleniaceae",
+      nextWatering: 'Next: water on Aug 12',
+    },
+
     // Add more plant data objects as needed
   ];
 
@@ -41,77 +87,72 @@ export default function MyPlants({navigation}) {
 
     return (
       <TouchableOpacity
-      onPress={()=>{
-        navigation.navigate("Plantsdetail2")
-      }}
-      
-      >
-
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop:20,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16, // Add margin between items
+        onPress={() => {
+          navigation.navigate('Plantsdetail2');
         }}>
         <View
           style={{
             flexDirection: 'row',
+            marginTop: 10,
+            justifyContent: 'space-between',
             alignItems: 'center',
+            marginBottom: 20,
           }}>
-          <Image
-            source={item.image}
-            style={{
-              width: 80,
-              height: 80,
-            }}
-          />
-
           <View
             style={{
-              marginLeft: 10,
+              flexDirection: 'row',
+              alignItems: 'center',
             }}>
-           
-            <Text
+            <Image
+              source={item.image}
               style={{
-                fontSize: 16,
-                color: '#161C1C',
-                fontWeight: '500',
-              }}>
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#9B9B9B',
-              }}>
-              {item.location}
-            </Text>
-          </View>
-        </View>
-        <Image
-          source={require('../../assets/menu1.png')} // You can replace this with the correct source
-          style={{
-            width: 24,
-            height: 24,
-          }}
-        />
-      </View>
-      </TouchableOpacity>
+                width: 80,
+                height: 80,
+              }}
+            />
 
+            <View
+              style={{
+                marginLeft: 10,
+              }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#161C1C',
+                  fontWeight: '500',
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                }}>
+                {item.location}
+              </Text>
+            </View>
+          </View>
+          <Image
+            source={require('../../assets/menu1.png')} // You can replace this with the correct source
+            style={{
+              width: 24,
+              height: 24,
+            }}
+          />
+        </View>
+      </TouchableOpacity>
     );
   };
   return (
     <View
-      style={{
-        flex: 1, // Set the flex to 1
-        backgroundColor: 'white',
+      contentContainerStyle={{
+        flex: 1,
+        backgroundColor: '#fff',
       }}>
       <LinearGradient
         colors={['rgba(222, 242, 237, 0.7)', '#fff']}
         style={{
-          height: Dimensions.get('window').height,
+          height: '100%',
         }}>
         <View
           style={{
@@ -121,13 +162,13 @@ export default function MyPlants({navigation}) {
         <View
           style={{
             width: '90%',
+            height: '100%',
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-            onPress={()=>{
-              navigation.navigate("Profile")
-          }}
-          >
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
             <View
               style={{
                 height: 40,
@@ -208,181 +249,182 @@ export default function MyPlants({navigation}) {
             onPress={() => {
               navigation.navigate('');
             }}>
-               <Image
-                source={require('../../assets/plus.png')}
-                style={{
-                  width: 24,
-                  height: 24,
-                  marginRight:10
-                }}
-              />
+            <Image
+              source={require('../../assets/plus.png')}
+              style={{
+                width: 24,
+                height: 24,
+                marginRight: 10,
+              }}
+            />
             <Text style={styles.buttonText}>Create Space</Text>
           </TouchableOpacity>
-          <View
-              style={{
-                width: '100%',
-                marginTop: 20,
-                height: 108,
-                alignSelf: 'center',
-                borderWidth: 1,
-                borderColor: '#DEF2ED',
-                borderRadius: 16,
-                flexDirection: 'row',
-                // justifyContent:"center",
-                backgroundColor:"#FFFFFF",
-                paddingHorizontal: 10,
-                alignItems: 'center',
-              }}>
+          <ScrollView
+          showsVerticalScrollIndicator={false}
+          >
+            {plantDataArray.map(plantDataItem => (
               <View
+                key={plantDataItem.id}
                 style={{
-                  width: 92,
-                  // marginTop:20,
-                  // backgroundColor:"#DEF2ED",
-                  height: 92,
+                  width: '100%',
+                  marginTop: 20,
+                  height: 108,
                   alignSelf: 'center',
                   borderWidth: 1,
                   borderColor: '#DEF2ED',
                   borderRadius: 16,
-                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  backgroundColor: '#FFFFFF',
+                  paddingHorizontal: 10,
                   alignItems: 'center',
                 }}>
                 <View
                   style={{
-                    height: 40,
-                    width: '90%',
-                    justifyContent: 'space-between',
+                    width: 92,
+                    height: 92,
+                    alignSelf: 'center',
+                    borderWidth: 1,
+                    borderColor: '#DEF2ED',
+                    borderRadius: 16,
+                    justifyContent: 'center',
                     alignItems: 'center',
-                    flexDirection: 'row',
                   }}>
-                  <Image
-                    source={require('../../assets/A.png')}
+                  <View
                     style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                  <Image
-                    source={require('../../assets/A.png')}
+                      height: 40,
+                      width: '90%',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}
+                    />
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}
+                    />
+                  </View>
+                  <View
                     style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
+                      height: 40,
+                      width: '94%',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}
+                    />
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}
+                    />
+                  </View>
                 </View>
-                <View
-                  style={{
-                    height: 40,
-                    width: '94%',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Image
-                    source={require('../../assets/A.png')}
+                <View>
+                  <Text
                     style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                  <Image
-                    source={require('../../assets/A.png')}
+                      marginLeft: 10,
+                      fontSize: 16,
+                      color: '#161C1C',
+                      fontWeight: '600',
+                    }}>
+                    {plantDataItem.name}
+                  </Text>
+                  <Text
                     style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
+                      marginLeft: 10,
+                      fontSize: 12,
+                      color: '#9B9B9B',
+                      fontWeight: '600',
+                    }}>
+                    {plantDataItem.description}
+                  </Text>
                 </View>
               </View>
-              <View>
-                <Text
-                  style={{
-                    marginLeft: 10,
-                    fontSize: 16,
-                    color: '#161C1C',
-                    // alignSelf: 'center',
-                    fontWeight: '600',
-                    // textAlign:"center"
-                    // marginTop: 10,
-                  }}>
-                  Dining room
-                </Text>
-                <Text
-                  style={{
-                    marginLeft: 10,
-                    fontSize: 12,
-                    color: '#9B9B9B',
-                    // alignSelf: 'center',
-                    fontWeight: '600',
-                    // textAlign:"center"
-                    // marginTop: 10,
-                  }}>
-                  4 plant (1 need care)
-                </Text>
-              </View>
-            </View>
+            ))}
             <Text
+              style={{
+                // marginLeft: 10,
+                fontSize: 16,
+                color: '#161C1C',
+                // alignSelf: 'center',
+                fontWeight: '600',
+                // textAlign:"center"
+                marginTop: 10,
+              }}>
+              All Plants
+            </Text>
+
+            {plantData.length > 0 ? (
+              plantData.map(item => (
+                <View key={item.id}>{renderPlantItem({item})}</View>
+              ))
+            ) : (
+              <View
+                style={{
+                  alignSelf: 'center',
+                }}>
+                <Image
+                  source={require('../../assets/NotFounded.png')}
                   style={{
-                    // marginLeft: 10,
+                    width: 335,
+                    height: 311,
+                  }}
+                />
+                <Text
+                  style={{
                     fontSize: 16,
                     color: '#161C1C',
-                    // alignSelf: 'center',
-                    fontWeight: '600',
-                    // textAlign:"center"
+                    alignSelf: 'center',
+                    textAlign: 'center',
+                    marginTop: 20,
+                  }}>
+                  You have no plant to care. Add your first plant to start
+                  following its care and growth.
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#1BBFA0',
+                    alignSelf: 'center',
                     marginTop: 10,
                   }}>
-                  All Plants
+                  Tap + to add your plants
                 </Text>
-                {plantData.length > 0 ? (
-            <FlatList
-              data={plantData}
-              keyExtractor={item => item.id}
-              renderItem={renderPlantItem}
-            />
-          ) : (
-            <View
-              style={{
-                alignSelf: 'center',
-              }}>
-              <Image
-                source={require('../../assets/NotFounded.png')}
-                style={{
-                  width: 335,
-                  height: 311,
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#161C1C',
-                  alignSelf: 'center',
-                  textAlign: 'center',
-                  marginTop: 20,
-                }}>
-                You have no plant to care. Add your first plant to start follow
-                its care and grow.
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#1BBFA0',
-                  alignSelf: 'center',
-                  marginTop: 10,
-                }}>
-                Tap + to add your plants
-              </Text>
-            </View>
-          )}
+              </View>
+            )}
+          </ScrollView>
         </View>
         {/* Floating button  */}
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: "13%", // Adjust the bottom value as needed
+            bottom: '13%', // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}
           // onPress={}
-          
-          >
+        >
           <View
             style={{
               height: 48,
@@ -408,7 +450,6 @@ export default function MyPlants({navigation}) {
             />
           </View>
         </TouchableOpacity>
-
       </LinearGradient>
     </View>
   );
@@ -428,7 +469,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 56,
     borderRadius: 16,
-    flexDirection:"row",
+    flexDirection: 'row',
     alignSelf: 'center',
     backgroundColor: '#1BBFA0',
     justifyContent: 'center', // Center content horizontally

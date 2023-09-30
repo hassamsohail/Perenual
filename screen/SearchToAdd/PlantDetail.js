@@ -832,7 +832,7 @@ export default function PlantDetail({navigation}) {
               </View>
             </View>
 
-            <TouchableOpacity style={styles.button1}>
+            <TouchableOpacity style={styles.button1} onPress={closeBottomSheet}>
               <Text style={styles.buttonText1}>Create Space</Text>
             </TouchableOpacity>
 

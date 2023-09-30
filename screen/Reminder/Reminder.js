@@ -21,40 +21,43 @@ export default function Reminder({navigation}) {
     {
       id: '1',
       name: 'Watering',
-     
+
       image: require('../../assets/icon1.png'),
     },
     {
       id: '2',
       name: 'Fertilizer',
-    
+
       image: require('../../assets/icon4.png'),
     },
     {
       id: '3',
       name: 'Pruneing',
-    
+
       image: require('../../assets/P.png'),
     },
-   
-
 
     // Add more data items as needed
   ];
   const handleRadioSelect4 = index => {
     setSelectedRadio4(index);
   };
-  const [selectedRadio4, setSelectedRadio4] = useState(null);
+  const [selectedRadio4, setSelectedRadio4] = useState(0);
 
   // Control the visibility of the bottom sheet
   const data4 = [
-    {id: '1', title: 'Yesterday'},
-    {id: '2', title: 'Today'},
-    {id: '3', title: 'Tomorrow'},
+    {id: '1', title: 'MO', data:"17"},
+    {id: '2', title: 'TU', data:"18"},
+    {id: '3', title: 'WE', data:"19"},
+
+    {id: '4', title: 'TH',data:"20"},
+    {id: '5', title: 'FR',data:"21"},
+    {id: '6', title: 'SA', data:"22"},
+    {id: '7', title: 'SU',data:"23"},
+
     // Add more data as needed
   ];
   // Use the useEffect hook to check if the user has seen the survey screen before
- 
 
   return (
     <View
@@ -78,10 +81,9 @@ export default function Reminder({navigation}) {
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-          onPress={()=>{
-              navigation.navigate("Profile")
-          }}
-          >
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
             <View
               style={{
                 height: 40,
@@ -150,131 +152,149 @@ export default function Reminder({navigation}) {
               }}
             />
           </View>
-        
+
           <View
             style={{
               height: 10,
             }}
           />
+        </View>
+        <View
+          style={{
+            // height: 80,
+            alignSelf: 'center',
+            width: '90%',
+          }}>
+          <FlatList
+            data={data4}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true} // Set horizontal to true
+            renderItem={({item, index}) => (
+              <TouchableOpacity
+                key={item.id}
+                onPress={() => handleRadioSelect4(index)}
+                style={{
+                  // flexDirection: 'row',
+                  alignItems: 'center',
+                  width: 44,
+                  marginLeft: 6,
+                  // Adjust the width as needed
+                  height: 70,
+                  backgroundColor: '#fff',
+                  elevation: 5,
+                  borderWidth: 1,
+                  // borderColor:
+                  // selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
+                  borderRadius: 20,
+                  // backgroundColor:
+                  // selectedRadio4 === index ? '#DEF2ED' : '#fff',
+                  marginRight: 10,
+                  borderColor: selectedRadio4 === index ? '#1BBFA0' : '#fff',
+                  marginVertical: 5,
+                  paddingHorizontal: 10,
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  style={{
+                    fontSize: selectedRadio4 === index ? 12 : 12,
+                    color: selectedRadio4 === index ? '#1BBFA0' : '#9B9B9B',
+                    fontWeight: '600',
+                  }}>
+                  {item.title}
+                </Text>
+                <View
+                  style={{
+                    marginTop: 10,
+                    height: 32,
+                    width: 32,
+                    borderRadius: 32,
+                    backgroundColor:
+                      selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
 
-       
-       </View>
-       <View
-              style={{
-                height: 55,
-                width: '100%',
-              }}>
-              <FlatList
-                data={data4}
-                horizontal={true} // Set horizontal to true
-                renderItem={({item, index}) => (
-                  <TouchableOpacity
-                    key={item.id}
-                    onPress={() => handleRadioSelect4(index)}
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
                     style={{
-                      // flexDirection: 'row',
-                      alignItems: 'center',
-                      width: 100,
-                      marginLeft:10,
-                      // Adjust the width as needed
-                      height: 40,
-                      // borderWidth: 1,
-                      // borderColor:
-                        // selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
-                      borderRadius: 8,
-                      // backgroundColor:
-                        // selectedRadio4 === index ? '#DEF2ED' : '#fff',
-                      marginRight: 10,
-                      marginVertical: 5,
-                      paddingHorizontal: 10,
-                      justifyContent: 'center',
+                      fontSize: selectedRadio4 === index ? 12 : 12,
+                      color: selectedRadio4 === index ? '#fff' : '#9B9B9B',
+
+                      fontWeight: '600',
                     }}>
-                    <View>
-                      <Text
-                        style={{
-                          fontSize: selectedRadio4 === index ? 17 : 14,
-                          color:
-                            selectedRadio4 === index ? '#1BBFA0' : '#9B9B9B',
-                          fontWeight: '600',
-                        }}>
-                        {item.title}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                )}
-                keyExtractor={item => item.id}
-              />
-            </View>
-            <FlatList
-                data={data5}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                 
-                    
-
-                    
-                    <View
-                      style={{
-                        marginBottom: 10,
-                        width: '90%',
-                        alignSelf:"center",
-                        paddingLeft: 10,
-                        alignItems: 'center',
-                        flexDirection: 'row',
-                        height: 77,
-                        borderWidth: 1,
-                        borderColor: '#EBEBEB',
-                        backgroundColor: '#fff',
-                        borderRadius: 16,
-                      }}>
-                      <View
-                        style={{
-                          width: '15%',
-                        }}>
-                        <Image
-                          source={item.image}
-                          style={{
-                            height: 32,
-                            width: 32,
-                          }}
-                        />
-                      </View>
-
-                      <View>
-                        <View
-                          style={{
-                            width: '70%',
-                            // marginLeft: -10,
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                          }}>
-                       
-                            <Text
-                              style={{
-                                // marginLeft: 10,
-                                fontSize: 16,
-                                fontWeight:"600",
-                                color: '#161C1C',
-                              }}>
-                              {item.name}
-                            </Text>
-                          
-                     
-                      
-                             <Image
-              source={require('../../assets/right.png')}
+                    {item.title}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.id}
+          />
+        </View>
+        <View
+          style={{
+            height: 20,
+          }}
+        />
+        <FlatList
+          data={data5}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => (
+            <View
               style={{
-                width:24,
-                height: 24,
-              }}
-            />
-                         
-                        </View>
-                      </View>
-                    </View>
-                 
-                )}
-              />
+                marginBottom: 10,
+                width: '90%',
+                alignSelf: 'center',
+                paddingLeft: 10,
+                alignItems: 'center',
+                flexDirection: 'row',
+                height: 77,
+                borderWidth: 1,
+                borderColor: '#EBEBEB',
+                backgroundColor: '#fff',
+                borderRadius: 16,
+              }}>
+              <View
+                style={{
+                  width: '15%',
+                }}>
+                <Image
+                  source={item.image}
+                  style={{
+                    height: 32,
+                    width: 32,
+                  }}
+                />
+              </View>
+
+              <View>
+                <View
+                  style={{
+                    width: '70%',
+                    // marginLeft: -10,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text
+                    style={{
+                      // marginLeft: 10,
+                      fontSize: 16,
+                      fontWeight: '600',
+                      color: '#161C1C',
+                    }}>
+                    {item.name}
+                  </Text>
+
+                  <Image
+                    source={require('../../assets/right.png')}
+                    style={{
+                      width: 24,
+                      height: 24,
+                    }}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
+        />
       </LinearGradient>
     </View>
   );

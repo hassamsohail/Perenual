@@ -365,6 +365,8 @@ export default function Mainscreen({navigation}) {
           visible={isBottomSheetVisible}
           animationType="slide"
           onRequestClose={closeBottomSheet}>
+             <TouchableWithoutFeedback onPress={closeBottomSheetOnBackgroundPress}>
+
           <View style={styles.modalContainer}>
             {/* Your bottom sheet content goes here */}
             <View style={styles.bottomSheet}>
@@ -484,6 +486,8 @@ export default function Mainscreen({navigation}) {
               </View>
             </View>
           </View>
+          </TouchableWithoutFeedback>
+
         </Modal>
       </LinearGradient>
     </View>
@@ -530,7 +534,6 @@ const styles = StyleSheet.create({
 
     // height: 53,
     height: 44,
-
     width: '100%',
     marginLeft: 5,
     color: '#000000',
