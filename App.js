@@ -29,6 +29,7 @@ import Task from './screen/ScanToAdd/Task';
 import Plantsdetail2 from './screen/MyPlants/Plantsdetail2';
 import EditPlant from './screen/MyPlants/EditPlant';
 import Profile from './screen/Profile/Profile';
+import ProfileSubscription from './screen/Subscription/ProfileSubscription';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -226,6 +227,14 @@ function App() {
               name="Profile"
               component={Profile}
             />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="ProfileSubscription"
+              component={ProfileSubscription}
+            />
+            
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

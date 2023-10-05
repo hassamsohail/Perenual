@@ -259,9 +259,7 @@ export default function MyPlants({navigation}) {
             />
             <Text style={styles.buttonText}>Create Space</Text>
           </TouchableOpacity>
-          <ScrollView
-          showsVerticalScrollIndicator={false}
-          >
+          <ScrollView showsVerticalScrollIndicator={false}>
             {plantDataArray.map(plantDataItem => (
               <View
                 key={plantDataItem.id}
@@ -415,7 +413,7 @@ export default function MyPlants({navigation}) {
             )}
           </ScrollView>
         </View>
-        {/* Floating button  */}
+      
         <TouchableOpacity
           style={{
             position: 'absolute',

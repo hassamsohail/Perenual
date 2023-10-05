@@ -81,13 +81,7 @@ export default function Plantsdetail2({navigation}) {
                 </Text>
               </View>
             </View>
-            {/* <Image
-          source={require('../../../assets/menu1.png')} // You can replace this with the correct source
-          style={{
-            width: 24,
-            height: 24,
-          }}
-        /> */}
+         
           </View>
 
           <View
@@ -327,10 +321,11 @@ export default function Plantsdetail2({navigation}) {
     // Add more data items as needed
   ];
   return (
-    <View
+    <ScrollView
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         flexGrow: 1,
-        flex: 1,
+
         alignItems: 'center',
         backgroundColor: '#F8F8F8',
       }}>
@@ -518,6 +513,7 @@ export default function Plantsdetail2({navigation}) {
               <FlatList
                 data={data1}
                 keyExtractor={item => item.id}
+                showsVerticalScrollIndicator={false}
                 renderItem={({item}) => (
                   <View
                     style={{
@@ -602,11 +598,16 @@ export default function Plantsdetail2({navigation}) {
                   </View>
                 )}
               />
+              <View
+                style={{
+                  height: 20,
+                }}
+              />
               <TouchableOpacity
                 style={{
                   width: '100%',
-                  position: 'absolute',
-                  bottom: 40,
+                  // position: 'absolute',
+                  // bottom: 40,
                   height: 56,
                   borderRadius: 16,
                   alignSelf: 'center',
@@ -857,12 +858,11 @@ export default function Plantsdetail2({navigation}) {
             </View>
           </View>
         ) : indexofData == 1 ? (
-          <ScrollView
+          <View
             style={{
               width: '90%',
               alignSelf: 'center',
-              height: '78%',
-              marginBottom: 140,
+             
 
               marginTop: 10,
             }}>
@@ -1161,6 +1161,7 @@ export default function Plantsdetail2({navigation}) {
                 style={{
                   height: 20,
                 }}></View>
+               
               {plantData.length > 0 ? (
                 <View
                   style={
@@ -1208,7 +1209,7 @@ export default function Plantsdetail2({navigation}) {
                 </View>
               )}
             </View>
-          </ScrollView>
+          </View>
         ) : indexofData == 2 ? (
           <View
             style={{
@@ -1563,7 +1564,7 @@ export default function Plantsdetail2({navigation}) {
           height: 10,
         }}
       />
-    </View>
+    </ScrollView>
   );
 }
 
