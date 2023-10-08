@@ -81,7 +81,6 @@ export default function Plantsdetail2({navigation}) {
                 </Text>
               </View>
             </View>
-         
           </View>
 
           <View
@@ -461,7 +460,6 @@ export default function Plantsdetail2({navigation}) {
                 <View
                   style={{
                     width: 100,
-                    marginLeft: 5,
                     height: 33,
                     backgroundColor: indexofData == index ? '#fff' : null,
                     borderRadius: 20,
@@ -522,7 +520,7 @@ export default function Plantsdetail2({navigation}) {
                       paddingLeft: 10,
                       alignItems: 'center',
                       flexDirection: 'row',
-                      height: 77,
+                      height: 72,
                       borderWidth: 1,
                       borderColor: '#EBEBEB',
                       backgroundColor: '#fff',
@@ -862,7 +860,6 @@ export default function Plantsdetail2({navigation}) {
             style={{
               width: '90%',
               alignSelf: 'center',
-             
 
               marginTop: 10,
             }}>
@@ -1161,7 +1158,7 @@ export default function Plantsdetail2({navigation}) {
                 style={{
                   height: 20,
                 }}></View>
-               
+
               {plantData.length > 0 ? (
                 <View
                   style={

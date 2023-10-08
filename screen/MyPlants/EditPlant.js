@@ -145,7 +145,7 @@ export default function EditPlant({navigation}) {
 
         <View
           style={{
-            height: 40,
+            height: 10,
           }}
         />
 
@@ -154,7 +154,7 @@ export default function EditPlant({navigation}) {
         <TouchableOpacity
           onPress={openImagePicker}
           style={{
-            height: 240,
+            height: 200,
             width: '100%',
             alignSelf: 'center',
             backgroundColor: '#DEF2ED',
@@ -166,8 +166,7 @@ export default function EditPlant({navigation}) {
               style={{
                 width: '100%',
                 height: '100%',
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 30,
+              
               }}
             />
           ) : (
@@ -178,16 +177,15 @@ export default function EditPlant({navigation}) {
                 alignItems: 'center',
                 width: '100%',
                 // borderRadius: 88,
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 30,
-                height: 240,
+              
+                height: 200,
               }}>
               <Image
-                source={require('../../assets/Group.png')}
+                source={require('../../assets/IIg.png')}
                 style={{
                   width: '70%',
-                  marginTop: 70,
-                  height: 131.16,
+                  // marginTop: 70,
+                  height: 200,
                 }}
               />
             </View>
@@ -283,7 +281,7 @@ export default function EditPlant({navigation}) {
 
           <View
             style={{
-              width: '90%',
+              width: '100%',
               alignSelf: 'center',
               marginTop: 20,
               justifyContent: 'space-between',
@@ -333,7 +331,7 @@ export default function EditPlant({navigation}) {
 
           <View
             style={{
-              width: '90%',
+              width: '100%',
               alignSelf: 'center',
               marginTop: 20,
               justifyContent: 'space-between',
@@ -374,7 +372,7 @@ export default function EditPlant({navigation}) {
                 onChangeText={text => setsearch1(text)}
                 placeholderTextColor="#969696"
                 value={search1}
-                placeholder="Height: Not set"
+                placeholder="Water: Not set"
                 autocorrect={false}
                 autoCapitalize="none"
               />
@@ -383,7 +381,7 @@ export default function EditPlant({navigation}) {
           
           <View
             style={{
-              width: '90%',
+              width: '100%',
               alignSelf: 'center',
               marginTop: 20,
               justifyContent: 'space-between',
@@ -424,7 +422,7 @@ export default function EditPlant({navigation}) {
                 onChangeText={text => setsearch2(text)}
                 placeholderTextColor="#969696"
                 value={search2}
-                placeholder="Height: Not set"
+                placeholder="Light: Not set"
                 autocorrect={false}
                 autoCapitalize="none"
               />
@@ -433,7 +431,8 @@ export default function EditPlant({navigation}) {
           
           <View
             style={{
-              width: '90%',
+              width: '100%',
+              marginBottom:30,
               alignSelf: 'center',
               marginTop: 20,
               justifyContent: 'space-between',
@@ -474,7 +473,7 @@ export default function EditPlant({navigation}) {
                 onChangeText={text => setsearch3(text)}
                 placeholderTextColor="#969696"
                 value={search3}
-                placeholder="Height: Not set"
+                placeholder="Humidity: Not set"
                 autocorrect={false}
                 autoCapitalize="none"
               />

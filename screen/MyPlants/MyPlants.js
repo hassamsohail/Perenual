@@ -417,7 +417,7 @@ export default function MyPlants({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: '5%', // Adjust the bottom value as needed
+            bottom: 15, // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}

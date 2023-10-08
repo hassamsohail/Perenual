@@ -585,7 +585,7 @@ export default function PlantDetail({navigation}) {
         <Text
           style={{
             fontSize: 16,
-
+            color: '#9B9B9B',
             marginTop: 10,
           }}>
           Pothos (Epipremnum aureum) is one of the easiest houseplants to grow

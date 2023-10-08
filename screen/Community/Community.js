@@ -640,7 +640,7 @@ export default function Community({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: "13%", // Adjust the bottom value as needed
+            bottom: 64, // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}

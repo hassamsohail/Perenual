@@ -90,6 +90,14 @@ export default function Mainscreen({navigation}) {
     const textColor = item.nextWatering ? '#1BBFA0' : '#E74C3C';
 
     return (
+      <TouchableOpacity
+      
+      onPress={()=>{
+
+        navigation.navigate("PlantDetail")
+      }}
+      >
+
       <View
         style={{
           flexDirection: 'row',
@@ -146,7 +154,10 @@ export default function Mainscreen({navigation}) {
           }}
         />
       </View>
+      </TouchableOpacity>
+
     );
+
   };
 
   return (
@@ -326,14 +337,15 @@ export default function Mainscreen({navigation}) {
             </View>
           )}
         </View>
-        {/* Floating button  */}
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: "13%", // Adjust the bottom value as needed
+            bottom: 64, // Adjust the bottom value as needed
+            // Adjust the bottom value as needed
             right: '5%',
           }}
-          onPress={openBottomSheet}>
+          // onPress={}
+        >
           <View
             style={{
               height: 48,
