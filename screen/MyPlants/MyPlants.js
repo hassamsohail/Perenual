@@ -246,9 +246,11 @@ export default function MyPlants({navigation}) {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => {
-              navigation.navigate('');
-            }}>
+            // onPress={() => {
+            //   navigation.navigate('AddManuallyPlants');
+            // }}
+            
+            >
             <Image
               source={require('../../assets/plus.png')}
               style={{
@@ -421,7 +423,9 @@ export default function MyPlants({navigation}) {
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          // onPress={}
+          onPress={()=>{
+            navigation.navigate("AddManuallyPlants")
+          }}
         >
           <View
             style={{

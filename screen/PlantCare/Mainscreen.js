@@ -344,7 +344,7 @@ export default function Mainscreen({navigation}) {
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          // onPress={}
+          onPress={openBottomSheet}
         >
           <View
             style={{
@@ -401,7 +401,11 @@ export default function Mainscreen({navigation}) {
                 Identify Plant
               </Text>
               <TouchableOpacity onPress={closeBottomSheet}>
-                <Text>Close</Text>
+                <Text
+                style={{
+                  color:"#000000"
+                }}
+                >Close</Text>
               </TouchableOpacity>
 
               <View
