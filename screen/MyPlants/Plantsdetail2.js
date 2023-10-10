@@ -10,10 +10,12 @@ import {
   FlatList,
   Modal,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
 import ImagePicker from 'react-native-image-crop-picker';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
 export default function Plantsdetail2({navigation}) {
   const [text, setText] = useState('');
@@ -319,6 +321,111 @@ export default function Plantsdetail2({navigation}) {
     {id: '3', label: 'History'},
     // Add more data items as needed
   ];
+  const renderItem1 = ({item}) => (
+    <View
+      style={{
+        marginBottom: 10,
+        width: '100%',
+        paddingLeft: 10,
+        alignItems: 'center',
+        flexDirection: 'row',
+        height: 72,
+        borderWidth: 1,
+        borderColor: '#EBEBEB',
+        backgroundColor: '#fff',
+        borderRadius: 16,
+      }}>
+      <View style={{width: '15%'}}>
+        <Image source={item.image} style={{height: 32, width: 32}} />
+      </View>
+      <View>
+        <View
+          style={{
+            width: '77%',
+            marginLeft: -10,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <View>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#161C1C'}}>
+              {item.name}
+            </Text>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#9B9B9B'}}>
+              {item.schedule}
+            </Text>
+          </View>
+          <View style={{alignItems: 'flex-end'}}>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#161C1C'}}>
+              {item.date}
+            </Text>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#9B9B9B'}}>
+              {item.time}
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+  const SwipeableRow = ({item, closeRow}) => (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        height: 72,
+      }}>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#F8DB73',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 58,
+          height: 58,
+          borderRadius: 8,
+        }}
+        onPress={() => {
+          // Handle delete action here
+          Alert.alert('Edit', 'Are you sure you want to edit this item?', [
+            {text: 'Cancel', style: 'cancel'},
+            {text: 'Edit', onPress: closeRow},
+          ]);
+        }}>
+        <Image
+          source={require('../../assets/Edit.png')}
+          style={{
+            height: 24,
+            width: 24,
+          }}></Image>
+        <Text style={{color: 'white', fontSize: 12}}>Edit</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#F1655E',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 58,
+          height: 58,
+          borderRadius: 8,
+          marginLeft:10
+        }}
+        onPress={() => {
+          // Handle delete action here
+          Alert.alert('Delete', 'Are you sure you want to delete this item?', [
+            {text: 'Cancel', style: 'cancel'},
+            {text: 'Delete', onPress: closeRow},
+          ]);
+        }}>
+        <Image
+          source={require('../../assets/DeleteP.png')}
+          style={{
+            height: 24,
+            width: 24,
+          }}></Image>
+        <Text style={{color: 'white', fontSize: 12}}>Delete</Text>
+      </TouchableOpacity>
+      
+    </View>
+  );
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -508,93 +615,15 @@ export default function Plantsdetail2({navigation}) {
                 height: '78%',
                 marginTop: 10,
               }}>
-              <FlatList
+              <SwipeListView
                 data={data1}
                 keyExtractor={item => item.id}
                 showsVerticalScrollIndicator={false}
-                renderItem={({item}) => (
-                  <View
-                    style={{
-                      marginBottom: 10,
-                      width: '100%',
-                      paddingLeft: 10,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      height: 72,
-                      borderWidth: 1,
-                      borderColor: '#EBEBEB',
-                      backgroundColor: '#fff',
-                      borderRadius: 16,
-                    }}>
-                    <View
-                      style={{
-                        width: '15%',
-                      }}>
-                      <Image
-                        source={item.image}
-                        style={{
-                          height: 32,
-                          width: 32,
-                        }}
-                      />
-                    </View>
-
-                    <View>
-                      <View
-                        style={{
-                          width: '77%',
-                          marginLeft: -10,
-                          flexDirection: 'row',
-                          justifyContent: 'space-between',
-                        }}>
-                        <View
-                          style={
-                            {
-                              // width:"100%"
-                            }
-                          }>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#161C1C',
-                            }}>
-                            {item.name}
-                          </Text>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#9B9B9B',
-                            }}>
-                            {item.schedule}
-                          </Text>
-                        </View>
-                        <View
-                          style={{
-                            alignItems: 'flex-end',
-                          }}>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#161C1C',
-                            }}>
-                            {item.date}
-                          </Text>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#9B9B9B',
-                            }}>
-                            {item.time}
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                renderItem={({item}) => renderItem1({item})}
+                renderHiddenItem={({item}) => (
+                  <SwipeableRow item={item} closeRow={() => {}} />
                 )}
+                rightOpenValue={-132}
               />
               <View
                 style={{
