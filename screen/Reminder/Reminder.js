@@ -37,20 +37,20 @@ export default function Reminder({navigation}) {
       id: '1',
       name: 'Watering',
       image: require('../../assets/icon1.png'),
-      expanded: false,
+      expanded: true,
     },
     {
       id: '2',
       name: 'Fertilizer',
       image: require('../../assets/icon4.png'),
-      expanded: false,
+      expanded: true,
     },
-    {
-      id: '3',
-      name: 'Pruning',
-      image: require('../../assets/P.png'),
-      expanded: false,
-    },
+    // {
+    //   id: '3',
+    //   name: 'Pruning',
+    //   image: require('../../assets/P.png'),
+    //   expanded: true,
+    // },
     // Add more data items as needed
   ]);
 
@@ -59,7 +59,7 @@ export default function Reminder({navigation}) {
     newData[index].expanded = !newData[index].expanded;
     setData5(newData);
   };
-
+ 
   const [selectedRadio4, setSelectedRadio4] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
 

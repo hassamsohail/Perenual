@@ -9,7 +9,7 @@ import {
   FlatList,
   Modal,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import FormInput1 from '../../Components/FormInput1';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -124,10 +124,16 @@ export default function PlantDetail({navigation}) {
   };
   const [username, setuserName] = React.useState();
 
-  const image = [
-    require('../../assets/Slide1.png'),
-    require('../../assets/Slide1.png'),
-    require('../../assets/Slide1.png'),
+  // const image = [
+  //   require('../../assets/Slide1.png'),
+  //   require('../../assets/Slide1.png'),
+  //   require('../../assets/Slide1.png'),
+  // ];
+  const imageSliderData = [
+    // Replace with your image data
+    {id: 1, source: require('../../assets/Slide1.png')},
+    {id: 2, source: require('../../assets/Slide1.png')},
+    // Add more images as needed
   ];
   const data = [
     {
@@ -213,6 +219,25 @@ export default function PlantDetail({navigation}) {
   const closeBottomSheet1 = () => {
     setIsBottomSheetVisible1(false);
     setIsBottomSheetVisible2(true);
+  };
+  // const [activeSlide, setActiveSlide] = useState(0);
+  const scrollViewRef = useRef(null);
+  const slideWidth = Dimensions.get('window').width;
+
+  const handleScroll = event => {
+    const slideIndex = Math.round(
+      event.nativeEvent.contentOffset.x / slideWidth,
+    );
+    setActiveSlide(slideIndex);
+  };
+
+  const scrollToSlide = index => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        x: index * slideWidth,
+        animated: true,
+      });
+    }
   };
   function renderItem({item, index}) {
     const backgroundColor = index % 2 === 0 ? '#fff' : '#F8F8F8';
@@ -324,20 +349,41 @@ export default function PlantDetail({navigation}) {
           width: '100%',
           marginTop: -20,
         }}>
-        <Carousel
-          data={image}
-          renderItem={renderImageItem}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={Dimensions.get('window').width}
-          onSnapToItem={index => setActiveSlide(index)}
-        />
-
-        {/* Pagination */}
-        <Pagination
-          dotsLength={image.length}
-          activeDotIndex={activeSlide}
-          containerStyle={{}}
-        />
+        <ScrollView
+          ref={scrollViewRef}
+          horizontal
+          pagingEnabled
+          onScroll={handleScroll}
+          showsHorizontalScrollIndicator={false}>
+          {imageSliderData.map((item, index) => (
+            <Image
+              key={item.id}
+              source={item.source}
+              style={{
+                width: slideWidth,
+                height: 250,
+                borderBottomLeftRadius: 24,
+                borderBottomRightRadius: 24,
+              }}
+            />
+          ))}
+        </ScrollView>
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          {imageSliderData.map((item, index) => (
+            <TouchableOpacity
+              key={item.id}
+              onPress={() => scrollToSlide(index)}
+              style={{
+                width: 8,
+                height: 8,
+                marginTop: -40,
+                borderRadius: 4,
+                backgroundColor: index === activeSlide ? '#1BBFA0' : '#DEF2ED',
+                margin: 4,
+              }}
+            />
+          ))}
+        </View>
       </View>
       <View
         style={{

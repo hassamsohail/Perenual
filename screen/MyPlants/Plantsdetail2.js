@@ -406,7 +406,7 @@ export default function Plantsdetail2({navigation}) {
           width: 58,
           height: 58,
           borderRadius: 8,
-          marginLeft:10
+          marginLeft: 10,
         }}
         onPress={() => {
           // Handle delete action here
@@ -423,7 +423,6 @@ export default function Plantsdetail2({navigation}) {
           }}></Image>
         <Text style={{color: 'white', fontSize: 12}}>Delete</Text>
       </TouchableOpacity>
-      
     </View>
   );
   return (
@@ -1109,7 +1108,7 @@ export default function Plantsdetail2({navigation}) {
             <Text
               style={{
                 fontSize: 16,
-
+                color: '#9B9B9B',
                 marginTop: 10,
               }}>
               Pothos (Epipremnum aureum) is one of the easiest houseplants to
