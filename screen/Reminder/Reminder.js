@@ -280,7 +280,8 @@ export default function Reminder({navigation}) {
                 style={{
                   alignItems: 'center',
                   width: 44,
-                  marginLeft: 6,
+                  marginLeft: 12,
+                  
                   height: 70,
                   backgroundColor: '#fff',
                   elevation: 5,
