@@ -468,6 +468,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background
     justifyContent: 'flex-end', // Modal appears at the bottom
   },
+  
   bottomSheet: {
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
