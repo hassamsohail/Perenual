@@ -166,8 +166,9 @@ export default function Reminder({navigation}) {
     // Add more data as needed
   ];
   return (
-    <View
-      style={{
+  
+    <ScrollView
+    contentContainerStyle={{
         flex: 1,
         backgroundColor: 'white',
       }}>
@@ -280,14 +281,14 @@ export default function Reminder({navigation}) {
                 style={{
                   alignItems: 'center',
                   width: 44,
-                  marginLeft: 12,
+                  marginLeft: 4,
                   
                   height: 70,
                   backgroundColor: '#fff',
                   elevation: 5,
                   borderWidth: 1,
                   borderRadius: 20,
-                  marginRight: 10,
+                  marginRight: 20,
                   borderColor: selectedRadio4 === index ? '#1BBFA0' : '#fff',
                   marginVertical: 5,
                   paddingHorizontal: 10,
@@ -413,7 +414,7 @@ export default function Reminder({navigation}) {
           )}
         />
       </LinearGradient>
-    </View>
+    </ScrollView>
   );
 }
 
