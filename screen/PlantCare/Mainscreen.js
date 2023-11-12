@@ -61,6 +61,9 @@ export default function Mainscreen({navigation}) {
   };
   const [Phonenumber, setPhonenumber] = React.useState();
   const [search, setsearch] = React.useState();
+  const clearText = () => {
+    setsearch('');
+  };
   const plantData = [
     {
       id: '1',
@@ -91,73 +94,67 @@ export default function Mainscreen({navigation}) {
 
     return (
       <TouchableOpacity
-      
-      onPress={()=>{
-
-        navigation.navigate("PlantDetail")
-      }}
-      >
-
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16, // Add margin between items
+        onPress={() => {
+          navigation.navigate('PlantDetail');
         }}>
         <View
           style={{
             flexDirection: 'row',
+            justifyContent: 'space-between',
             alignItems: 'center',
+            marginBottom: 16, // Add margin between items
           }}>
-          <Image
-            source={item.image}
-            style={{
-              width: 80,
-              height: 80,
-            }}
-          />
-
           <View
             style={{
-              marginLeft: 10,
+              flexDirection: 'row',
+              alignItems: 'center',
             }}>
-            <Text
+            <Image
+              source={item.image}
               style={{
-                fontSize: 14,
-                color: '#161C1C',
-              }}>
-              {item.location}
-            </Text>
-            <Text
+                width: 80,
+                height: 80,
+              }}
+            />
+
+            <View
               style={{
-                fontSize: 16,
-                color: '#161C1C',
-                fontWeight: '500',
+                marginLeft: 10,
               }}>
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: textColor, // Use the textColor variable
-              }}>
-              {item.nextWatering || item.OverdueWatering}
-            </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#161C1C',
+                }}>
+                {item.location}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#161C1C',
+                  fontWeight: '500',
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: textColor, // Use the textColor variable
+                }}>
+                {item.nextWatering || item.OverdueWatering}
+              </Text>
+            </View>
           </View>
+          <Image
+            source={require('../../assets/menu1.png')} // You can replace this with the correct source
+            style={{
+              width: 24,
+              height: 24,
+            }}
+          />
         </View>
-        <Image
-          source={require('../../assets/menu1.png')} // You can replace this with the correct source
-          style={{
-            width: 24,
-            height: 24,
-          }}
-        />
-      </View>
       </TouchableOpacity>
-
     );
-
   };
 
   return (
@@ -182,10 +179,9 @@ export default function Mainscreen({navigation}) {
             alignSelf: 'center',
           }}>
           <TouchableOpacity
-          onPress={()=>{
-              navigation.navigate("Profile")
-          }}
-          >
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
             <View
               style={{
                 height: 40,
@@ -256,8 +252,7 @@ export default function Mainscreen({navigation}) {
           </View>
           <View
             style={{
-              width: '100%',
-              alignSelf: 'center',
+              width: '73%',
               marginTop: 20,
               justifyContent: 'space-between',
               flexDirection: 'row',
@@ -274,22 +269,78 @@ export default function Mainscreen({navigation}) {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <Image
-                source={require('../../assets/Search.png')}
+              <View
                 style={{
-                  width: 18,
-                  height: 18,
-                }}></Image>
-              <TextInput
-                style={styles.input}
-                onChangeText={text => setsearch(text)}
-                placeholderTextColor="#969696"
-                value={search}
-                placeholder="Search my plants"
-                autocorrect={false}
-                autoCapitalize="none"
-              />
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  width: '74%',
+                }}>
+                <Image
+                  source={require('../../assets/Search.png')}
+                  style={{
+                    width: 18,
+                    height: 18,
+                  }}></Image>
+
+                <TextInput
+                  style={styles.input}
+                  onChangeText={text => setsearch(text)}
+                  placeholderTextColor="#969696"
+                  value={search}
+                  placeholder="Search my plants"
+                  autocorrect={false}
+                  autoCapitalize="none"
+                />
+                {search !== '' && (
+                  <TouchableOpacity style={{}} onPress={clearText}>
+                    <Image
+                      source={require('../../assets/cross_icon.png')}
+                      style={{
+                        width: 20,
+                        height: 20,
+                      }}
+                    />
+                  </TouchableOpacity>
+                )}
+              </View>
             </View>
+            <TouchableOpacity
+            style={{
+              width: '32%',
+
+            }}
+            >
+
+            <View
+              style={{
+                marginLeft: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+
+                alignItems: 'center',
+                width: '100%',
+                height: 56,
+                backgroundColor: '#DEF2ED',
+                borderRadius: 16,
+              }}>
+ <Image
+                  source={require('../../assets/filterImage.png')}
+                  style={{
+                    width: 18,
+                    height: 18,
+                  }}></Image>
+ <Text
+              style={{
+                fontSize: 14,
+                color: '#1BBFA0',
+                fontWeight: "normal",
+                marginLeft: 4,
+              }}>
+              Filter
+            </Text>
+              </View>
+            </TouchableOpacity>
+
           </View>
           <View
             style={{
@@ -344,8 +395,7 @@ export default function Mainscreen({navigation}) {
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          onPress={openBottomSheet}
-        >
+          onPress={openBottomSheet}>
           <View
             style={{
               height: 48,
@@ -377,133 +427,132 @@ export default function Mainscreen({navigation}) {
           visible={isBottomSheetVisible}
           animationType="slide"
           onRequestClose={closeBottomSheet}>
-             <TouchableWithoutFeedback onPress={closeBottomSheetOnBackgroundPress}>
-
-          <View style={styles.modalContainer}>
-            {/* Your bottom sheet content goes here */}
-            <View style={styles.bottomSheet}>
-              <Image
-                source={require('../../assets/icon.png')}
-                style={{
-                  height: 88,
-                  width: 88,
-                  marginTop: -50,
-                }}
-              />
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: '#161C1C',
-                  alignSelf: 'center',
-                  fontWeight: '600',
-                  // marginTop: 10,
-                }}>
-                Identify Plant
-              </Text>
-              <TouchableOpacity onPress={closeBottomSheet}>
+          <TouchableWithoutFeedback onPress={closeBottomSheetOnBackgroundPress}>
+            <View style={styles.modalContainer}>
+              {/* Your bottom sheet content goes here */}
+              <View style={styles.bottomSheet}>
+                <Image
+                  source={require('../../assets/icon.png')}
+                  style={{
+                    height: 88,
+                    width: 88,
+                    marginTop: -50,
+                  }}
+                />
                 <Text
-                style={{
-                  color:"#000000"
-                }}
-                >Close</Text>
-              </TouchableOpacity>
-
-              <View
-                style={{
-                  marginTop: 20,
-                  flexDirection: 'row',
-                  // justifyContent:"space-between",
-                  justifyContent: 'space-around',
-                  width: '100%',
-                  alignItems: 'center',
-                }}>
-                <TouchableOpacity
                   style={{
-                    width: '45%',
-                    height: 56,
-                  }}
-                  onPress={() => {
-                    navigation.navigate('SearchToAdd');
-                    closeBottomSheet();
+                    fontSize: 20,
+                    color: '#161C1C',
+                    alignSelf: 'center',
+                    fontWeight: '600',
+                    // marginTop: 10,
                   }}>
-                  <View
+                  Identify Plant
+                </Text>
+                <TouchableOpacity onPress={closeBottomSheet}>
+                  <Text
                     style={{
-                      flexDirection: 'row',
-                      backgroundColor: '#1BBFA0',
-                      justifyContent: 'center',
-                      // justifyContent:"space-between",
-                      alignItems: 'center',
-                      width: '100%',
-                      height: 56,
-                      borderRadius: 16,
+                      color: '#000000',
                     }}>
-                    <Image
-                      source={require('../../assets/S.png')}
-                      style={{
-                        height: 24,
-                        width: 24,
-                        marginRight: 8,
-                      }}
-                    />
-
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#fff',
-                        // alignSelf: 'center',
-                        // fontWeight:"600"
-                        // marginTop: 10,
-                      }}>
-                      Search to add
-                    </Text>
-                  </View>
+                    Close
+                  </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('ScanToAdd');
-                    closeBottomSheet();
-                  }}
+
+                <View
                   style={{
-                    width: '45%',
-                    height: 56,
+                    marginTop: 20,
+                    flexDirection: 'row',
+                    // justifyContent:"space-between",
+                    justifyContent: 'space-around',
+                    width: '100%',
+                    alignItems: 'center',
                   }}>
-                  <View
+                  <TouchableOpacity
                     style={{
-                      flexDirection: 'row',
-                      backgroundColor: '#1BBFA0',
-                      justifyContent: 'center',
-                      // justifyContent:"space-between",
-                      alignItems: 'center',
-                      width: '100%',
+                      width: '45%',
                       height: 56,
-                      borderRadius: 16,
+                    }}
+                    onPress={() => {
+                      navigation.navigate('SearchToAdd');
+                      closeBottomSheet();
                     }}>
-                    <Image
-                      source={require('../../assets/scan.png')}
+                    <View
                       style={{
-                        height: 24,
-                        width: 24,
-                        marginRight: 8,
-                      }}
-                    />
-
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#fff',
-                        // alignSelf: 'center',
-                        // fontWeight:"600"
-                        // marginTop: 10,
+                        flexDirection: 'row',
+                        backgroundColor: '#1BBFA0',
+                        justifyContent: 'center',
+                        // justifyContent:"space-between",
+                        alignItems: 'center',
+                        width: '100%',
+                        height: 56,
+                        borderRadius: 16,
                       }}>
-                      Scan to add
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+                      <Image
+                        source={require('../../assets/S.png')}
+                        style={{
+                          height: 24,
+                          width: 24,
+                          marginRight: 8,
+                        }}
+                      />
+
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: '#fff',
+                          // alignSelf: 'center',
+                          // fontWeight:"600"
+                          // marginTop: 10,
+                        }}>
+                        Search to add
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('ScanToAdd');
+                      closeBottomSheet();
+                    }}
+                    style={{
+                      width: '45%',
+                      height: 56,
+                    }}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        backgroundColor: '#1BBFA0',
+                        justifyContent: 'center',
+                        // justifyContent:"space-between",
+                        alignItems: 'center',
+                        width: '100%',
+                        height: 56,
+                        borderRadius: 16,
+                      }}>
+                      <Image
+                        source={require('../../assets/scan.png')}
+                        style={{
+                          height: 24,
+                          width: 24,
+                          marginRight: 8,
+                        }}
+                      />
+
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: '#fff',
+                          // alignSelf: 'center',
+                          // fontWeight:"600"
+                          // marginTop: 10,
+                        }}>
+                        Scan to add
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
-          </View>
           </TouchableWithoutFeedback>
-
         </Modal>
       </LinearGradient>
     </View>

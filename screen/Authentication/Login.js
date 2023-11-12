@@ -185,7 +185,7 @@ export default function Login({navigation}) {
 
       <View
       style={{
-        width:"100%"
+        width:"90%"
         , alignSelf:"center",
         alignItems:"center"
       }}

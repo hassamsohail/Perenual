@@ -8,6 +8,7 @@ import {
   StyleSheet,
   FlatList,
   Modal,
+  ImageBackground,
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -64,10 +65,14 @@ export default function PlantDetail({navigation}) {
     {
       id: '1',
       title: 'Indoor',
+      imageSource: require('../../assets/Indoor_icon.png'),
+
     },
     {
       id: '2',
       title: 'Outdoor',
+      imageSource: require('../../assets/Outdoor_icon.png'),
+
     },
   ];
   const data2 = [
@@ -184,7 +189,73 @@ export default function PlantDetail({navigation}) {
   const openBottomSheet = () => {
     setIsBottomSheetVisible(true);
   };
+  const renderItem1 = ({ item, index }) => (
+    <TouchableOpacity
+      onPress={() => handleRadioSelect1(index)}
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '49%',
+        marginRight:"2%",
+        height: 55,
+        borderWidth: 1,
+        borderColor: selectedRadio1 === index ? '#1BBFA0' : '#DEF2ED',
+        borderRadius: 8,
+        marginVertical: 5,
+        paddingHorizontal: 8,
+        justifyContent:"space-between"
+      }}>
+    
 
+      <View
+      style={{
+        flexDirection:"row",
+        justifyContent:"center", alignItems:"center"
+      }}
+      >
+         <Image
+          source={item.imageSource}
+          style={{
+            height: 24,
+            width: 24,
+            marginRight:4
+          }}
+        />
+        <Text
+          style={{
+            fontSize: 14,
+            color:
+              selectedRadio1 === index ? '#161C1C' : '#9B9B9B',
+            fontWeight: '600',
+          }}>
+          {item.title}
+        </Text>
+      </View>
+
+      <View
+        style={{
+          width: 20,
+          height: 20,
+          borderWidth: 1.5,
+          // marginRight: 1,
+          borderColor:
+            selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
+          borderRadius: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            width: 12,
+            height: 12,
+            backgroundColor:
+              selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
+            borderRadius: 20,
+          }}
+        ></View>
+      </View>
+    </TouchableOpacity>
+  );
   const closeBottomSheet = () => {
     setIsBottomSheetVisible(false);
     setIsBottomSheetVisible1(true);
@@ -368,15 +439,19 @@ export default function PlantDetail({navigation}) {
             />
           ))}
         </ScrollView>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{flexDirection: 'row',
+       marginLeft:20,
+      }}>
           {imageSliderData.map((item, index) => (
             <TouchableOpacity
               key={item.id}
               onPress={() => scrollToSlide(index)}
               style={{
-                width: 8,
+                width:index === activeSlide ? 16 : 8,
                 height: 8,
-                marginTop: -40,
+                marginTop: -95,
+               
+                zIndex:10,
                 borderRadius: 4,
                 backgroundColor: index === activeSlide ? '#1BBFA0' : '#DEF2ED',
                 margin: 4,
@@ -389,9 +464,11 @@ export default function PlantDetail({navigation}) {
         style={{
           width: '90%',
           alignSelf: 'center',
+          marginTop:-40
         }}>
         <Text
           style={{
+            
             fontSize: 20,
             color: '#161C1C',
             // alignSelf: 'center',
@@ -408,6 +485,8 @@ export default function PlantDetail({navigation}) {
             // alignSelf: 'center',
             // fontWeight:"600",
             textAlign: 'center',
+            marginBottom:10
+
             // marginTop: 10,
           }}>
           Scindapsus silvery anne
@@ -644,6 +723,7 @@ export default function PlantDetail({navigation}) {
 
         <View
           style={{
+            marginBottom:30,
             width: '100%',
             marginTop: 10,
             justifyContent: 'space-between',
@@ -673,6 +753,8 @@ export default function PlantDetail({navigation}) {
       <View
         style={{
           width: '100%',
+          marginBottom:30,
+
         }}>
         <FlatList
           data={data}
@@ -687,24 +769,40 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <ImageBackground 
+        
+            source={require('../../assets/bgg.png')}
+
+          
+          style={{
+            // backgroundColor: '#F8F8F8',
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 20,
+            padding: 16,
+
+            alignItems: 'center',
+            // width:"100%",
+            height: Dimensions.get('window').height * 0.75,
+          }}>
             <TouchableOpacity
               onPress={openImagePicker}
               style={{
-                height: 88,
-                width: 88,
-                marginTop: -50,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
 
                 alignSelf: 'center',
                 backgroundColor: '#EDEDED',
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderRadius: 88,
+                borderRadius: 78,
+                
               }}>
               {imageUri ? (
                 <Image
                   source={{uri: imageUri}}
-                  style={{width: '100%', height: '100%', borderRadius: 88}}
+                  style={{width: '100%', height: '100%', borderRadius: 78}}
                 />
               ) : (
                 <View
@@ -712,9 +810,11 @@ export default function PlantDetail({navigation}) {
                     backgroundColor: '#F4F4F4',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: 88,
-                    borderRadius: 88,
-                    height: 88,
+                    marginLeft:0.5,
+
+                    width: 78,
+                    borderRadius: 78,
+                    height: 78,
                   }}>
                   <Text
                     style={{
@@ -729,22 +829,43 @@ export default function PlantDetail({navigation}) {
               )}
             </TouchableOpacity>
             <TouchableOpacity onPress={openImagePicker}>
+              <View
+              style={{
+width:90, height:26, backgroundColor:"#fff",
+elevation:3,
+marginTop:-8,
+flexDirection:"row",
+borderRadius:16, justifyContent:"center", alignItems:"center"
+              }}
+              >
+ <Image
+            source={require('../../assets/Regular.png')}
+
+                  // source={{uri: imageUri}}
+                  style={{width: 10, height: 10,}}
+                />
               <Text
                 style={{
                   // height:20, width:100, elevation:5,
-                  fontSize: 20,
+                  fontSize: 10,
+                  marginLeft:3,
+
                   color: '#1BBFA0',
-                  alignSelf: 'center',
-                  fontWeight: '600',
-                  marginBottom: 10,
+                  // alignSelf: 'center',
+                  // fontWeight: '600',
+                  // marginBottom: 10,
                 }}>
                 Change Photo
               </Text>
+              </View>
+
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={closeBottomSheet}>
-              <Text>Close</Text>
-            </TouchableOpacity>
+         <View
+         style={{
+          height:10
+         }}
+         />
             <FormInput1
               // style={styles.input}
               onChangeText={username => setuserName(username)}
@@ -885,7 +1006,7 @@ export default function PlantDetail({navigation}) {
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -895,7 +1016,22 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet1}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          
+          <ImageBackground 
+        
+        source={require('../../assets/bgg.png')}
+
+      
+      style={{
+        // backgroundColor: '#F8F8F8',
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 20,
+        padding: 16,
+
+        alignItems: 'center',
+        // width:"100%",
+        height: Dimensions.get('window').height * 0.75,
+      }}>
             <Image
               source={
                 SelectedImageUri
@@ -903,11 +1039,13 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
+                
               }}
             />
 
@@ -916,12 +1054,14 @@ export default function PlantDetail({navigation}) {
                 fontSize: 20,
                 color: '#161C1C',
                 fontWeight: '600',
+                marginTop:20
               }}>
               Create Space
             </Text>
             <Text
               style={{
                 fontSize: 14,
+                marginBottom:20,
                 color: '#9B9B9B',
                 // fontWeight: '600',
               }}>
@@ -940,63 +1080,18 @@ export default function PlantDetail({navigation}) {
               autocorrect={false}
             />
 
-            {data1.map((item, index) => (
-              <TouchableOpacity
-                key={item.id}
-                onPress={() => handleRadioSelect1(index)}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  width: '100%',
-                  height: 55,
-                  borderWidth: 1,
-                  borderColor: selectedRadio1 === index ? '#1BBFA0' : '#DEF2ED',
-                  borderRadius: 8,
-                  marginVertical: 5,
-                  paddingHorizontal: 10,
-                }}>
-                <View
-                  style={{
-                    // position: 'absolute',
-                    // right: 10,
-                    width: 20,
-                    height: 20,
-                    borderWidth: 1.5,
-                    marginRight: 10,
-                    // borderColor: '#D9D6DF',
-                    borderColor:
-                      selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
-                    borderRadius: 20,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <View
-                    style={{
-                      width: 12,
-                      height: 12,
-                      backgroundColor:
-                        selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
-                      borderRadius: 20,
-                    }}></View>
-                </View>
-
-                <View>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      color: selectedRadio1 === index ? '#161C1C' : '#9B9B9B',
-                      fontWeight: '600',
-                    }}>
-                    {item.title}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            ))}
+<FlatList
+      data={data1}
+      renderItem={renderItem1}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2} // Set the number of columns to 2
+      contentContainerStyle={{ paddingHorizontal: '2%' }} // Adjust the content container style
+    />
 
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet1}>
               <Text style={styles.buttonText}>Create</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -1006,7 +1101,21 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet2}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <ImageBackground 
+        
+        source={require('../../assets/bgg.png')}
+
+      
+      style={{
+        // backgroundColor: '#F8F8F8',
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 20,
+        padding: 16,
+
+        alignItems: 'center',
+        // width:"100%",
+        height: Dimensions.get('window').height * 0.75,
+      }}>
             <Image
               source={
                 SelectedImageUri
@@ -1014,17 +1123,20 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
+              
               }}
             />
 
             <Text
               style={{
                 fontSize: 20,
+                marginTop:20,
                 color: '#161C1C',
                 fontWeight: '600',
               }}>
@@ -1035,6 +1147,7 @@ export default function PlantDetail({navigation}) {
                 fontSize: 14,
                 color: '#9B9B9B',
                 // fontWeight: '600',
+                marginBottom:20
               }}>
               How much light does your plant get?
             </Text>
@@ -1095,7 +1208,7 @@ export default function PlantDetail({navigation}) {
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet2}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -1105,7 +1218,22 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet3}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <ImageBackground 
+        
+        source={require('../../assets/bgg.png')}
+
+      
+      style={{
+        // backgroundColor: '#F8F8F8',
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 20,
+        padding: 16,
+
+        alignItems: 'center',
+        // width:"100%",
+        height: Dimensions.get('window').height * 0.75,
+      }}>
+
             <Image
               source={
                 SelectedImageUri
@@ -1113,17 +1241,20 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
+              
               }}
             />
 
             <Text
               style={{
                 fontSize: 20,
+                marginTop:20,
                 color: '#161C1C',
                 fontWeight: '600',
               }}>
@@ -1134,6 +1265,7 @@ export default function PlantDetail({navigation}) {
                 fontSize: 14,
                 color: '#9B9B9B',
                 // fontWeight: '600',
+                marginBottom:20
               }}>
               What soil mixture do you use?
             </Text>
@@ -1194,7 +1326,7 @@ export default function PlantDetail({navigation}) {
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet3}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -1204,7 +1336,22 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet4}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <ImageBackground 
+        
+        source={require('../../assets/bgg.png')}
+
+      
+      style={{
+        // backgroundColor: '#F8F8F8',
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 20,
+        padding: 16,
+
+        alignItems: 'center',
+        // width:"100%",
+        height: Dimensions.get('window').height * 0.75,
+      }}>
+
             <Image
               source={
                 SelectedImageUri
@@ -1212,19 +1359,23 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
+                
               }}
             />
 
             <Text
               style={{
+                marginTop:10,
                 fontSize: 20,
                 color: '#161C1C',
                 fontWeight: '600',
+                // marginBottom:10
               }}>
               Pot Size
             </Text>
@@ -1236,7 +1387,42 @@ export default function PlantDetail({navigation}) {
               }}>
               Pick the height and width of the pot
             </Text>
+            <View
+              style={{
+                width: '70%',
+                zIndex:20,
+                position:"absolute", right:-75,
+                top:200,
+                // marginTop:-30,
+                transform: [{ rotate: '90deg' }],
 
+              }}>
+              <Slider
+                value={potSize1}
+                onValueChange={value => setPotSize1(value)}
+                minimumValue={2}
+                maximumValue={20}
+                step={1}
+                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
+                maximumTrackTintColor="#C9C9C9"
+                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbStyle={{
+                  borderWidth:2, borderColor:"#fff", elevation:4
+                }}
+                
+              />
+               <Text
+              style={{
+                fontSize: 16,
+                color: '#13867B',
+                // transform: [{ rotate: '90deg' }],
+                textAlign:"center",
+
+              }}>
+             
+              Width ≈ {potSize1} in
+            </Text>
+            </View>
             <Image
               source={require('../../assets/Plot.png')}
               style={{
@@ -1245,9 +1431,10 @@ export default function PlantDetail({navigation}) {
                 marginTop: 20,
               }}
             />
+             
             <View
               style={{
-                width: '100%',
+                width: '75%',
               }}>
               <Slider
                 value={potSize}
@@ -1256,7 +1443,12 @@ export default function PlantDetail({navigation}) {
                 maximumValue={20}
                 step={1}
                 minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
-                maximumTrackTintColor="#9B9B9B"
+                maximumTrackTintColor="#C9C9C9"
+                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbStyle={{
+                  borderWidth:2, borderColor:"#fff", elevation:4
+                }}
+
               />
             </View>
             <Text
@@ -1266,32 +1458,12 @@ export default function PlantDetail({navigation}) {
               }}>
               Height ≈ {potSize} in
             </Text>
-            <View
-              style={{
-                width: '100%',
-              }}>
-              <Slider
-                value={potSize1}
-                onValueChange={value => setPotSize1(value)}
-                minimumValue={0}
-                maximumValue={20}
-                step={1}
-                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
-                maximumTrackTintColor="#9B9B9B"
-              />
-            </View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#13867B',
-              }}>
-              {' '}
-              Width ≈ {potSize1} in
-            </Text>
+        
+           
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet4}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -1301,7 +1473,21 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet5}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <ImageBackground 
+        
+        source={require('../../assets/bgg.png')}
+
+      
+      style={{
+        // backgroundColor: '#F8F8F8',
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 20,
+        padding: 16,
+
+        alignItems: 'center',
+        // width:"100%",
+        height: Dimensions.get('window').height * 0.75,
+      }}>
             <Image
               source={
                 SelectedImageUri
@@ -1309,11 +1495,13 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
+            
               }}
             />
 
@@ -1322,12 +1510,14 @@ export default function PlantDetail({navigation}) {
                 fontSize: 20,
                 color: '#161C1C',
                 fontWeight: '600',
+                marginTop:20,
               }}>
               Watering Plant
             </Text>
             <Text
               style={{
                 fontSize: 14,
+                marginBottom:10,
                 color: '#9B9B9B',
                 // fontWeight: '600',
               }}>
@@ -1340,8 +1530,9 @@ export default function PlantDetail({navigation}) {
             />
             <View
               style={{
-                height: 55,
+                height: 42,
                 width: '100%',
+                marginBottom:20
               }}>
               <FlatList
                 data={data4}
@@ -1354,7 +1545,8 @@ export default function PlantDetail({navigation}) {
                       // flexDirection: 'row',
                       alignItems: 'center',
                       width: 100, // Adjust the width as needed
-                      height: 55,
+                      height: 37,
+                      // marginBottom:30,
                       borderWidth: 1,
                       borderColor:
                         selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
@@ -1382,12 +1574,38 @@ export default function PlantDetail({navigation}) {
                 keyExtractor={item => item.id}
               />
             </View>
+            <View
+            style={{
+              height:1,
+width:"100%",
+             marginVertical:10,
+backgroundColor:"#DCDCDC"
+            }}
+            />
+            <View
+            style=
+            {
+              {
+                width:"100%",
+                // backgroundColor:"pink",
+                justifyContent:"space-between",
+                flexDirection:"row",
+                alignItems:"center"
+                // marginTop:20
+                
+              }
+            }
+            >
+
+
             <Text style={styles.loginDescription1}>Select a Date</Text>
+            <View>
+
             <TouchableOpacity
               onPress={() => setShowDatePicker(true)} // Show date picker when the text is pressed
               style={{
                 height: 40,
-                borderBottomWidth: 1,
+                // borderBottomWidth: 1,
                 borderColor: '#D9D6DF',
                 justifyContent: 'center',
               }}>
@@ -1408,6 +1626,17 @@ export default function PlantDetail({navigation}) {
                 onChange={handleDateChange}
               />
             )}
+            </View>
+
+            </View>
+            <View
+            style={{
+              height:1,
+width:"100%",
+             marginVertical:10,
+backgroundColor:"#DCDCDC"
+            }}
+            />
             <View
               style={{
                 width: '100%',
@@ -1421,6 +1650,25 @@ export default function PlantDetail({navigation}) {
                 }}>
                 When are you free during the day?
               </Text>
+              <View
+              style={{
+                width:"100%",
+                alignItems:"center",
+flexDirection:"row",
+justifyContent:"space-between"
+              }}
+              >
+
+             
+              <View
+              style={{
+                width:"47%",
+                alignItems:"center",
+                
+              }}
+              >
+
+             
               <FormInput
                 // style={styles.input}
                 onChangeText={username2 => setuserName2(username2)}
@@ -1432,6 +1680,15 @@ export default function PlantDetail({navigation}) {
                 autoCapitalize="none"
                 autocorrect={false}
               />
+               </View>
+               <View
+              style={{
+                width:"47%",
+                alignItems:"center",
+                
+              }}
+              >
+
               <FormInput
                 // style={styles.input}
                 onChangeText={username3 => setuserName3(username3)}
@@ -1443,12 +1700,14 @@ export default function PlantDetail({navigation}) {
                 autoCapitalize="none"
                 autocorrect={false}
               />
+              </View>
+              </View>
             </View>
 
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet5}>
               <Text style={styles.buttonText}>Add Plant</Text>
             </TouchableOpacity>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
     </ScrollView>
@@ -1533,7 +1792,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#312651',
     fontWeight: '600',
-    marginTop: 20,
+    // marginTop: 20,
   },
   loginDescription2: {
     fontSize: 15,

@@ -94,18 +94,18 @@ export default function Reminder({navigation}) {
 
           <View
             style={{
-              marginLeft: 10,
+              marginLeft: 15,
             }}>
             <Text
               style={{
-                fontSize: 14,
+                fontSize: 12,
                 color: '#161C1C',
               }}>
               {item.location}
             </Text>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: '#161C1C',
                 fontWeight: '500',
               }}>
@@ -113,7 +113,7 @@ export default function Reminder({navigation}) {
             </Text>
             <Text
               style={{
-                fontSize: 14,
+                fontSize: 12,
                 color: textColor,
               }}>
               {item.nextWatering || item.OverdueWatering}
@@ -161,7 +161,6 @@ export default function Reminder({navigation}) {
     {id: '4', title: 'TH', data: '20'},
     {id: '5', title: 'FR', data: '21'},
     {id: '6', title: 'SA', data: '22'},
-    {id: '7', title: 'SU', data: '23'},
 
     // Add more data as needed
   ];
@@ -288,7 +287,7 @@ export default function Reminder({navigation}) {
                   elevation: 5,
                   borderWidth: 1,
                   borderRadius: 20,
-                  marginRight: 20,
+                  marginRight: 6,
                   borderColor: selectedRadio4 === index ? '#1BBFA0' : '#fff',
                   marginVertical: 5,
                   paddingHorizontal: 10,

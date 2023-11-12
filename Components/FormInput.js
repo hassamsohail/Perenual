@@ -34,7 +34,7 @@ export default FormInput;
 const styles = StyleSheet.create({
   inputContainer: {
     height: 56,
-    width: "90%",
+    width: "100%",
     marginVertical: 12,
     justifyContent:"center",
     // borderWidth: 1,

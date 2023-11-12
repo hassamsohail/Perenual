@@ -565,7 +565,8 @@ export default function Plantsdetail2({navigation}) {
                 }}>
                 <View
                   style={{
-                    width: 100,
+                    width: 105,
+                    // marginLeft:-10,
                     height: 33,
                     backgroundColor: indexofData == index ? '#fff' : null,
                     borderRadius: 20,
@@ -602,7 +603,7 @@ export default function Plantsdetail2({navigation}) {
                 fontWeight: 'bold',
                 alignSelf: 'center',
 
-                marginTop: 6,
+                marginTop: 10,
               }}>
               Reminders
             </Text>
@@ -1125,6 +1126,7 @@ export default function Plantsdetail2({navigation}) {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 flexDirection: 'row',
+                marginBottom:20
               }}>
               <Image
                 source={require('../../assets/A.png')}
@@ -1148,11 +1150,21 @@ export default function Plantsdetail2({navigation}) {
             <View
               style={{
                 width: '100%',
+                // marginBottom:20
+
               }}>
               <FlatList
                 data={data3}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+              />
+              <View
+              style={
+                {
+                marginBottom:20
+
+                }
+              }
               />
               <View
                 style={{
@@ -1249,7 +1261,7 @@ export default function Plantsdetail2({navigation}) {
                 fontWeight: 'bold',
                 // alignSelf: 'center',
 
-                marginTop: 6,
+                marginTop: 20,
               }}>
               History
             </Text>
@@ -1306,7 +1318,7 @@ export default function Plantsdetail2({navigation}) {
                     <View
                       style={{
                         marginBottom: 10,
-                        width: '60%',
+                        width: '70%',
                         paddingLeft: 10,
                         alignItems: 'center',
                         flexDirection: 'row',
@@ -1332,7 +1344,7 @@ export default function Plantsdetail2({navigation}) {
                       <View>
                         <View
                           style={{
-                            width: '80%',
+                            width: '77%',
                             // marginLeft: -10,
                             flexDirection: 'row',
                             justifyContent: 'space-between',
