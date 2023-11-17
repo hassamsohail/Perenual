@@ -266,7 +266,7 @@ export default function Reminder({navigation}) {
         <View
           style={{
             alignSelf: 'center',
-            width: '90%',
+            width: '100%',
           }}>
           <FlatList
             data={data4}
