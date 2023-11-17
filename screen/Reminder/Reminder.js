@@ -28,7 +28,6 @@ export default function Reminder({navigation}) {
       name: "Bird's Aspleniaceae",
       nextWatering: 'Watering done!',
     },
-   
 
     // Add more plant data objects as needed
   ];
@@ -59,7 +58,7 @@ export default function Reminder({navigation}) {
     newData[index].expanded = !newData[index].expanded;
     setData5(newData);
   };
- 
+
   const [selectedRadio4, setSelectedRadio4] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -161,13 +160,13 @@ export default function Reminder({navigation}) {
     {id: '4', title: 'TH', data: '20'},
     {id: '5', title: 'FR', data: '21'},
     {id: '6', title: 'SA', data: '22'},
+    {id: '6', title: 'SA', data: '23'},
 
     // Add more data as needed
   ];
   return (
-  
     <ScrollView
-    contentContainerStyle={{
+      contentContainerStyle={{
         flex: 1,
         backgroundColor: 'white',
       }}>
@@ -281,7 +280,7 @@ export default function Reminder({navigation}) {
                   alignItems: 'center',
                   width: 44,
                   marginLeft: 4,
-                  
+
                   height: 70,
                   backgroundColor: '#fff',
                   elevation: 5,
@@ -341,7 +340,9 @@ export default function Reminder({navigation}) {
                 width: '90%',
                 alignSelf: 'center',
                 paddingLeft: 10,
-                paddingTop: 23,
+                paddingTop: item.expanded ? 18 : null,
+                alignItems: item.expanded ? null : 'center',
+                // justifyContent:"center",
                 flexDirection: 'row',
                 height: item.expanded ? 160 : 77,
                 borderWidth: 1,
@@ -366,12 +367,14 @@ export default function Reminder({navigation}) {
                 <View
                   style={{
                     width: '70%',
+
                     flexDirection: 'row',
                     justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}>
                   <Text
                     style={{
-                      marginTop: 5,
+                      // marginTop: 5,
                       fontSize: 16,
                       fontWeight: '600',
                       color: '#161C1C',
@@ -399,7 +402,7 @@ export default function Reminder({navigation}) {
                       height: 70,
                       width: '82%',
                       marginTop: 14,
-                      marginLeft: -45,
+                      marginLeft: -48,
                     }}>
                     <FlatList
                       data={plantData}
@@ -468,7 +471,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background
     justifyContent: 'flex-end', // Modal appears at the bottom
   },
-  
+
   bottomSheet: {
     backgroundColor: 'white',
     borderTopLeftRadius: 20,

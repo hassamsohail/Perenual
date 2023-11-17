@@ -300,18 +300,19 @@ export default function Plantsdetail2({navigation}) {
       status: 'Done',
       schedule: 'Every 1 week',
       image: require('../../assets/icon1.png'),
+      Icon: require('../../assets/Fille.png')
     },
 
-    {
-      id: '2',
-      name: 'Note',
-      date: '1 Des',
-      time: '20:30',
-      // status:"Done",
+    // {
+    //   id: '2',
+    //   name: 'Note',
+    //   date: '1 Des',
+    //   time: '20:30',
+    //   // status:"Done",
 
-      schedule: 'These plants ..',
-      image: require('../../assets/note.png'),
-    },
+    //   schedule: 'These plants like to be...',
+    //   image: require('../../assets/note.png'),
+    // },
 
     // Add more data items as needed
   ];
@@ -1150,7 +1151,7 @@ export default function Plantsdetail2({navigation}) {
             <View
               style={{
                 width: '100%',
-                // marginBottom:20
+                marginBottom:20
 
               }}>
               <FlatList
@@ -1284,6 +1285,8 @@ export default function Plantsdetail2({navigation}) {
                       alignItems: 'center',
                       justifyContent: 'space-between',
                     }}>
+                      <View>
+
                     <Text
                       style={{
                         fontSize: 16,
@@ -1296,6 +1299,20 @@ export default function Plantsdetail2({navigation}) {
                       }}>
                       5 Aug
                     </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+
+                        color: '#9B9B9B',
+                        // fontWeight: 'bold',
+                        // alignSelf: 'center',
+
+                        // marginTop: 6,
+                      }}>
+                     20:30
+                    </Text>
+                    </View>
+                    
 
                     <View
                       style={{
@@ -1322,7 +1339,7 @@ export default function Plantsdetail2({navigation}) {
                         paddingLeft: 10,
                         alignItems: 'center',
                         flexDirection: 'row',
-                        height: 77,
+                        height: 58,
                         borderWidth: 1,
                         borderColor: '#EBEBEB',
                         backgroundColor: '#fff',
@@ -1374,9 +1391,23 @@ export default function Plantsdetail2({navigation}) {
                           </View>
                           <View
                             style={{
-                              alignItems: 'flex-end',
+                              // alignItems: 'flex-end',
+                              alignItems:"center",
                               justifyContent: 'center',
+                              flexDirection:"row",
+                              // marginTop:-10
                             }}>
+                              
+                              <Image
+                          source={item.Icon}
+
+                          
+                          style={{
+                            height: 20,
+                            width: 20,
+                          }}
+                        />
+
                             <Text
                               style={{
                                 // marginLeft: 10,

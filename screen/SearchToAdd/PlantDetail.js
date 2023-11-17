@@ -199,9 +199,10 @@ export default function PlantDetail({navigation}) {
         marginRight:"2%",
         height: 55,
         borderWidth: 1,
-        borderColor: selectedRadio1 === index ? '#1BBFA0' : '#DEF2ED',
+        borderColor: selectedRadio1 === index ? '#fff' : '#fff',
         borderRadius: 8,
         marginVertical: 5,
+        backgroundColor:"#fff",
         paddingHorizontal: 8,
         justifyContent:"space-between"
       }}>
@@ -225,7 +226,7 @@ export default function PlantDetail({navigation}) {
           style={{
             fontSize: 14,
             color:
-              selectedRadio1 === index ? '#161C1C' : '#9B9B9B',
+              selectedRadio1 === index ? '#9B9B9B' : '#9B9B9B',
             fontWeight: '600',
           }}>
           {item.title}
@@ -239,7 +240,7 @@ export default function PlantDetail({navigation}) {
           borderWidth: 1.5,
           // marginRight: 1,
           borderColor:
-            selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
+            selectedRadio1 === index ? '#D7D7D7' : '#D7D7D7',
           borderRadius: 20,
           justifyContent: 'center',
           alignItems: 'center',
@@ -249,7 +250,7 @@ export default function PlantDetail({navigation}) {
             width: 12,
             height: 12,
             backgroundColor:
-              selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
+              selectedRadio1 === index ? '#D7D7D7' : '#fff',
             borderRadius: 20,
           }}
         ></View>
@@ -753,7 +754,7 @@ export default function PlantDetail({navigation}) {
       <View
         style={{
           width: '100%',
-          marginBottom:30,
+          marginBottom:60,
 
         }}>
         <FlatList
@@ -1136,7 +1137,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             <Text
               style={{
                 fontSize: 20,
-                marginTop:20,
+                marginTop:25,
                 color: '#161C1C',
                 fontWeight: '600',
               }}>
@@ -1532,7 +1533,10 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
               style={{
                 height: 42,
                 width: '100%',
-                marginBottom:20
+                marginBottom:20,
+                alignSelf:"center",
+                alignItems:"center"
+                
               }}>
               <FlatList
                 data={data4}
@@ -1544,7 +1548,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
                     style={{
                       // flexDirection: 'row',
                       alignItems: 'center',
-                      width: 100, // Adjust the width as needed
+                      width: 97, // Adjust the width as needed
                       height: 37,
                       // marginBottom:30,
                       borderWidth: 1,

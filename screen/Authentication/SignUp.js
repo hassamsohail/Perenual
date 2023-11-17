@@ -331,7 +331,6 @@ export default function SignUp({navigation}) {
         </View>
       </TouchableOpacity>
       </View>
-
     </LinearGradient>
     </ScrollView>
   );
