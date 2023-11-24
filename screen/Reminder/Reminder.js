@@ -160,7 +160,16 @@ export default function Reminder({navigation}) {
     {id: '4', title: 'TH', data: '20'},
     {id: '5', title: 'FR', data: '21'},
     {id: '6', title: 'SA', data: '22'},
-    {id: '6', title: 'SA', data: '23'},
+    {id: '7', title: 'SU', data: '23'},
+    {id: '8', title: 'MO', data: '24'},
+
+    {id: '9', title: 'TU', data: '25'},
+
+    {id: '10', title: 'WE', data: '26'},
+
+    {id: '11', title: 'TH', data: '27'},
+    {id: '12', title: 'FR', data: '28'},
+
 
     // Add more data as needed
   ];
@@ -349,10 +358,13 @@ export default function Reminder({navigation}) {
                 borderColor: '#EBEBEB',
                 backgroundColor: '#fff',
                 borderRadius: 16,
+
               }}>
               <View
                 style={{
                   width: '15%',
+backgroundColor:"pink",
+
                 }}>
                 <Image
                   source={item.image}
@@ -367,7 +379,7 @@ export default function Reminder({navigation}) {
                 <View
                   style={{
                     width: '70%',
-
+backgroundColor:"pink",
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -403,6 +415,7 @@ export default function Reminder({navigation}) {
                       width: '82%',
                       marginTop: 14,
                       marginLeft: -48,
+                      
                     }}>
                     <FlatList
                       data={plantData}

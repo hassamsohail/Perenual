@@ -242,12 +242,16 @@ function App() {
 }
 const TabNavi = () => {
   return (
+    
+
+ 
     <Tab.Navigator
-      screenOptions={{headerShown: false}}
+    screenOptions={{
+      headerShown: false,
+      tabBarStyle: { height: 80 }, // Adjust the height as needed
+    }}
       initialRouteName="MainScreen"
-      tabBarOptions={{
-        style: { height: 80 }, // Set the custom height here
-      }}
+      
       >
       <Tab.Screen
         name="Mainscreen"
@@ -359,6 +363,7 @@ const TabNavi = () => {
       />
      
     </Tab.Navigator>
+   
   );
 };
 
@@ -368,7 +373,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  splashImage: {
+  splashImage: {  
     width: '100%',
     height: '100%',
   },

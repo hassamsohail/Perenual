@@ -391,7 +391,7 @@ export default function Mainscreen({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: 64, // Adjust the bottom value as needed
+            bottom: 95, // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}
