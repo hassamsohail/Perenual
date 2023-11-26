@@ -156,7 +156,6 @@ export default function Mainscreen({navigation}) {
       </TouchableOpacity>
     );
   };
-
   return (
     <View
       style={{
@@ -305,42 +304,38 @@ export default function Mainscreen({navigation}) {
               </View>
             </View>
             <TouchableOpacity
-            style={{
-              width: '32%',
-
-            }}
-            >
-
-            <View
               style={{
-                marginLeft: 10,
-                flexDirection: 'row',
-                justifyContent: 'center',
-
-                alignItems: 'center',
-                width: '100%',
-                height: 56,
-                backgroundColor: '#DEF2ED',
-                borderRadius: 16,
+                width: '32%',
               }}>
- <Image
+              <View
+                style={{
+                  marginLeft: 10,
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+
+                  alignItems: 'center',
+                  width: '100%',
+                  height: 56,
+                  backgroundColor: '#DEF2ED',
+                  borderRadius: 16,
+                }}>
+                <Image
                   source={require('../../assets/filterImage.png')}
                   style={{
                     width: 18,
                     height: 18,
                   }}></Image>
- <Text
-              style={{
-                fontSize: 14,
-                color: '#1BBFA0',
-                fontWeight: "normal",
-                marginLeft: 4,
-              }}>
-              Filter
-            </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#1BBFA0',
+                    fontWeight: 'normal',
+                    marginLeft: 4,
+                  }}>
+                  Filter
+                </Text>
               </View>
             </TouchableOpacity>
-
           </View>
           <View
             style={{
@@ -391,8 +386,7 @@ export default function Mainscreen({navigation}) {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: 95, // Adjust the bottom value as needed
-            // Adjust the bottom value as needed
+            bottom: 95, 
             right: '5%',
           }}
           onPress={openBottomSheet}>

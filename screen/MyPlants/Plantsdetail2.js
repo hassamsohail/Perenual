@@ -299,10 +299,19 @@ export default function Plantsdetail2({navigation}) {
       time: '20:30',
       status: 'Done',
       schedule: 'Every 1 week',
-      image: require('../../assets/icon1.png'),
+      image: require('../../assets/Droop.png'),
       Icon: require('../../assets/Fille.png')
     },
-
+    {
+      id: '2',
+      name: 'Cleaning',
+      date: '1 Des',
+      time: '20:30',
+      status: 'Done',
+      schedule: 'Every 1 week',
+      image: require('../../assets/Cleaning.png'),
+      Icon: require('../../assets/Fille.png')
+    },
     // {
     //   id: '2',
     //   name: 'Note',
@@ -1281,6 +1290,7 @@ export default function Plantsdetail2({navigation}) {
                   <View
                     style={{
                       flexDirection: 'row',
+                      marginBottom:20,
                       width: '100%',
                       alignItems: 'center',
                       justifyContent: 'space-between',
@@ -1334,9 +1344,10 @@ export default function Plantsdetail2({navigation}) {
                     </View>
                     <View
                       style={{
-                        marginBottom: 10,
+                        // marginBottom: 10,
                         width: '70%',
-                        paddingLeft: 10,
+                        // paddingLeft: 10,
+                        paddingHorizontal:10,
                         alignItems: 'center',
                         flexDirection: 'row',
                         height: 58,
@@ -1396,6 +1407,8 @@ export default function Plantsdetail2({navigation}) {
                               justifyContent: 'center',
                               flexDirection:"row",
                               // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft:45
                             }}>
                               
                               <Image

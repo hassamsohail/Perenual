@@ -27,6 +27,7 @@ export default function Reminder({navigation}) {
       location: 'Not in a plant room',
       name: "Bird's Aspleniaceae",
       nextWatering: 'Watering done!',
+      OverdueWatering: 'Need 120 ml water',
     },
 
     // Add more plant data objects as needed
@@ -38,12 +39,12 @@ export default function Reminder({navigation}) {
       image: require('../../assets/icon1.png'),
       expanded: true,
     },
-    {
-      id: '2',
-      name: 'Fertilizer',
-      image: require('../../assets/icon4.png'),
-      expanded: true,
-    },
+    // {
+    //   id: '2',
+    //   name: 'Fertilizer',
+    //   image: require('../../assets/icon4.png'),
+    //   expanded: true,
+    // },
     // {
     //   id: '3',
     //   name: 'Pruning',
@@ -67,87 +68,187 @@ export default function Reminder({navigation}) {
   };
 
   const renderPlantItem = ({item}) => {
-    const textColor = item.nextWatering ? '#1BBFA0' : '#E74C3C';
+    const textColor = item.nextWatering
+      ? '#1BBFA0'
+      : item.OverdueWatering
+      ? '#E74C3C'
+      : null;
     const checkboxColor = isChecked ? '#1BBFA0' : '#CCCCCC';
 
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16,
-        }}>
+      <View>
         <View
           style={{
             flexDirection: 'row',
+            justifyContent: 'space-between',
             alignItems: 'center',
+            // marginBottom: 16,
           }}>
-          <Image
-            source={item.image}
-            style={{
-              width: 80,
-              height: 80,
-            }}
-          />
-
           <View
             style={{
-              marginLeft: 15,
-            }}>
-            <Text
-              style={{
-                fontSize: 12,
-                color: '#161C1C',
-              }}>
-              {item.location}
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#161C1C',
-                fontWeight: '500',
-              }}>
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: 12,
-                color: textColor,
-              }}>
-              {item.nextWatering || item.OverdueWatering}
-            </Text>
-          </View>
-        </View>
-        <TouchableOpacity onPress={toggleCheckbox}>
-          <View
-            style={{
-              height: 19.5,
-              width: 19.5,
+              flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: checkboxColor,
-              borderRadius: 19.5,
             }}>
-            {isChecked ? (
-              <Image
-                source={require('../../assets/CheckBox.png')}
+            <Image
+              source={item.image}
+              style={{
+                width: 80,
+                height: 80,
+              }}
+            />
+
+            <View
+              style={{
+                marginLeft: 15,
+              }}>
+              <Text
                 style={{
-                  width: 12,
-                  height: 12,
-                }}
-              />
-            ) : (
-              <Image
-                source={require('../../assets/CheckBox.png')}
+                  fontSize: 12,
+                  color: '#9B9B9B',
+                  // marginTop:5
+                }}>
+                {item.location}
+              </Text>
+              <Text
                 style={{
-                  width: 12,
-                  height: 12,
-                }}
-              />
-            )}
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                  fontWeight: '500',
+                  marginTop: 8,
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  marginTop: 8,
+                  color: textColor,
+                }}>
+                {item.nextWatering}
+              </Text>
+            </View>
           </View>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={toggleCheckbox}>
+            <View
+              style={{
+                height: 19.5,
+                width: 19.5,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: checkboxColor,
+                borderRadius: 19.5,
+              }}>
+              {isChecked ? (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            width: '100%',
+            height: 1,
+            backgroundColor: '#EBEBEB',
+            marginVertical: 8,
+          }}
+        />
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            // marginBottom: 16,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={item.image}
+              style={{
+                width: 80,
+                height: 80,
+              }}
+            />
+
+            <View
+              style={{
+                marginLeft: 15,
+              }}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#9B9B9B',
+                  // marginTop:5
+                }}>
+                {item.location}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                  fontWeight: '500',
+                  marginTop: 8,
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  marginTop: 8,
+                  color: "#F1655E",
+                }}>
+          Need 120 ml water
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity onPress={toggleCheckbox}>
+            <View
+              style={{
+                height: 19.5,
+                width: 19.5,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: checkboxColor,
+                borderRadius: 19.5,
+              }}>
+              {isChecked ? (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
@@ -169,7 +270,6 @@ export default function Reminder({navigation}) {
 
     {id: '11', title: 'TH', data: '27'},
     {id: '12', title: 'FR', data: '28'},
-
 
     // Add more data as needed
   ];
@@ -345,54 +445,57 @@ export default function Reminder({navigation}) {
           renderItem={({item, index}) => (
             <View
               style={{
-                marginBottom: 10,
                 width: '90%',
                 alignSelf: 'center',
-                paddingLeft: 10,
-                paddingTop: item.expanded ? 18 : null,
-                alignItems: item.expanded ? null : 'center',
+
+                // alignItems: item.expanded ? null : 'center',
                 // justifyContent:"center",
-                flexDirection: 'row',
-                height: item.expanded ? 160 : 77,
+                height: item.expanded ? 256 : 60,
+
                 borderWidth: 1,
                 borderColor: '#EBEBEB',
                 backgroundColor: '#fff',
                 borderRadius: 16,
-
               }}>
               <View
                 style={{
-                  width: '15%',
-backgroundColor:"pink",
+                  width: '100%',
+                  borderTopLeftRadius: 16,
+                  borderTopRightRadius: 16,
+                  justifyContent: 'space-between',
+                  height: 48,
+                  alignSelf: 'center',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                paddingTop:item.expanded ? null:9,
 
+                  backgroundColor: item.expanded ? '#489BDF' : '#fff',
+                  paddingHorizontal: 20,
                 }}>
-                <Image
-                  source={item.image}
-                  style={{
-                    height: 32,
-                    width: 32,
-                  }}
-                />
-              </View>
-
-              <View>
                 <View
                   style={{
-                    width: '70%',
-backgroundColor:"pink",
                     flexDirection: 'row',
-                    justifyContent: 'space-between',
                     alignItems: 'center',
                   }}>
+                  <Image
+                    source={item.image}
+                    style={{
+                      height: 32,
+                      width: 32,
+                    }}
+                  />
                   <Text
                     style={{
                       // marginTop: 5,
+                      marginLeft: 10,
                       fontSize: 16,
                       fontWeight: '600',
-                      color: '#161C1C',
+                      color: item.expanded ? '#fff' : '#161C1C',
                     }}>
                     {item.name}
                   </Text>
+                </View>
+                <View>
                   <TouchableOpacity onPress={() => toggleViewHeight(index)}>
                     <Image
                       source={
@@ -403,28 +506,29 @@ backgroundColor:"pink",
                       style={{
                         width: 24,
                         height: 24,
-                        marginTop: 5,
+                        // marginTop: 5,
                       }}
                     />
                   </TouchableOpacity>
                 </View>
-                {item.expanded && (
-                  <View
-                    style={{
-                      height: 70,
-                      width: '82%',
-                      marginTop: 14,
-                      marginLeft: -48,
-                      
-                    }}>
-                    <FlatList
-                      data={plantData}
-                      keyExtractor={item => item.id}
-                      renderItem={renderPlantItem}
-                    />
-                  </View>
-                )}
               </View>
+
+              {item.expanded && (
+                <View
+                  style={{
+                    // height: 48,
+                    paddingHorizontal: 20,
+
+                    width: '100%',
+                    marginVertical: '5%',
+                  }}>
+                  <FlatList
+                    data={plantData}
+                    keyExtractor={item => item.id}
+                    renderItem={renderPlantItem}
+                  />
+                </View>
+              )}
             </View>
           )}
         />
