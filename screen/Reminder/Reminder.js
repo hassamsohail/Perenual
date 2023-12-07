@@ -457,6 +457,10 @@ export default function Reminder({navigation}) {
                 backgroundColor: '#fff',
                 borderRadius: 16,
               }}>
+                <TouchableOpacity onPress={() => toggleViewHeight(index)}>
+
+
+              
               <View
                 style={{
                   width: '100%',
@@ -500,7 +504,7 @@ export default function Reminder({navigation}) {
                     <Image
                       source={
                         item.expanded
-                          ? require('../../assets/down.png')
+                          ? require('../../assets/down1.png')
                           : require('../../assets/right.png')
                       }
                       style={{
@@ -512,7 +516,7 @@ export default function Reminder({navigation}) {
                   </TouchableOpacity>
                 </View>
               </View>
-
+              </TouchableOpacity>
               {item.expanded && (
                 <View
                   style={{

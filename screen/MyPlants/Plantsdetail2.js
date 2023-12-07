@@ -300,7 +300,7 @@ export default function Plantsdetail2({navigation}) {
       status: 'Done',
       schedule: 'Every 1 week',
       image: require('../../assets/Droop.png'),
-      Icon: require('../../assets/Fille.png')
+      Icon: require('../../assets/Fille.png'),
     },
     {
       id: '2',
@@ -310,7 +310,7 @@ export default function Plantsdetail2({navigation}) {
       status: 'Done',
       schedule: 'Every 1 week',
       image: require('../../assets/Cleaning.png'),
-      Icon: require('../../assets/Fille.png')
+      Icon: require('../../assets/Fille.png'),
     },
     // {
     //   id: '2',
@@ -1136,7 +1136,7 @@ export default function Plantsdetail2({navigation}) {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 flexDirection: 'row',
-                marginBottom:20
+                marginBottom: 20,
               }}>
               <Image
                 source={require('../../assets/A.png')}
@@ -1160,8 +1160,7 @@ export default function Plantsdetail2({navigation}) {
             <View
               style={{
                 width: '100%',
-                marginBottom:20
-
+                marginBottom: 20,
               }}>
               <FlatList
                 data={data3}
@@ -1169,12 +1168,9 @@ export default function Plantsdetail2({navigation}) {
                 keyExtractor={item => item.id}
               />
               <View
-              style={
-                {
-                marginBottom:20
-
-                }
-              }
+                style={{
+                  marginBottom: 20,
+                }}
               />
               <View
                 style={{
@@ -1283,71 +1279,86 @@ export default function Plantsdetail2({navigation}) {
                 height: '78%',
                 marginTop: 10,
               }}>
-              <FlatList
-                data={data5}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
+
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginBottom:20,
+                      marginBottom: 20,
                       width: '100%',
-                      alignItems: 'center',
+                      // alignItems: 'center',
                       justifyContent: 'space-between',
                     }}>
-                      <View>
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
 
-                    <Text
-                      style={{
-                        fontSize: 16,
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
 
-                        color: '#161C1C',
-                        fontWeight: 'bold',
-                        // alignSelf: 'center',
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
 
-                        // marginTop: 6,
-                      }}>
-                      5 Aug
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 14,
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
 
-                        color: '#9B9B9B',
-                        // fontWeight: 'bold',
-                        // alignSelf: 'center',
-
-                        // marginTop: 6,
-                      }}>
-                     20:30
-                    </Text>
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
                     </View>
-                    
 
                     <View
-                      style={{
-                        height: 24,
-                        width: 24,
-                        borderWidth: 1,
-                        borderColor: '#C7C7C7',
-                        borderRadius: 24,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
                       <View
                         style={{
-                          height: 12,
-                          width: 12,
-                          backgroundColor: '#9B9B9B',
-                          borderRadius: 12,
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
                         }}></View>
                     </View>
+
                     <View
                       style={{
                         // marginBottom: 10,
                         width: '70%',
                         // paddingLeft: 10,
-                        paddingHorizontal:10,
+                        paddingHorizontal: 10,
                         alignItems: 'center',
                         flexDirection: 'row',
                         height: 58,
@@ -1361,7 +1372,7 @@ export default function Plantsdetail2({navigation}) {
                           width: '15%',
                         }}>
                         <Image
-                          source={item.image}
+                          source={ require('../../assets/Droop.png')}
                           style={{
                             height: 32,
                             width: 32,
@@ -1389,7 +1400,7 @@ export default function Plantsdetail2({navigation}) {
                                 fontSize: 12,
                                 color: '#161C1C',
                               }}>
-                              {item.name}
+                             Watering
                             </Text>
                             <Text
                               style={{
@@ -1397,29 +1408,26 @@ export default function Plantsdetail2({navigation}) {
                                 fontSize: 12,
                                 color: '#9B9B9B',
                               }}>
-                              {item.schedule}
+                          Every 1 week
                             </Text>
                           </View>
                           <View
                             style={{
                               // alignItems: 'flex-end',
-                              alignItems:"center",
+                              alignItems: 'center',
                               justifyContent: 'center',
-                              flexDirection:"row",
+                              flexDirection: 'row',
                               // marginTop:-10
                               // backgroundColor:"pink",
-                              marginLeft:45
+                              marginLeft: 45,
                             }}>
-                              
-                              <Image
-                          source={item.Icon}
-
-                          
-                          style={{
-                            height: 20,
-                            width: 20,
-                          }}
-                        />
+                            <Image
+                              source={ require('../../assets/Fille.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
 
                             <Text
                               style={{
@@ -1427,15 +1435,337 @@ export default function Plantsdetail2({navigation}) {
                                 fontSize: 14,
                                 color: '#1BBFA0',
                               }}>
-                              {item.status}
+                        Done
                             </Text>
                           </View>
                         </View>
                       </View>
                     </View>
                   </View>
-                )}
-              />
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      // marginBottom: 20,
+                      marginTop:-36,
+                      zIndex:10,
+                      width: '100%',
+                      // alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
+
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
+                    </View>
+
+                    <View
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
+                      <View
+                        style={{
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          backgroundColor:"#F8F8F8",
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
+                        }}></View>
+                    </View>
+
+                    <View
+                      style={{
+                        // marginBottom: 10,
+                        width: '70%',
+                        // paddingLeft: 10,
+                        paddingHorizontal: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        height: 58,
+                        borderWidth: 1,
+                        borderColor: '#EBEBEB',
+                        backgroundColor: '#fff',
+                        borderRadius: 16,
+                      }}>
+                      <View
+                        style={{
+                          width: '15%',
+                        }}>
+                        <Image
+                          source={require('../../assets/Cleaning.png')}
+                          style={{
+                            height: 32,
+                            width: 32,
+                          }}
+                        />
+                      </View>
+
+                      <View>
+                        <View
+                          style={{
+                            width: '77%',
+                            // marginLeft: -10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                          }}>
+                          <View
+                            style={
+                              {
+                                // width:"100%"
+                              }
+                            }>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#161C1C',
+                              }}>
+                             Cleaning
+                            </Text>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#9B9B9B',
+                              }}>
+                          Every 1 week
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              // alignItems: 'flex-end',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexDirection: 'row',
+                              // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft: 45,
+                            }}>
+                            <Image
+                              source={ require('../../assets/Fille.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
+
+                            <Text
+                              style={{
+                                // marginLeft: 10,
+                                fontSize: 14,
+                                color: '#1BBFA0',
+                              }}>
+                        Done
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      // marginBottom: 20,
+                      marginTop:-18,
+                      zIndex:10,
+                      width: '100%',
+                      // alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
+
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
+                    </View>
+
+                    <View
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
+                      <View
+                        style={{
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          backgroundColor:"#F8F8F8",
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      {/* <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
+                        }}></View> */}
+                    </View>
+
+                    <View
+                      style={{
+                        // marginBottom: 10,
+                        width: '70%',
+                        // paddingLeft: 10,
+                        paddingHorizontal: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        height: 58,
+                        borderWidth: 1,
+                        borderColor: '#EBEBEB',
+                        backgroundColor: '#fff',
+                        borderRadius: 16,
+                      }}>
+                      <View
+                        style={{
+                          width: '15%',
+                        }}>
+                        <Image
+                          source={ require('../../assets/noot.png')}
+                          style={{
+                            height: 32,
+                            width: 32,
+                          }}
+                        />
+                      </View>
+
+                      <View>
+                        <View
+                          style={{
+                            width: '77%',
+                            // marginLeft: -10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                          }}>
+                          <View
+                            style={
+                              {
+                                // width:"100%"
+                              }
+                            }>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#161C1C',
+                              }}>
+                             Note
+                            </Text>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#9B9B9B',
+                              }}>
+                          These plants like to...
+
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              // alignItems: 'flex-end',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexDirection: 'row',
+                              // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft: 28,
+                            }}>
+                            <Image
+                              source={ require('../../assets/Doot.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
+
+                            
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
               <TouchableOpacity
                 style={{
                   width: '100%',
