@@ -9,6 +9,7 @@ import {
   FlatList,
   Modal,
   ImageBackground,
+  TouchableWithoutFeedback
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -768,6 +769,8 @@ export default function PlantDetail({navigation}) {
         visible={isBottomSheetVisible}
         animationType="slide"
         onRequestClose={closeBottomSheet}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet}>
+
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           <ImageBackground 
@@ -1009,12 +1012,15 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <Modal
         transparent={true}
         visible={isBottomSheetVisible1}
         animationType="slide"
         onRequestClose={closeBottomSheet1}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet1}>
+            
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           
@@ -1094,12 +1100,16 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <Modal
         transparent={true}
         visible={isBottomSheetVisible2}
         animationType="slide"
         onRequestClose={closeBottomSheet2}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet2}>
+
+         
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           <ImageBackground 
@@ -1211,12 +1221,16 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <Modal
         transparent={true}
         visible={isBottomSheetVisible3}
         animationType="slide"
         onRequestClose={closeBottomSheet3}>
+          <TouchableWithoutFeedback onPress={closeBottomSheet3}>
+
+   
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           <ImageBackground 
@@ -1329,12 +1343,15 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <Modal
         transparent={true}
         visible={isBottomSheetVisible4}
         animationType="slide"
         onRequestClose={closeBottomSheet4}>
+           <TouchableWithoutFeedback onPress={closeBottomSheet4}>
+
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           <ImageBackground 
@@ -1466,12 +1483,17 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        
+        </TouchableWithoutFeedback>
       </Modal>
       <Modal
         transparent={true}
         visible={isBottomSheetVisible5}
         animationType="slide"
         onRequestClose={closeBottomSheet5}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet5}>
+
+          
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
           <ImageBackground 
@@ -1713,6 +1735,7 @@ justifyContent:"space-between"
             </TouchableOpacity>
           </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </ScrollView>
   );
