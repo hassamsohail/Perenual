@@ -262,6 +262,10 @@ export default function PlantDetail({navigation}) {
     setIsBottomSheetVisible(false);
     setIsBottomSheetVisible1(true);
   };
+  const closeBottomSheett = () => {
+    setIsBottomSheetVisible(false);
+    
+  };
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false); // Control the visibility of the bottom sheet
   const [isBottomSheetVisible1, setIsBottomSheetVisible1] = useState(false);
   const [isBottomSheetVisible2, setIsBottomSheetVisible2] = useState(false);
@@ -276,22 +280,42 @@ export default function PlantDetail({navigation}) {
     setIsBottomSheetVisible2(false);
     setIsBottomSheetVisible3(true);
   };
+  const closeBottomSheet22 = () => {
+    setIsBottomSheetVisible2(false);
+    
+  };
   const closeBottomSheet3 = () => {
     setIsBottomSheetVisible3(false);
     setIsBottomSheetVisible4(true);
+  };
+  const closeBottomSheet33 = () => {
+    setIsBottomSheetVisible3(false);
+  
   };
 
   const closeBottomSheet4 = () => {
     setIsBottomSheetVisible4(false);
     setIsBottomSheetVisible5(true);
   };
+  const closeBottomSheet44 = () => {
+    setIsBottomSheetVisible4(false);
+    
+  };
   const closeBottomSheet5 = () => {
+    setIsBottomSheetVisible5(false);
+    setIsBottomSheetVisible5(true);
+  };
+  const closeBottomSheet55 = () => {
     setIsBottomSheetVisible5(false);
     // setIsBottomSheetVisible5(true);
   };
   const closeBottomSheet1 = () => {
     setIsBottomSheetVisible1(false);
     setIsBottomSheetVisible2(true);
+  };
+  const closeBottomSheet11 = () => {
+    setIsBottomSheetVisible1(false);
+    
   };
   // const [activeSlide, setActiveSlide] = useState(0);
   const scrollViewRef = useRef(null);
@@ -769,7 +793,7 @@ export default function PlantDetail({navigation}) {
         visible={isBottomSheetVisible}
         animationType="slide"
         onRequestClose={closeBottomSheet}>
-            <TouchableWithoutFeedback onPress={closeBottomSheet}>
+            <TouchableWithoutFeedback onPress={closeBottomSheett}>
 
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
@@ -1019,7 +1043,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         visible={isBottomSheetVisible1}
         animationType="slide"
         onRequestClose={closeBottomSheet1}>
-            <TouchableWithoutFeedback onPress={closeBottomSheet1}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet11}>
             
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
@@ -1107,7 +1131,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         visible={isBottomSheetVisible2}
         animationType="slide"
         onRequestClose={closeBottomSheet2}>
-            <TouchableWithoutFeedback onPress={closeBottomSheet2}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet22}>
 
          
         <View style={styles.modalContainer}>
@@ -1228,7 +1252,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         visible={isBottomSheetVisible3}
         animationType="slide"
         onRequestClose={closeBottomSheet3}>
-          <TouchableWithoutFeedback onPress={closeBottomSheet3}>
+          <TouchableWithoutFeedback onPress={closeBottomSheet33}>
 
    
         <View style={styles.modalContainer}>
@@ -1350,7 +1374,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         visible={isBottomSheetVisible4}
         animationType="slide"
         onRequestClose={closeBottomSheet4}>
-           <TouchableWithoutFeedback onPress={closeBottomSheet4}>
+           <TouchableWithoutFeedback onPress={closeBottomSheet44}>
 
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
@@ -1491,7 +1515,7 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         visible={isBottomSheetVisible5}
         animationType="slide"
         onRequestClose={closeBottomSheet5}>
-            <TouchableWithoutFeedback onPress={closeBottomSheet5}>
+            <TouchableWithoutFeedback onPress={closeBottomSheet55}>
 
           
         <View style={styles.modalContainer}>
