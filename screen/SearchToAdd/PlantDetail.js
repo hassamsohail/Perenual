@@ -110,7 +110,7 @@ export default function PlantDetail({navigation}) {
   ];
   const [imageUri, setImageUri] = useState('');
   const [SelectedImageUri, setSelectedImageUri] = useState('');
-
+  
   //   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const openImagePicker = () => {
@@ -394,6 +394,270 @@ export default function PlantDetail({navigation}) {
     />
   );
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const YourModalComponent = ({ isBottomSheetVisible, closeBottomSheet, openImagePicker, username, setUserName, imageUri }) => {
+    return (
+      <Modal
+        transparent={true}
+        visible={isBottomSheetVisible}
+        animationType="slide"
+        onRequestClose={closeBottomSheet}
+      >
+         <View style={styles.modalContainer}>
+          {/* Your bottom sheet content goes here */}
+          <ImageBackground 
+        
+            source={require('../../assets/bgg.png')}
+
+          
+          style={{
+            // backgroundColor: '#F8F8F8',
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 20,
+            padding: 16,
+
+            alignItems: 'center',
+            // width:"100%",
+            height: Dimensions.get('window').height * 0.75,
+          }}>
+            <TouchableOpacity
+              onPress={openImagePicker}
+              style={{
+                height: 78,
+                width: 78,
+                marginTop: -60,
+                marginLeft:0.5,
+
+                alignSelf: 'center',
+                backgroundColor: '#EDEDED',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 78,
+                
+              }}>
+              {imageUri ? (
+                <Image
+                  source={{uri: imageUri}}
+                  style={{width: '100%', height: '100%', borderRadius: 78}}
+                />
+              ) : (
+                <View
+                  style={{
+                    backgroundColor: '#F4F4F4',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginLeft:0.5,
+
+                    width: 78,
+                    borderRadius: 78,
+                    height: 78,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      color: '#6146AE',
+                      textAlign: 'center',
+                      fontWeight: 'normal',
+                    }}>
+                    Add new photo
+                  </Text>
+                </View>
+              )}
+            </TouchableOpacity>
+            <TouchableOpacity onPress={openImagePicker}>
+              <View
+              style={{
+width:90, height:26, backgroundColor:"#fff",
+elevation:3,
+marginTop:-8,
+flexDirection:"row",
+borderRadius:16, justifyContent:"center", alignItems:"center"
+              }}
+              >
+ <Image
+            source={require('../../assets/Regular.png')}
+
+                  // source={{uri: imageUri}}
+                  style={{width: 10, height: 10,}}
+                />
+              <Text
+                style={{
+                  // height:20, width:100, elevation:5,
+                  fontSize: 10,
+                  marginLeft:3,
+
+                  color: '#1BBFA0',
+                  // alignSelf: 'center',
+                  // fontWeight: '600',
+                  // marginBottom: 10,
+                }}>
+                Change Photo
+              </Text>
+              </View>
+
+            </TouchableOpacity>
+
+         <View
+         style={{
+          height:10
+         }}
+         />
+            <FormInput1
+              // style={styles.input}
+              onChangeText={username => setuserName(username)}
+              // value={text}
+              labelValue={username}
+              // secureTextEntry={true}
+              // keyboardType="email-address"
+              placeholder="Garden Full Name"
+              autoCapitalize="none"
+              autocorrect={false}
+            />
+            <Text
+              style={{
+                // marginLeft:10,
+                fontSize: 20,
+                color: '#161C1C',
+                // alignSelf: 'center',
+                fontWeight: '600',
+                // textAlign:"center"
+                marginTop: 10,
+              }}>
+              Choose space
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                color: '#9B9B9B',
+              }}>
+              Where do you keep this plant?
+            </Text>
+
+            <View
+              style={{
+                width: '100%',
+                marginTop: 20,
+                height: 108,
+                alignSelf: 'center',
+                borderWidth: 1,
+                borderColor: '#DEF2ED',
+                borderRadius: 16,
+                flexDirection: 'row',
+                // justifyContent:"center",
+                paddingHorizontal: 10,
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  width: 92,
+                  // marginTop:20,
+                  // backgroundColor:"#DEF2ED",
+                  height: 92,
+                  alignSelf: 'center',
+                  borderWidth: 1,
+                  borderColor: '#DEF2ED',
+                  borderRadius: 16,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <View
+                  style={{
+                    height: 40,
+                    width: '90%',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                  }}>
+                  <Image
+                    source={require('../../assets/A.png')}
+                    style={{
+                      height: 38,
+                      width: 38,
+                      borderRadius: 8,
+                    }}></Image>
+                  <Image
+                    source={require('../../assets/A.png')}
+                    style={{
+                      height: 38,
+                      width: 38,
+                      borderRadius: 8,
+                    }}></Image>
+                </View>
+                <View
+                  style={{
+                    height: 40,
+                    width: '94%',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                  }}>
+                  <Image
+                    source={require('../../assets/A.png')}
+                    style={{
+                      height: 38,
+                      width: 38,
+                      borderRadius: 8,
+                    }}></Image>
+                  <Image
+                    source={require('../../assets/A.png')}
+                    style={{
+                      height: 38,
+                      width: 38,
+                      borderRadius: 8,
+                    }}></Image>
+                </View>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    marginLeft: 10,
+                    fontSize: 16,
+                    color: '#161C1C',
+                    // alignSelf: 'center',
+                    fontWeight: '600',
+                    // textAlign:"center"
+                    // marginTop: 10,
+                  }}>
+                  Dining room
+                </Text>
+                <Text
+                  style={{
+                    marginLeft: 10,
+                    fontSize: 12,
+                    color: '#9B9B9B',
+                    // alignSelf: 'center',
+                    fontWeight: '600',
+                    // textAlign:"center"
+                    // marginTop: 10,
+                  }}>
+                  4 plant (1 need care)
+                </Text>
+              </View>
+            </View>
+
+            <TouchableOpacity style={styles.button1} onPress={closeBottomSheet}>
+              <Text style={styles.buttonText1}>Create Space</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button} onPress={closeBottomSheet}>
+              <Text style={styles.buttonText}>Next</Text>
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
+      </Modal>
+    );
+  };
+ 
+
+
+
+
+
+
+
+
+
+
 
   return (
     <ScrollView
@@ -788,6 +1052,18 @@ export default function PlantDetail({navigation}) {
           keyExtractor={item => item.id}
         />
       </View>
+    
+
+      
+
+
+
+
+
+
+
+
+
       <Modal
         transparent={true}
         visible={isBottomSheetVisible}
@@ -1038,6 +1314,19 @@ borderRadius:16, justifyContent:"center", alignItems:"center"
         </View>
         </TouchableWithoutFeedback>
       </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
       <Modal
         transparent={true}
         visible={isBottomSheetVisible1}
