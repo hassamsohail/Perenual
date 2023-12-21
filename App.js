@@ -30,6 +30,7 @@ import Plantsdetail2 from './screen/MyPlants/Plantsdetail2';
 import EditPlant from './screen/MyPlants/EditPlant';
 import Profile from './screen/Profile/Profile';
 import ProfileSubscription from './screen/Subscription/ProfileSubscription';
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -127,7 +128,6 @@ function App() {
             name="Subscription"
             component={Subscription}
           />
-
           <Stack.Screen
             options={{
               headerShown: false,
@@ -135,7 +135,6 @@ function App() {
             name="Tab"
             component={TabNavi}
           />
-
           <Stack.Screen
             options={{
               headerShown: false,
@@ -234,6 +233,7 @@ function App() {
             name="ProfileSubscription"
             component={ProfileSubscription}
           />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
