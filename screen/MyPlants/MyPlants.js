@@ -243,14 +243,26 @@ export default function MyPlants({navigation}) {
               height: 10,
             }}
           />
-
+          <Image
+            source={require('../../assets/Alertw.png')}
+            style={{
+              width: 330,
+              height: 96,
+            }}
+          />
+          <View
+            style={
+              {
+                // height: 5,
+              }
+            }
+          />
           <TouchableOpacity
             style={styles.button}
             // onPress={() => {
             //   navigation.navigate('AddManuallyPlants');
             // }}
-            
-            >
+          >
             <Image
               source={require('../../assets/plus.png')}
               style={{
@@ -415,7 +427,7 @@ export default function MyPlants({navigation}) {
             )}
           </ScrollView>
         </View>
-      
+
         <TouchableOpacity
           style={{
             position: 'absolute',
@@ -423,10 +435,9 @@ export default function MyPlants({navigation}) {
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          onPress={()=>{
-            navigation.navigate("AddManuallyPlants")
-          }}
-        >
+          onPress={() => {
+            navigation.navigate('AddManuallyPlants');
+          }}>
           <View
             style={{
               height: 48,

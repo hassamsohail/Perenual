@@ -23,7 +23,6 @@ export default function PlantDetail({navigation}) {
   const [username1, setuserName1] = React.useState();
   const [username2, setuserName2] = React.useState();
   const [username3, setuserName3] = React.useState();
-
   const [selectedRadio1, setSelectedRadio1] = useState(0);
   const [potSize, setPotSize] = useState(3);
   const [potSize1, setPotSize1] = useState(5);
@@ -2013,6 +2012,36 @@ export default function PlantDetail({navigation}) {
                     />
                   </View>
                 </View>
+
+                <View
+                
+                style={{
+                  flexDirection:"row",
+                  alignItems:"center",
+
+                }}
+                >
+<View
+
+style={{
+  width:24, height:24, borderRadius:24, backgroundColor:"#F8F8F8", borderWidth:2, borderColor:"#D3D3D3"
+}}
+>
+
+</View>
+
+
+<Text
+                      style={{
+                        marginLeft:10,
+                        fontSize: 16,
+                        color: '#161C1C',
+                        // textAlign: 'center',
+                        fontWeight: "500",
+                      }}>
+                    Don’t have the information
+                    </Text>
+                </View>
               </View>
 
               <TouchableOpacity
@@ -2046,7 +2075,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1BBFA0',
     justifyContent: 'center', // Center content horizontally
     alignItems: 'center', // Center content vertically
-    marginTop: 20, // Adjust the margin as needed
+    marginTop: 50, // Adjust the margin as needed
   },
   button1: {
     width: '100%',

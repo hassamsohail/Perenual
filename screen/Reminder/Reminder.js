@@ -39,6 +39,7 @@ export default function Reminder({navigation}) {
       image: require('../../assets/icon1.png'),
       expanded: true,
     },
+   
     // {
     //   id: '2',
     //   name: 'Fertilizer',
