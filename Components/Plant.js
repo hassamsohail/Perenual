@@ -87,6 +87,7 @@ export default function Plant({navigation}) {
     {
       id: '5',
       name: 'Fertilizing',
+      marginTop:-17,
       image: require('../assets/Fer.png'),
       expanded: false,
       Description:
@@ -138,6 +139,8 @@ export default function Plant({navigation}) {
       name: 'Propagating',
       image: require('../assets/Pro.png'),
       expanded: false,
+      marginTop:-17
+,
       Description:
         'These plants like to be mostly dry between waterings due to their thick leaves. Water when 75% of the soil volume is dry. Always water through and discard any excess water in the saucer to discourage root rot. Your Silver Satin Pothos does well in average household humidity.',
       Status1: 'Every 2 weeks',
@@ -168,6 +171,8 @@ export default function Plant({navigation}) {
     {
       id: '10',
       name: 'Temperature',
+      marginTop:-17
+ ,
       image: require('../assets/Temp.png'),
       expanded: false,
       Description:
@@ -208,7 +213,7 @@ export default function Plant({navigation}) {
                 alignSelf: 'center',
 
                 height: item.expanded ? 165 : 100,
-
+marginTop:item.marginTop,
                 backgroundColor: '#F8F8F8',
                 borderRadius: 16,
               }}>
@@ -223,7 +228,7 @@ export default function Plant({navigation}) {
                     alignSelf: 'center',
                     flexDirection: 'row',
                     alignItems: 'center',
-                    paddingTop: 9,
+                    // paddingTop: 9,
 
                     backgroundColor: '#F8F8F8',
                   }}>
@@ -278,7 +283,6 @@ export default function Plant({navigation}) {
                   <View
                     style={{
                       paddingHorizontal: 10,
-
                       height: 22,
                       backgroundColor: item.StatusColorbg1,
                       borderRadius: 8,

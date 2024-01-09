@@ -2014,33 +2014,30 @@ export default function PlantDetail({navigation}) {
                 </View>
 
                 <View
-                
-                style={{
-                  flexDirection:"row",
-                  alignItems:"center",
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
+                  <View
+                    style={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 24,
+                      backgroundColor: '#F8F8F8',
+                      borderWidth: 2,
+                      borderColor: '#D3D3D3',
+                    }}></View>
 
-                }}
-                >
-<View
-
-style={{
-  width:24, height:24, borderRadius:24, backgroundColor:"#F8F8F8", borderWidth:2, borderColor:"#D3D3D3"
-}}
->
-
-</View>
-
-
-<Text
-                      style={{
-                        marginLeft:10,
-                        fontSize: 16,
-                        color: '#161C1C',
-                        // textAlign: 'center',
-                        fontWeight: "500",
-                      }}>
+                  <Text
+                    style={{
+                      marginLeft: 10,
+                      fontSize: 14,
+                      color: '#161C1C',
+                      // textAlign: 'center',
+                      fontWeight: '500',
+                    }}>
                     Don’t have the information
-                    </Text>
+                  </Text>
                 </View>
               </View>
 
