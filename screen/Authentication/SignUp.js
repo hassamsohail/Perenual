@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,16 +7,21 @@ import {
   Image,
   StyleSheet,
   FlatList,
+  TextInput,
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import FormInput from "../../Components/FormInput";
+import FormInput from '../../Components/FormInput';
 
 export default function SignUp({navigation}) {
-    const [username, setuserName] = React.useState();
-    const [FullName, setFullName] = React.useState();
+  const [username, setuserName] = React.useState();
+  const [FullName, setFullName] = React.useState();
+  const [showPassword, setShowPassword] = useState(false);
 
-    const [password, setPassword] = React.useState();
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const [password, setPassword] = React.useState();
   const data = [
     {
       id: '1',
@@ -96,140 +101,170 @@ export default function SignUp({navigation}) {
   );
   return (
     <ScrollView>
-    <LinearGradient
-      colors={['rgba(222, 242, 237, 0.7)', 'rgba(248, 248, 248, 1)']}
-      style={{
-        height: Dimensions.get('window').height,
-      }}>
-      <View
+      <LinearGradient
+        colors={['rgba(222, 242, 237, 0.7)', 'rgba(248, 248, 248, 1)']}
         style={{
-          height: '3%',
-        }}
-      />
-      <View
-        style={{
-          marginLeft: '5%',
+          height: Dimensions.get('window').height,
         }}>
-        <TouchableOpacity
-        onPress={()=>{
-            navigation.goBack()
-        }}
-        >
-          <View
-            style={{
-              height: 40,
-              width: 40,
-              borderWidth: 1,
-              borderColor: '#E0E0E0',
-              backgroundColor: '#fff',
-              borderRadius: 12,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Image
-              source={require('../../assets/ArrowLeft.png')}
-              style={{
-                width: 8,
-                height: 15,
-              }}
-            />
-          </View>
-        </TouchableOpacity>
-
         <View
           style={{
-            height: '10%',
+            height: '3%',
           }}
         />
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
+            marginLeft: '5%',
           }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <View
+              style={{
+                height: 40,
+                width: 40,
+                borderWidth: 1,
+                borderColor: '#E0E0E0',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../../assets/ArrowLeft.png')}
+                style={{
+                  width: 8,
+                  height: 15,
+                }}
+              />
+            </View>
+          </TouchableOpacity>
+
+          <View
+            style={{
+              height: '10%',
+            }}
+          />
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                color: '#161C1C',
+                fontWeight: 'bold',
+              }}>
+              Create a
+            </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                color: '#1BBFA0',
+                fontWeight: 'bold',
+                marginLeft: 10,
+              }}>
+              Perenual
+            </Text>
+          </View>
           <Text
             style={{
               fontSize: 20,
               color: '#161C1C',
               fontWeight: 'bold',
             }}>
-            Create a
-          </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              color: '#1BBFA0',
-              fontWeight: 'bold',
-              marginLeft: 10,
-            }}>
-            Perenual
+            account
           </Text>
         </View>
-        <Text
+
+        <Image
+          source={require('../../assets/Tree.png')}
           style={{
-            fontSize: 20,
-            color: '#161C1C',
-            fontWeight: 'bold',
+            position: 'absolute',
+            right: 0,
+            width: 180,
+            height: 180,
+            marginTop: 20,
+          }}
+        />
+        <View style={{}} />
+
+        <View
+          style={{
+            width: '90%',
+            alignSelf: 'center',
+            alignItems: 'center',
           }}>
-          account
-        </Text>
-      </View>
+          <FormInput
+            // style={styles.input}
+            onChangeText={username => setuserName(username)}
+            // value={text}
+            labelValue={username}
+            // secureTextEntry={true}
+            // keyboardType="email-address"
+            placeholder="Full Name"
+            autoCapitalize="none"
+            autocorrect={false}
+          />
 
-      <Image
-        source={require('../../assets/Tree.png')}
-        style={{
-          position: 'absolute',
-          right: 0,
-          width: 180,
-          height: 180,
-          marginTop: 20,
-        }}
-      />
-      <View
-        style={{
-        }}
-      />
-
-      <View
-      style={{
-        width:"90%"
-        , alignSelf:"center",
-        alignItems:"center"
-      }}
-      >
-
-       <FormInput
-          // style={styles.input}
-          onChangeText={(username) => setuserName(username)}
-          // value={text}
-          labelValue={username}
-          // secureTextEntry={true}
-          // keyboardType="email-address"
-          placeholder="Full Name"
-          autoCapitalize="none"
-          autocorrect={false}
-        />
-        
-       <FormInput
-          // style={styles.input}
-          onChangeText={(FullName) => setFullName(FullName)}
-          // value={text}
-          labelValue={FullName}
-          // secureTextEntry={true}
-          // keyboardType="email-address"
-          placeholder="Email"
-          autoCapitalize="none"
-          autocorrect={false}
-        />
-         <FormInput
-          // style={styles.input}
-          onChangeText={(userPassword) => setPassword(userPassword)}
-          // value={text}
-          labelValue={password}
-          secureTextEntry={true}
-          placeholder="Password"
-        />
-      </View>
-      <TouchableOpacity
+          <FormInput
+            // style={styles.input}
+            onChangeText={FullName => setFullName(FullName)}
+            // value={text}
+            labelValue={FullName}
+            // secureTextEntry={true}
+            // keyboardType="email-address"
+            placeholder="Email"
+            autoCapitalize="none"
+            autocorrect={false}
+          />
+          <View
+            style={{
+              width: '100%',
+              alignSelf: 'center',
+              marginVertical: 12,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                borderColor: '#E0E0E0',
+                height: 56,
+                backgroundColor: '#fff',
+                borderRadius: 10,
+                paddingLeft: 10,
+                marginBottom: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <TextInput
+                style={{
+                  width: '88%',
+                }}
+                onChangeText={userPassword => setPassword(userPassword)}
+                value={password}
+                secureTextEntry={!showPassword} // Use the showPassword state to determine if the text should be hidden
+                placeholder="Password"
+              />
+              <TouchableOpacity onPress={togglePasswordVisibility}>
+                <Image
+                  source={
+                    showPassword
+                      ? require('../../assets/eyeon.png')
+                      : require('../../assets/eyeoff.png')
+                  }
+                  style={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <TouchableOpacity
           style={styles.button}
           onPress={() => {
             navigation.navigate('Tab');
@@ -237,17 +272,17 @@ export default function SignUp({navigation}) {
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <View
-        style={{
-          height: 20,
-        }}
-      />
+          style={{
+            height: 20,
+          }}
+        />
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center',
-            width:"90%",
-            alignSelf:"center"
+            width: '90%',
+            alignSelf: 'center',
           }}>
           <View
             style={{
@@ -277,61 +312,59 @@ export default function SignUp({navigation}) {
         </View>
         <View style={{height: 20}} />
 
-<View
-  style={{
-    width: '80%',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    alignSelf:"center"
-  }}>
-  <FlatList
-    data={data1}
-    renderItem={renderItem}
-    keyExtractor={item => item.id}
-    horizontal={true} // Set horizontal to true
-  />
-</View>
-      <View
-      style={{
-        position:"absolute",
-        bottom:50, 
-        alignSelf:"center"
-      }}
-      >
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Login');
-        }}>
         <View
           style={{
-            flexDirection: 'row',
-            // alignItems:"center",
+            width: '80%',
+            alignItems: 'center',
+            justifyContent: 'space-around',
             alignSelf: 'center',
           }}>
-          <Text
-            style={{
-              fontSize: 15,
-              color: '#827F8A',
-              fontWeight: 'normal',
-              textAlign: 'center',
-            }}>
-           Already have an account?
-          </Text>
-          <Text
-            style={{
-              fontSize: 15,
-              color: '#1BBFA0',
-              marginLeft: 5,
-              fontWeight: '700',
-              textAlign: 'center',
-            }}>
-           Sign in
-          </Text>
+          <FlatList
+            data={data1}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            horizontal={true} // Set horizontal to true
+          />
         </View>
-      </TouchableOpacity>
-      </View>
-    </LinearGradient>
+        <View
+          style={{
+            position: 'absolute',
+            bottom: 50,
+            alignSelf: 'center',
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                // alignItems:"center",
+                alignSelf: 'center',
+              }}>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#827F8A',
+                  fontWeight: 'normal',
+                  textAlign: 'center',
+                }}>
+                Already have an account?
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#1BBFA0',
+                  marginLeft: 5,
+                  fontWeight: '700',
+                  textAlign: 'center',
+                }}>
+                Sign in
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
     </ScrollView>
   );
 }
@@ -350,7 +383,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 56,
     borderRadius: 16,
-    alignSelf:"center",
+    alignSelf: 'center',
     backgroundColor: '#1BBFA0',
     justifyContent: 'center', // Center content horizontally
     alignItems: 'center', // Center content vertically

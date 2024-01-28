@@ -85,7 +85,8 @@ export default function Community({navigation}) {
         borderRadius: 16,
         elevation: 5,
         backgroundColor: '#fff',
-        marginRight: 10,
+        marginRight: 4,
+        marginLeft:4
         // marginHorizontal: 10, // Add margin between items
       }}>
       <Image
@@ -131,9 +132,18 @@ export default function Community({navigation}) {
         />
         <View
           style={{
-            width: '90%',
+            width: '100%',
             alignSelf: 'center',
           }}>
+            <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
+
+         
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Profile');
@@ -154,12 +164,21 @@ export default function Community({navigation}) {
               />
             </View>
           </TouchableOpacity>
-
+          </View>
           <View
             style={{
               height: 20,
             }}
           />
+           <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
+
+          
           <View
             style={{
               flexDirection: 'row',
@@ -236,7 +255,7 @@ export default function Community({navigation}) {
                   }}>
                   <View
                     style={{
-                      width: 150,
+                      width: 156,
                       // marginLeft: 5,
                       height: 33,
                       backgroundColor: indexofData == index ? '#fff' : null,
@@ -260,12 +279,20 @@ export default function Community({navigation}) {
               )}
             />
           </View>
+          </View>
           {indexofData == 0 ? (
             <View
               style={{
                 width: '100%',
                 height: '71%',
               }}>
+                 <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
               <View
                 style={{
                   flexDirection: 'row',
@@ -335,15 +362,23 @@ export default function Community({navigation}) {
                   See All
                 </Text>
               </View>
-
+              </View>
               <FlatList
                 data={data1}
                 renderItem={renderItem}
                 keyExtractor={item => item.key}
                 horizontal={true}
               />
+             
             </View>
           ) : indexofData == 1 ? (
+            <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
             <View
               style={{
                 width: '100%',
@@ -505,6 +540,7 @@ export default function Community({navigation}) {
                   well in average household humidity.
                 </Text>
               </View>
+            </View>
             </View>
           ) : null}
           <Modal

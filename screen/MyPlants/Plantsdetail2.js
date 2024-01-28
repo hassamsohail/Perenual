@@ -11,6 +11,7 @@ import {
   Modal,
   ImageBackground,
   Alert,
+  Switch
 } from 'react-native';
 import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
@@ -99,6 +100,11 @@ shadowRadius: 4,
         </TouchableOpacity>
       </View>
     );
+  };
+  const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+
+  const toggleSwitch1 = () => {
+    setIsSwitchOn1(previousState => !previousState);
   };
   const plantData = [
     {
@@ -720,6 +726,7 @@ shadowRadius: 4,
                         style={{
                           flexDirection: 'row',
                           marginTop: 20,
+                          alignItems:"center"
                         }}>
                         <Image
                           source={require('../../assets/Grass.png')}
@@ -891,6 +898,58 @@ shadowRadius: 4,
                           onChange={handleTimeChange}
                         />
                       )}
+                      <View
+                      style={{
+                        width:"100%",
+                        flexDirection:"row",
+                        justifyContent:"space-between",
+                        alignItems:"center"
+                      }}
+                      >
+
+                    
+                       <View
+                        style={{
+                          flexDirection: 'row',
+                          marginTop: 20,
+                          alignItems:"center"
+                        }}>
+                        <Image
+                          source={require('../../assets/Re.png')}
+                          style={{
+                            width: 24,
+                            height: 24,
+                          }}
+                        />
+                        <Text
+                          style={{
+                            color: '#161C1C',
+                            marginLeft: 10,
+                            fontSize: 16, // Adjust the font size as needed
+                            fontWeight: '600',
+                          }}>
+                          Repeat
+                        </Text>
+                      </View>
+                      <Switch
+
+                      style={{
+marginTop:18
+                      }}
+                  trackColor={{false: '#767577', true: '#1BBFA0'}}
+                  thumbColor={isSwitchOn1 ? '#ffffff' : '#f4f3f4'}
+                  ios_backgroundColor="#3e3e3e"
+                  onValueChange={toggleSwitch1}
+                  value={isSwitchOn1}
+                />
+                      </View>
+                      <View
+                        style={{
+                          width: '100%',
+                          height: 1,
+                          marginTop: 10,
+                          backgroundColor: '#E5E5E5',
+                        }}></View>
                     </View>
                   </View>
                 </View>
@@ -1263,7 +1322,6 @@ shadowRadius: 4,
             <Text
               style={{
                 fontSize: 16,
-
                 color: '#161C1C',
                 fontWeight: 'bold',
                 // alignSelf: 'center',

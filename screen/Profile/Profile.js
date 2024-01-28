@@ -56,7 +56,7 @@ export default function Profile({navigation}) {
       .then(image => {
         // The selected image is available in image.path
         setImageUri(image.path);
-        setSelectedImageUri(image.path);
+        // setSelectedImageUri(image.path);
       })
       .catch(error => {
         console.log('ImagePicker Error: ', error);
@@ -224,7 +224,7 @@ export default function Profile({navigation}) {
                     height: 80,
                     width: 80,
                     alignSelf: 'center',
-                    backgroundColor: '#DEF2ED',
+                    // backgroundColor: '#DEF2ED',
                     justifyContent: 'center',
                     borderRadius: 80,
                   }}>
@@ -240,7 +240,7 @@ export default function Profile({navigation}) {
                   ) : (
                     <View
                       style={{
-                        backgroundColor: '#DEF2ED',
+                        // backgroundColor: '#DEF2ED',
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: 80,
@@ -250,41 +250,136 @@ export default function Profile({navigation}) {
                         borderRadius: 80,
                       }}>
                       <Image
-                        source={require('../../assets/user.png')}
+                        source={require('../../assets/AV.png')}
                         style={{
-                          width: 80,
+                          width: 108,
                           // marginTop: 70,
-                          borderRadius: 80,
-                          height: 80,
+                          // borderRadius: 80,
+                          height: 96,
                         }}
                       />
                     </View>
                   )}
                 </TouchableOpacity>
-
-                <TextInput
-                  style={styles.textInput1}
+                <View
+            style={{
+              width: '100%',
+              alignSelf: 'center',
+              marginTop: 20,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                // borderWidth: 1,
+                borderColor: '#E0E0E0',
+                height: 56,
+                backgroundColor: '#fff',
+                borderRadius: 16,
+                paddingLeft: 10,
+                marginBottom:10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../../assets/Pe.png')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}></Image>
+              <TextInput
+                  // style={styles.textInput1}
+                  style={{
+                    marginLeft:10
+                  }}
                   placeholder="Question *"
                   placeholderTextColor="#A5A5A5"
                   value={text1}
                   onChangeText={handleChangeText1}
                 />
-
-                <TextInput
-                  style={styles.textInput1}
+            </View>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              alignSelf: 'center',
+              // marginTop: 20,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                // borderWidth: 1,
+                borderColor: '#E0E0E0',
+                height: 56,
+                backgroundColor: '#fff',
+                borderRadius: 16,
+                paddingLeft: 10,
+                marginBottom:10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../../assets/Lo.png')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}></Image>
+              <TextInput
+                  // style={styles.textInput1}
+                  style={{
+                    marginLeft:10
+                  }}
                   placeholder="Question *"
                   placeholderTextColor="#A5A5A5"
                   value={text}
                   onChangeText={handleChangeText}
                 />
+            </View>
+          </View>
 
-                <TextInput
-                  style={styles.textInput1}
+          <View
+            style={{
+              width: '100%',
+              alignSelf: 'center',
+              // marginTop: 20,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                // borderWidth: 1,
+                borderColor: '#E0E0E0',
+                height: 56,
+                backgroundColor: '#fff',
+                borderRadius: 16,
+                paddingLeft: 10,
+                marginBottom:10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../../assets/Em.png')}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}></Image>
+              <TextInput
+                  // style={styles.textInput1}
+                  style={{
+                    marginLeft:10
+                  }}
                   placeholder="Question *"
                   placeholderTextColor="#A5A5A5"
                   value={text2}
                   onChangeText={handleChangeText2}
                 />
+            </View>
+          </View>
+
               </View>
             </View>
           </View>
@@ -343,19 +438,22 @@ export default function Profile({navigation}) {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 20,
-              paddingHorizontal: 20,
-
+              // marginHorizontal:20,
+              // justifyContent:"center",
+              
               backgroundColor: '#fff',
             }}>
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
                 // justifyContent:"space-between",
+            
                 backgroundColor: '#fff',
               }}>
               <View
@@ -375,6 +473,9 @@ export default function Profile({navigation}) {
                     // width:"100%",
                     // height:47,
                     // borderRadius:20,
+alignItems:"center",
+                    justifyContent:"center",
+
                     // justifyContent:"space-between",
                     // backgroundColor:"#fff"
                   }}>
@@ -401,7 +502,7 @@ export default function Profile({navigation}) {
                     color: '#9B9B9B',
                     // fontWeight: '700',
                     // alignSelf:"center"
-                    marginTop: 10,
+                    // marginTop: 10,
                   }}>
                   Northern Toronto
                 </Text>
@@ -418,10 +519,11 @@ export default function Profile({navigation}) {
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
-                // justifyContent:"center",
+                justifyContent:"center",
                 alignItems: 'center',
                 // justifyContent:"space-between",
                 backgroundColor: '#fff',
@@ -442,6 +544,8 @@ export default function Profile({navigation}) {
                     flexDirection: 'row',
                     // width:"100%",
                     // height:47,
+                justifyContent:"center",
+alignItems:"center"
                     // borderRadius:20,
                     // justifyContent:"space-between",
                     // backgroundColor:"#fff"
@@ -469,7 +573,7 @@ export default function Profile({navigation}) {
                     color: '#9B9B9B',
                     // fontWeight: '700',
                     // alignSelf:"center"
-                    marginTop: 10,
+                    // marginTop: 10,
                   }}>
                   Customization
                 </Text>
@@ -498,15 +602,16 @@ export default function Profile({navigation}) {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 20,
-              paddingHorizontal: 20,
+              // paddingHorizontal: 20,
 
               backgroundColor: '#fff',
             }}>
             <View
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
@@ -570,8 +675,9 @@ export default function Profile({navigation}) {
             <View
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
@@ -648,15 +754,16 @@ export default function Profile({navigation}) {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 20,
-              paddingHorizontal: 20,
+            
 
               backgroundColor: '#fff',
             }}>
             <View
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
@@ -710,9 +817,17 @@ export default function Profile({navigation}) {
             </View>
             <View
               style={{
-                flexDirection: 'row',
                 width: '100%',
+                height: 1,
+                backgroundColor: '#ECECEC',
+              }}
+            />
+            <View
+              style={{
+                flexDirection: 'row',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
@@ -774,8 +889,9 @@ export default function Profile({navigation}) {
             <View
               style={{
                 flexDirection: 'row',
-                width: '100%',
+                width: '90%',
                 height: 47,
+                alignSelf:"center",
                 // borderRadius:20,
                 // justifyContent:"center",
                 alignItems: 'center',
@@ -1005,7 +1121,7 @@ const styles = StyleSheet.create({
   },
   textInput1: {
     backgroundColor: '#fff',
-    marginTop: 20,
+    // marginTop: 20,
     // flex: 1,
     height: 56,
     width: '100%',
