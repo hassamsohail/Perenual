@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  TextInput
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FormInput from '../../Components/FormInput';
@@ -15,6 +16,10 @@ import FormInput from '../../Components/FormInput';
 export default function Login({navigation}) {
   const [username, setuserName] = React.useState();
   const [FullName, setFullName] = React.useState();
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const [showPassword, setShowPassword] = useState(false);
 
   const [password, setPassword] = React.useState();
   const data = [
@@ -197,15 +202,50 @@ export default function Login({navigation}) {
             autoCapitalize="none"
             autocorrect={false}
           />
-
-          <FormInput
-            // style={styles.input}
-            onChangeText={userPassword => setPassword(userPassword)}
-            // value={text}
-            labelValue={password}
-            secureTextEntry={true}
-            placeholder="Password"
-          />
+  <View
+            style={{
+              width: '100%',
+              alignSelf: 'center',
+              marginVertical: 12,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                borderColor: '#E0E0E0',
+                height: 56,
+                backgroundColor: '#fff',
+                borderRadius: 10,
+                paddingLeft: 10,
+                marginBottom: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <TextInput
+                style={{
+                  width: '88%',
+                }}
+                onChangeText={userPassword => setPassword(userPassword)}
+                value={password}
+                secureTextEntry={!showPassword} // Use the showPassword state to determine if the text should be hidden
+                placeholder="Password"
+              />
+              <TouchableOpacity onPress={togglePasswordVisibility}>
+                <Image
+                  source={
+                    showPassword
+                      ? require('../../assets/eyeon.png')
+                      : require('../../assets/eyeoff.png')
+                  }
+                  style={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
         <TouchableOpacity
           style={styles.button}
