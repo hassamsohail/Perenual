@@ -8,11 +8,11 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Pressable,
+  Pressable
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function Subscription({navigation}) {
+export default function ProfileSubscription({navigation}) {
   const data = [
     {
       id: '1',
@@ -95,49 +95,43 @@ export default function Subscription({navigation}) {
       }}>
       <LinearGradient
         colors={['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']}
-        style={
-          {
-            // height: Dimensions.get('window').height,
-          }
-        }>
+        style={{
+          height: Dimensions.get('window').height,
+        }}>
         <View
           style={{
             height: '3%',
           }}
         />
         <View
-        style={{
-          marginLeft:20
-        }}
-        >
-
-
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
+          style={{
+            marginLeft: '5%',
           }}>
-          <View
-            style={{
-              height: 40,
-              width: 40,
-              borderWidth: 1,
-              borderColor: '#E0E0E0',
-              backgroundColor: '#fff',
-              borderRadius: 12,
-              justifyContent: 'center',
-              alignItems: 'center',
+          <Pressable
+            onPress={() => {
+              navigation.navigate("Profile");
             }}>
-            <Image
-              source={require('../../assets/ArrowLeft.png')}
+            <View
               style={{
-                width: 8,
-                height: 15,
-              }}
-            />
-          </View>
-        </TouchableOpacity>
+                height: 40,
+                width: 40,
+                borderWidth: 1,
+                borderColor: '#E0E0E0',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../../assets/ArrowLeft.png')}
+                style={{
+                  width: 8,
+                  height: 15,
+                }}
+              />
+            </View>
+          </Pressable>
         </View>
-
         <View style={{height: 20}} />
         <Image
           source={require('../../assets/Subscription.png')}
@@ -183,14 +177,13 @@ export default function Subscription({navigation}) {
         </View>
         <TouchableOpacity
           style={styles.button}
-          // onPress={() => navigation.navigate("Tab")}
-        >
+          onPress={() => navigation.navigate('Profile')}>
           <Text style={styles.buttonText}>Try Pro For Free</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button1}
           // onPress={() => navigation.navigate("")}
-          onPress={() => navigation.navigate('Tab')}>
+          onPress={() => navigation.navigate('Profile')}>
           <Text style={styles.buttonText1}>Skip</Text>
         </TouchableOpacity>
         <View

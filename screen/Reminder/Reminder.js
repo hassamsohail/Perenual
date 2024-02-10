@@ -17,52 +17,267 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function Reminder({navigation}) {
-  const data5 = [
-    {
-      id: '1',
-      name: 'Watering',
-
-      image: require('../../assets/icon1.png'),
-    },
-    {
-      id: '2',
-      name: 'Fertilizer',
-
-      image: require('../../assets/icon4.png'),
-    },
-    {
-      id: '3',
-      name: 'Pruneing',
-
-      image: require('../../assets/P.png'),
-    },
-
-    // Add more data items as needed
-  ];
   const handleRadioSelect4 = index => {
     setSelectedRadio4(index);
   };
+  const plantData = [
+    {
+      id: '1',
+      image: require('../../assets/Plant1.png'),
+      location: 'Not in a plant room',
+      name: "Bird's Aspleniaceae",
+      nextWatering: 'Watering done!',
+      OverdueWatering: 'Need 120 ml water',
+    },
+
+    // Add more plant data objects as needed
+  ];
+  const [data5, setData5] = useState([
+    {
+      id: '1',
+      name: 'Watering',
+      image: require('../../assets/icon1.png'),
+      expanded: true,
+    },
+   
+    // {
+    //   id: '2',
+    //   name: 'Fertilizer',
+    //   image: require('../../assets/icon4.png'),
+    //   expanded: true,
+    // },
+    // {
+    //   id: '3',
+    //   name: 'Pruning',
+    //   image: require('../../assets/P.png'),
+    //   expanded: true,
+    // },
+    // Add more data items as needed
+  ]);
+
+  const toggleViewHeight = index => {
+    const newData = [...data5];
+    newData[index].expanded = !newData[index].expanded;
+    setData5(newData);
+  };
+
   const [selectedRadio4, setSelectedRadio4] = useState(0);
+  const [isChecked, setIsChecked] = useState(false);
 
-  // Control the visibility of the bottom sheet
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const renderPlantItem = ({item}) => {
+    const textColor = item.nextWatering
+      ? '#1BBFA0'
+      : item.OverdueWatering
+      ? '#E74C3C'
+      : null;
+    const checkboxColor = isChecked ? '#1BBFA0' : '#CCCCCC';
+
+    return (
+      <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            // marginBottom: 16,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={item.image}
+              style={{
+                width: 80,
+                height: 80,
+              }}
+            />
+
+            <View
+              style={{
+                marginLeft: 15,
+              }}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#9B9B9B',
+                  // marginTop:5
+                }}>
+                {item.location}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                  fontWeight: '500',
+                  marginTop: 8,
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  marginTop: 8,
+                  color: textColor,
+                }}>
+                {item.nextWatering}
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity onPress={toggleCheckbox}>
+            <View
+              style={{
+                height: 19.5,
+                width: 19.5,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: checkboxColor,
+                borderRadius: 19.5,
+              }}>
+              {isChecked ? (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            width: '100%',
+            height: 1,
+            backgroundColor: '#EBEBEB',
+            marginVertical: 8,
+          }}
+        />
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            // marginBottom: 16,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={item.image}
+              style={{
+                width: 80,
+                height: 80,
+              }}
+            />
+
+            <View
+              style={{
+                marginLeft: 15,
+              }}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#9B9B9B',
+                  // marginTop:5
+                }}>
+                {item.location}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                  fontWeight: '500',
+                  marginTop: 8,
+                }}>
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  marginTop: 8,
+                  color: "#F1655E",
+                }}>
+          Need 120 ml water
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity onPress={toggleCheckbox}>
+            <View
+              style={{
+                height: 19.5,
+                width: 19.5,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: checkboxColor,
+                borderRadius: 19.5,
+              }}>
+              {isChecked ? (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/CheckBox.png')}
+                  style={{
+                    width: 12,
+                    height: 12,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
+
   const data4 = [
-    {id: '1', title: 'MO', data:"17"},
-    {id: '2', title: 'TU', data:"18"},
-    {id: '3', title: 'WE', data:"19"},
+    {id: '1', title: 'MO', data: '17'},
+    {id: '2', title: 'TU', data: '18'},
+    {id: '3', title: 'WE', data: '19'},
 
-    {id: '4', title: 'TH',data:"20"},
-    {id: '5', title: 'FR',data:"21"},
-    {id: '6', title: 'SA', data:"22"},
-    {id: '7', title: 'SU',data:"23"},
+    {id: '4', title: 'TH', data: '20'},
+    {id: '5', title: 'FR', data: '21'},
+    {id: '6', title: 'SA', data: '22'},
+    {id: '7', title: 'SU', data: '23'},
+    {id: '8', title: 'MO', data: '24'},
+
+    {id: '9', title: 'TU', data: '25'},
+
+    {id: '10', title: 'WE', data: '26'},
+
+    {id: '11', title: 'TH', data: '27'},
+    {id: '12', title: 'FR', data: '28'},
 
     // Add more data as needed
   ];
-  // Use the useEffect hook to check if the user has seen the survey screen before
-
   return (
-    <View
-      style={{
-        flex: 1, // Set the flex to 1
+    <ScrollView
+      contentContainerStyle={{
+        flex: 1,
         backgroundColor: 'white',
       }}>
       <LinearGradient
@@ -88,7 +303,6 @@ export default function Reminder({navigation}) {
               style={{
                 height: 40,
                 width: 40,
-
                 justifyContent: 'center',
               }}>
               <Image
@@ -161,34 +375,28 @@ export default function Reminder({navigation}) {
         </View>
         <View
           style={{
-            // height: 80,
             alignSelf: 'center',
-            width: '90%',
+            width: '100%',
           }}>
           <FlatList
             data={data4}
             showsHorizontalScrollIndicator={false}
-            horizontal={true} // Set horizontal to true
+            horizontal={true}
             renderItem={({item, index}) => (
               <TouchableOpacity
                 key={item.id}
                 onPress={() => handleRadioSelect4(index)}
                 style={{
-                  // flexDirection: 'row',
                   alignItems: 'center',
                   width: 44,
-                  marginLeft: 6,
-                  // Adjust the width as needed
+                  marginLeft: 4,
+
                   height: 70,
                   backgroundColor: '#fff',
                   elevation: 5,
                   borderWidth: 1,
-                  // borderColor:
-                  // selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
                   borderRadius: 20,
-                  // backgroundColor:
-                  // selectedRadio4 === index ? '#DEF2ED' : '#fff',
-                  marginRight: 10,
+                  marginRight: 6,
                   borderColor: selectedRadio4 === index ? '#1BBFA0' : '#fff',
                   marginVertical: 5,
                   paddingHorizontal: 10,
@@ -210,7 +418,6 @@ export default function Reminder({navigation}) {
                     borderRadius: 32,
                     backgroundColor:
                       selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
-
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
@@ -218,10 +425,9 @@ export default function Reminder({navigation}) {
                     style={{
                       fontSize: selectedRadio4 === index ? 12 : 12,
                       color: selectedRadio4 === index ? '#fff' : '#9B9B9B',
-
                       fontWeight: '600',
                     }}>
-                    {item.title}
+                    {item.data}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -237,68 +443,105 @@ export default function Reminder({navigation}) {
         <FlatList
           data={data5}
           keyExtractor={item => item.id}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <View
               style={{
-                marginBottom: 10,
                 width: '90%',
                 alignSelf: 'center',
-                paddingLeft: 10,
-                alignItems: 'center',
-                flexDirection: 'row',
-                height: 77,
+
+                // alignItems: item.expanded ? null : 'center',
+                // justifyContent:"center",
+                height: item.expanded ? 256 : 60,
+
                 borderWidth: 1,
                 borderColor: '#EBEBEB',
                 backgroundColor: '#fff',
                 borderRadius: 16,
               }}>
+                <TouchableOpacity onPress={() => toggleViewHeight(index)}>
+
+
+              
               <View
                 style={{
-                  width: '15%',
-                }}>
-                <Image
-                  source={item.image}
-                  style={{
-                    height: 32,
-                    width: 32,
-                  }}
-                />
-              </View>
+                  width: '100%',
+                  borderTopLeftRadius: 16,
+                  borderTopRightRadius: 16,
+                  justifyContent: 'space-between',
+                  height: 48,
+                  alignSelf: 'center',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                paddingTop:item.expanded ? null:9,
 
-              <View>
+                  backgroundColor: item.expanded ? '#489BDF' : '#fff',
+                  paddingHorizontal: 20,
+                }}>
                 <View
                   style={{
-                    width: '70%',
-                    // marginLeft: -10,
                     flexDirection: 'row',
-                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}>
+                  <Image
+                    source={item.image}
+                    style={{
+                      height: 32,
+                      width: 32,
+                    }}
+                  />
                   <Text
                     style={{
-                      // marginLeft: 10,
+                      // marginTop: 5,
+                      marginLeft: 10,
                       fontSize: 16,
                       fontWeight: '600',
-                      color: '#161C1C',
+                      color: item.expanded ? '#fff' : '#161C1C',
                     }}>
                     {item.name}
                   </Text>
-
-                  <Image
-                    source={require('../../assets/right.png')}
-                    style={{
-                      width: 24,
-                      height: 24,
-                    }}
-                  />
+                </View>
+                <View>
+                  <TouchableOpacity onPress={() => toggleViewHeight(index)}>
+                    <Image
+                      source={
+                        item.expanded
+                          ? require('../../assets/down1.png')
+                          : require('../../assets/right.png')
+                      }
+                      style={{
+                        width: 24,
+                        height: 24,
+                        // marginTop: 5,
+                      }}
+                    />
+                  </TouchableOpacity>
                 </View>
               </View>
+              </TouchableOpacity>
+              {item.expanded && (
+                <View
+                  style={{
+                    // height: 48,
+                    paddingHorizontal: 20,
+
+                    width: '100%',
+                    marginVertical: '5%',
+                  }}>
+                  <FlatList
+                    data={plantData}
+                    keyExtractor={item => item.id}
+                    renderItem={renderPlantItem}
+                  />
+                </View>
+              )}
             </View>
           )}
         />
       </LinearGradient>
-    </View>
+    </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   flatListItem: {},
   imageStyle: {
@@ -350,6 +593,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background
     justifyContent: 'flex-end', // Modal appears at the bottom
   },
+
   bottomSheet: {
     backgroundColor: 'white',
     borderTopLeftRadius: 20,

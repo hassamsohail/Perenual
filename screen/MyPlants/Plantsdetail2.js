@@ -10,10 +10,14 @@ import {
   FlatList,
   Modal,
   ImageBackground,
+  Alert,
+  Switch
 } from 'react-native';
 import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
 import ImagePicker from 'react-native-image-crop-picker';
+import {SwipeListView} from 'react-native-swipe-list-view';
+import Plant from '../../Components/Plant';
 
 export default function Plantsdetail2({navigation}) {
   const [text, setText] = useState('');
@@ -35,7 +39,16 @@ export default function Plantsdetail2({navigation}) {
     const textColor = item.nextWatering ? '#1BBFA0' : '#E74C3C';
 
     return (
-      <View style={{}}>
+      <View style={{
+paddingHorizontal:10,
+shadowColor: '#000',
+shadowOffset: { width: 0, height: 2 },
+shadowOpacity: 0.2,
+shadowRadius: 4,
+// For Android
+// elevation: 4,
+        height:96, backgroundColor:"#fff", width:"99%", marginBottom:10, justifyContent:"center", borderRadius:16, elevation:1, marginHorizontal:3
+      }}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('PlantDetail');
@@ -45,7 +58,7 @@ export default function Plantsdetail2({navigation}) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 16, // Add margin between items
+              // marginBottom: 16, // Add margin between items
             }}>
             <View
               style={{
@@ -81,26 +94,17 @@ export default function Plantsdetail2({navigation}) {
                 </Text>
               </View>
             </View>
-            {/* <Image
-          source={require('../../../assets/menu1.png')} // You can replace this with the correct source
-          style={{
-            width: 24,
-            height: 24,
-          }}
-        /> */}
           </View>
 
-          <View
-            style={{
-              width: '100%',
-              height: 1,
-              backgroundColor: '#E5E5E5',
-              marginBottom: 20,
-            }}
-          />
+      
         </TouchableOpacity>
       </View>
     );
+  };
+  const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+
+  const toggleSwitch1 = () => {
+    setIsSwitchOn1(previousState => !previousState);
   };
   const plantData = [
     {
@@ -304,19 +308,29 @@ export default function Plantsdetail2({navigation}) {
       time: '20:30',
       status: 'Done',
       schedule: 'Every 1 week',
-      image: require('../../assets/icon1.png'),
+      image: require('../../assets/Droop.png'),
+      Icon: require('../../assets/Fille.png'),
     },
-
     {
       id: '2',
-      name: 'Note',
+      name: 'Cleaning',
       date: '1 Des',
       time: '20:30',
-      // status:"Done",
-
-      schedule: 'These plants ..',
-      image: require('../../assets/note.png'),
+      status: 'Done',
+      schedule: 'Every 1 week',
+      image: require('../../assets/Cleaning.png'),
+      Icon: require('../../assets/Fille.png'),
     },
+    // {
+    //   id: '2',
+    //   name: 'Note',
+    //   date: '1 Des',
+    //   time: '20:30',
+    //   // status:"Done",
+
+    //   schedule: 'These plants like to be...',
+    //   image: require('../../assets/note.png'),
+    // },
 
     // Add more data items as needed
   ];
@@ -326,11 +340,116 @@ export default function Plantsdetail2({navigation}) {
     {id: '3', label: 'History'},
     // Add more data items as needed
   ];
-  return (
+  const renderItem1 = ({item}) => (
     <View
+      style={{
+        marginBottom: 10,
+        width: '100%',
+        paddingLeft: 10,
+        alignItems: 'center',
+        flexDirection: 'row',
+        height: 72,
+        borderWidth: 1,
+        borderColor: '#EBEBEB',
+        backgroundColor: '#fff',
+        borderRadius: 16,
+      }}>
+      <View style={{width: '15%'}}>
+        <Image source={item.image} style={{height: 32, width: 32}} />
+      </View>
+      <View>
+        <View
+          style={{
+            width: '77%',
+            marginLeft: -10,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <View>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#161C1C'}}>
+              {item.name}
+            </Text>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#9B9B9B'}}>
+              {item.schedule}
+            </Text>
+          </View>
+          <View style={{alignItems: 'flex-end'}}>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#161C1C'}}>
+              {item.date}
+            </Text>
+            <Text style={{marginLeft: 10, fontSize: 12, color: '#9B9B9B'}}>
+              {item.time}
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+  const SwipeableRow = ({item, closeRow}) => (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        height: 72,
+      }}>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#F8DB73',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 58,
+          height: 58,
+          borderRadius: 8,
+        }}
+        onPress={() => {
+          // Handle delete action here
+          Alert.alert('Edit', 'Are you sure you want to edit this item?', [
+            {text: 'Cancel', style: 'cancel'},
+            {text: 'Edit', onPress: closeRow},
+          ]);
+        }}>
+        <Image
+          source={require('../../assets/Edit.png')}
+          style={{
+            height: 24,
+            width: 24,
+          }}></Image>
+        <Text style={{color: 'white', fontSize: 12}}>Edit</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#F1655E',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 58,
+          height: 58,
+          borderRadius: 8,
+          marginLeft: 10,
+        }}
+        onPress={() => {
+          // Handle delete action here
+          Alert.alert('Delete', 'Are you sure you want to delete this item?', [
+            {text: 'Cancel', style: 'cancel'},
+            {text: 'Delete', onPress: closeRow},
+          ]);
+        }}>
+        <Image
+          source={require('../../assets/DeleteP.png')}
+          style={{
+            height: 24,
+            width: 24,
+          }}></Image>
+        <Text style={{color: 'white', fontSize: 12}}>Delete</Text>
+      </TouchableOpacity>
+    </View>
+  );
+  return (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         flexGrow: 1,
-        flex: 1,
+
         alignItems: 'center',
         backgroundColor: '#F8F8F8',
       }}>
@@ -465,8 +584,8 @@ export default function Plantsdetail2({navigation}) {
                 }}>
                 <View
                   style={{
-                    width: 100,
-                    marginLeft: 5,
+                    width: 105,
+                    // marginLeft:-10,
                     height: 33,
                     backgroundColor: indexofData == index ? '#fff' : null,
                     borderRadius: 20,
@@ -503,7 +622,7 @@ export default function Plantsdetail2({navigation}) {
                 fontWeight: 'bold',
                 alignSelf: 'center',
 
-                marginTop: 6,
+                marginTop: 10,
               }}>
               Reminders
             </Text>
@@ -515,98 +634,26 @@ export default function Plantsdetail2({navigation}) {
                 height: '78%',
                 marginTop: 10,
               }}>
-              <FlatList
+              <SwipeListView
                 data={data1}
                 keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                  <View
-                    style={{
-                      marginBottom: 10,
-                      width: '100%',
-                      paddingLeft: 10,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      height: 77,
-                      borderWidth: 1,
-                      borderColor: '#EBEBEB',
-                      backgroundColor: '#fff',
-                      borderRadius: 16,
-                    }}>
-                    <View
-                      style={{
-                        width: '15%',
-                      }}>
-                      <Image
-                        source={item.image}
-                        style={{
-                          height: 32,
-                          width: 32,
-                        }}
-                      />
-                    </View>
-
-                    <View>
-                      <View
-                        style={{
-                          width: '77%',
-                          marginLeft: -10,
-                          flexDirection: 'row',
-                          justifyContent: 'space-between',
-                        }}>
-                        <View
-                          style={
-                            {
-                              // width:"100%"
-                            }
-                          }>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#161C1C',
-                            }}>
-                            {item.name}
-                          </Text>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#9B9B9B',
-                            }}>
-                            {item.schedule}
-                          </Text>
-                        </View>
-                        <View
-                          style={{
-                            alignItems: 'flex-end',
-                          }}>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#161C1C',
-                            }}>
-                            {item.date}
-                          </Text>
-                          <Text
-                            style={{
-                              marginLeft: 10,
-                              fontSize: 12,
-                              color: '#9B9B9B',
-                            }}>
-                            {item.time}
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => renderItem1({item})}
+                renderHiddenItem={({item}) => (
+                  <SwipeableRow item={item} closeRow={() => {}} />
                 )}
+                rightOpenValue={-132}
+              />
+              <View
+                style={{
+                  height: 20,
+                }}
               />
               <TouchableOpacity
                 style={{
                   width: '100%',
-                  position: 'absolute',
-                  bottom: 40,
+                  // position: 'absolute',
+                  // bottom: 40,
                   height: 56,
                   borderRadius: 16,
                   alignSelf: 'center',
@@ -679,6 +726,7 @@ export default function Plantsdetail2({navigation}) {
                         style={{
                           flexDirection: 'row',
                           marginTop: 20,
+                          alignItems:"center"
                         }}>
                         <Image
                           source={require('../../assets/Grass.png')}
@@ -850,6 +898,58 @@ export default function Plantsdetail2({navigation}) {
                           onChange={handleTimeChange}
                         />
                       )}
+                      <View
+                      style={{
+                        width:"100%",
+                        flexDirection:"row",
+                        justifyContent:"space-between",
+                        alignItems:"center"
+                      }}
+                      >
+
+                    
+                       <View
+                        style={{
+                          flexDirection: 'row',
+                          marginTop: 20,
+                          alignItems:"center"
+                        }}>
+                        <Image
+                          source={require('../../assets/Re.png')}
+                          style={{
+                            width: 24,
+                            height: 24,
+                          }}
+                        />
+                        <Text
+                          style={{
+                            color: '#161C1C',
+                            marginLeft: 10,
+                            fontSize: 16, // Adjust the font size as needed
+                            fontWeight: '600',
+                          }}>
+                          Repeat
+                        </Text>
+                      </View>
+                      <Switch
+
+                      style={{
+marginTop:18
+                      }}
+                  trackColor={{false: '#767577', true: '#1BBFA0'}}
+                  thumbColor={isSwitchOn1 ? '#ffffff' : '#f4f3f4'}
+                  ios_backgroundColor="#3e3e3e"
+                  onValueChange={toggleSwitch1}
+                  value={isSwitchOn1}
+                />
+                      </View>
+                      <View
+                        style={{
+                          width: '100%',
+                          height: 1,
+                          marginTop: 10,
+                          backgroundColor: '#E5E5E5',
+                        }}></View>
                     </View>
                   </View>
                 </View>
@@ -857,12 +957,10 @@ export default function Plantsdetail2({navigation}) {
             </View>
           </View>
         ) : indexofData == 1 ? (
-          <ScrollView
+          <View
             style={{
               width: '90%',
               alignSelf: 'center',
-              height: '78%',
-              marginBottom: 140,
 
               marginTop: 10,
             }}>
@@ -1083,7 +1181,7 @@ export default function Plantsdetail2({navigation}) {
             <Text
               style={{
                 fontSize: 16,
-
+                color: '#9B9B9B',
                 marginTop: 10,
               }}>
               Pothos (Epipremnum aureum) is one of the easiest houseplants to
@@ -1100,6 +1198,7 @@ export default function Plantsdetail2({navigation}) {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 flexDirection: 'row',
+                marginBottom: 20,
               }}>
               <Image
                 source={require('../../assets/A.png')}
@@ -1123,11 +1222,15 @@ export default function Plantsdetail2({navigation}) {
             <View
               style={{
                 width: '100%',
+                marginBottom: 20,
               }}>
-              <FlatList
-                data={data3}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
+             
+
+             <Plant/>
+              <View
+                style={{
+                  marginBottom: 20,
+                }}
               />
               <View
                 style={{
@@ -1161,6 +1264,7 @@ export default function Plantsdetail2({navigation}) {
                 style={{
                   height: 20,
                 }}></View>
+
               {plantData.length > 0 ? (
                 <View
                   style={
@@ -1208,7 +1312,7 @@ export default function Plantsdetail2({navigation}) {
                 </View>
               )}
             </View>
-          </ScrollView>
+          </View>
         ) : indexofData == 2 ? (
           <View
             style={{
@@ -1218,12 +1322,11 @@ export default function Plantsdetail2({navigation}) {
             <Text
               style={{
                 fontSize: 16,
-
                 color: '#161C1C',
                 fontWeight: 'bold',
                 // alignSelf: 'center',
 
-                marginTop: 6,
+                marginTop: 20,
               }}>
               History
             </Text>
@@ -1235,56 +1338,89 @@ export default function Plantsdetail2({navigation}) {
                 height: '78%',
                 marginTop: 10,
               }}>
-              <FlatList
-                data={data5}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
+
                   <View
                     style={{
                       flexDirection: 'row',
+                      marginBottom: 20,
                       width: '100%',
-                      alignItems: 'center',
+                      // alignItems: 'center',
                       justifyContent: 'space-between',
                     }}>
-                    <Text
-                      style={{
-                        fontSize: 16,
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
 
-                        color: '#161C1C',
-                        fontWeight: 'bold',
-                        // alignSelf: 'center',
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
 
-                        // marginTop: 6,
-                      }}>
-                      5 Aug
-                    </Text>
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
+                    </View>
 
                     <View
-                      style={{
-                        height: 24,
-                        width: 24,
-                        borderWidth: 1,
-                        borderColor: '#C7C7C7',
-                        borderRadius: 24,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
                       <View
                         style={{
-                          height: 12,
-                          width: 12,
-                          backgroundColor: '#9B9B9B',
-                          borderRadius: 12,
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
                         }}></View>
                     </View>
+
                     <View
                       style={{
-                        marginBottom: 10,
-                        width: '60%',
-                        paddingLeft: 10,
+                        // marginBottom: 10,
+                        width: '70%',
+                        // paddingLeft: 10,
+                        paddingHorizontal: 10,
                         alignItems: 'center',
                         flexDirection: 'row',
-                        height: 77,
+                        height: 58,
                         borderWidth: 1,
                         borderColor: '#EBEBEB',
                         backgroundColor: '#fff',
@@ -1295,7 +1431,7 @@ export default function Plantsdetail2({navigation}) {
                           width: '15%',
                         }}>
                         <Image
-                          source={item.image}
+                          source={ require('../../assets/Droop.png')}
                           style={{
                             height: 32,
                             width: 32,
@@ -1306,7 +1442,7 @@ export default function Plantsdetail2({navigation}) {
                       <View>
                         <View
                           style={{
-                            width: '80%',
+                            width: '77%',
                             // marginLeft: -10,
                             flexDirection: 'row',
                             justifyContent: 'space-between',
@@ -1323,7 +1459,7 @@ export default function Plantsdetail2({navigation}) {
                                 fontSize: 12,
                                 color: '#161C1C',
                               }}>
-                              {item.name}
+                             Watering
                             </Text>
                             <Text
                               style={{
@@ -1331,29 +1467,364 @@ export default function Plantsdetail2({navigation}) {
                                 fontSize: 12,
                                 color: '#9B9B9B',
                               }}>
-                              {item.schedule}
+                          Every 1 week
                             </Text>
                           </View>
                           <View
                             style={{
-                              alignItems: 'flex-end',
+                              // alignItems: 'flex-end',
+                              alignItems: 'center',
                               justifyContent: 'center',
+                              flexDirection: 'row',
+                              // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft: 45,
                             }}>
+                            <Image
+                              source={ require('../../assets/Fille.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
+
                             <Text
                               style={{
                                 // marginLeft: 10,
                                 fontSize: 14,
                                 color: '#1BBFA0',
                               }}>
-                              {item.status}
+                        Done
                             </Text>
                           </View>
                         </View>
                       </View>
                     </View>
                   </View>
-                )}
-              />
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      // marginBottom: 20,
+                      marginTop:-36,
+                      zIndex:10,
+                      width: '100%',
+                      // alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
+
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
+                    </View>
+
+                    <View
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
+                      <View
+                        style={{
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          backgroundColor:"#F8F8F8",
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
+                        }}></View>
+                    </View>
+
+                    <View
+                      style={{
+                        // marginBottom: 10,
+                        width: '70%',
+                        // paddingLeft: 10,
+                        paddingHorizontal: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        height: 58,
+                        borderWidth: 1,
+                        borderColor: '#EBEBEB',
+                        backgroundColor: '#fff',
+                        borderRadius: 16,
+                      }}>
+                      <View
+                        style={{
+                          width: '15%',
+                        }}>
+                        <Image
+                          source={require('../../assets/Cleaning.png')}
+                          style={{
+                            height: 32,
+                            width: 32,
+                          }}
+                        />
+                      </View>
+
+                      <View>
+                        <View
+                          style={{
+                            width: '77%',
+                            // marginLeft: -10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                          }}>
+                          <View
+                            style={
+                              {
+                                // width:"100%"
+                              }
+                            }>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#161C1C',
+                              }}>
+                             Cleaning
+                            </Text>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#9B9B9B',
+                              }}>
+                          Every 1 week
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              // alignItems: 'flex-end',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexDirection: 'row',
+                              // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft: 45,
+                            }}>
+                            <Image
+                              source={ require('../../assets/Fille.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
+
+                            <Text
+                              style={{
+                                // marginLeft: 10,
+                                fontSize: 14,
+                                color: '#1BBFA0',
+                              }}>
+                        Done
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      // marginBottom: 20,
+                      marginTop:-18,
+                      zIndex:10,
+                      width: '100%',
+                      // alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View>
+                      <Text
+                        style={{
+                          fontSize: 16,
+
+                          color: '#161C1C',
+                          fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          marginTop: 13,
+                        }}>
+                        5 Aug
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+
+                          color: '#9B9B9B',
+                          // fontWeight: 'bold',
+                          // alignSelf: 'center',
+
+                          // marginTop: 6,
+                        }}>
+                        20:30
+                      </Text>
+                    </View>
+
+                    <View
+                    style={{
+                      alignItems:"center", 
+                      marginTop: 14,
+                      
+
+                    }}
+                   
+                    >
+                    
+                      <View
+                        style={{
+                          height: 24,
+                          width: 24,
+                          borderWidth: 1,
+                          borderColor: '#C7C7C7',
+                          backgroundColor:"#F8F8F8",
+                          borderRadius: 24,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: 12,
+                          }}></View>
+                      </View>
+
+                  
+                      {/* <View
+                        style={{
+                          height: 58,
+                          width: 1,
+                          backgroundColor: '#C7C7C7', // You can change the color as needed
+                        }}></View> */}
+                    </View>
+
+                    <View
+                      style={{
+                        // marginBottom: 10,
+                        width: '70%',
+                        // paddingLeft: 10,
+                        paddingHorizontal: 10,
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        height: 58,
+                        borderWidth: 1,
+                        borderColor: '#EBEBEB',
+                        backgroundColor: '#fff',
+                        borderRadius: 16,
+                      }}>
+                      <View
+                        style={{
+                          width: '15%',
+                        }}>
+                        <Image
+                          source={ require('../../assets/noot.png')}
+                          style={{
+                            height: 32,
+                            width: 32,
+                          }}
+                        />
+                      </View>
+
+                      <View>
+                        <View
+                          style={{
+                            width: '77%',
+                            // marginLeft: -10,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                          }}>
+                          <View
+                            style={
+                              {
+                                // width:"100%"
+                              }
+                            }>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#161C1C',
+                              }}>
+                             Note
+                            </Text>
+                            <Text
+                              style={{
+                                marginLeft: 10,
+                                fontSize: 12,
+                                color: '#9B9B9B',
+                              }}>
+                          These plants like to...
+
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              // alignItems: 'flex-end',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexDirection: 'row',
+                              // marginTop:-10
+                              // backgroundColor:"pink",
+                              marginLeft: 28,
+                            }}>
+                            <Image
+                              source={ require('../../assets/Doot.png')}
+                              style={{
+                                height: 20,
+                                width: 20,
+                              }}
+                            />
+
+                            
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
               <TouchableOpacity
                 style={{
                   width: '100%',
@@ -1563,7 +2034,7 @@ export default function Plantsdetail2({navigation}) {
           height: 10,
         }}
       />
-    </View>
+    </ScrollView>
   );
 }
 

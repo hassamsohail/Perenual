@@ -85,7 +85,8 @@ export default function Community({navigation}) {
         borderRadius: 16,
         elevation: 5,
         backgroundColor: '#fff',
-        marginRight: 10,
+        marginRight: 4,
+        marginLeft:4
         // marginHorizontal: 10, // Add margin between items
       }}>
       <Image
@@ -131,14 +132,22 @@ export default function Community({navigation}) {
         />
         <View
           style={{
-            width: '90%',
+            width: '100%',
             alignSelf: 'center',
           }}>
+            <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
+
+         
           <TouchableOpacity
-          onPress={()=>{
-            navigation.navigate("Profile")
-        }}
-          >
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
             <View
               style={{
                 height: 40,
@@ -155,12 +164,21 @@ export default function Community({navigation}) {
               />
             </View>
           </TouchableOpacity>
-
+          </View>
           <View
             style={{
               height: 20,
             }}
           />
+           <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
+
+          
           <View
             style={{
               flexDirection: 'row',
@@ -237,7 +255,7 @@ export default function Community({navigation}) {
                   }}>
                   <View
                     style={{
-                      width: 150,
+                      width: 156,
                       // marginLeft: 5,
                       height: 33,
                       backgroundColor: indexofData == index ? '#fff' : null,
@@ -261,12 +279,20 @@ export default function Community({navigation}) {
               )}
             />
           </View>
+          </View>
           {indexofData == 0 ? (
             <View
               style={{
                 width: '100%',
                 height: '71%',
               }}>
+                 <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
               <View
                 style={{
                   flexDirection: 'row',
@@ -336,15 +362,23 @@ export default function Community({navigation}) {
                   See All
                 </Text>
               </View>
-
+              </View>
               <FlatList
                 data={data1}
                 renderItem={renderItem}
                 keyExtractor={item => item.key}
                 horizontal={true}
               />
+             
             </View>
           ) : indexofData == 1 ? (
+            <View
+            
+            style={{
+              width: '90%',
+            alignSelf: 'center',
+            }}
+            >
             <View
               style={{
                 width: '100%',
@@ -485,7 +519,6 @@ export default function Community({navigation}) {
 
                     // marginLeft: 6,
                     marginTop: 10,
-
                   }}>
                   Why my Silver Pothos leaves are dropping down
                 </Text>
@@ -508,145 +541,136 @@ export default function Community({navigation}) {
                 </Text>
               </View>
             </View>
+            </View>
           ) : null}
           <Modal
-                transparent={true}
-                visible={isBottomSheetVisible}
-                animationType="slide"
-                onRequestClose={closeBottomSheet}>
-                <View style={styles.modalContainer}>
-                  {/* Your bottom sheet content goes here */}
-                  <View style={styles.bottomSheet}>
-                    <View
-                      style={{
-                        width: '90%',
-                        alignSelf: 'center',
-                      }}>
-                      <View
-                        style={{
-                          width: '100%',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          flexDirection: 'row',
-                        }}>
-                        <TouchableOpacity onPress={closeBottomSheet}>
-                          <Text
-                            style={{
-                              color: '#9B9B9B',
-                              fontSize: 16, // Adjust the font size as needed
-                              fontWeight: '600',
-                            }}>
-                            Cancel
-                          </Text>
-                        </TouchableOpacity>
-
-                        <Text
-                          style={{
-                            color: '#161C1C',
-                            fontSize: 16, // Adjust the font size as needed
-                            fontWeight: '600',
-                          }}>
-                           Ask Question
-                        </Text>
-                        <TouchableOpacity onPress={closeBottomSheet}>
-                          <Text
-                            style={{
-                              color: '#1BBFA0',
-                              fontSize: 16, // Adjust the font size as needed
-                              fontWeight: '600',
-                            }}>
-                            Save
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-
-                      <View
-                      style={{
-                        height:20
-                      }}
-                      />
-                      <TouchableOpacity
-            onPress={openImagePicker}
-            style={{
-              height: 103,
-              width: '100%',
-              alignSelf: 'center',
-              backgroundColor: '#DEF2ED',
-              justifyContent: 'center',
-              borderRadius:20,
-              
-
-            }}>
-            {imageUri ? (
-              <Image
-                source={{uri: imageUri}}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius:20,
-
-
-                }}
-              />
-            ) : (
-              <View
-                style={{
-                  backgroundColor: '#DEF2ED',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '100%',
-                  // borderRadius: 88,
-                 
-                  height: 103,
-                  borderRadius:20,
-
-                }}>
-                <Image
-                  source={require('../../assets/element.png')}
+            transparent={true}
+            visible={isBottomSheetVisible}
+            animationType="slide"
+            onRequestClose={closeBottomSheet}>
+            <View style={styles.modalContainer}>
+              {/* Your bottom sheet content goes here */}
+              <View style={styles.bottomSheet}>
+                <View
                   style={{
                     width: '90%',
-                    // marginTop: 70,
-                    borderRadius:20,
-                    height: 90,
-                  }}
-                />
-              </View>
-            )}
-          </TouchableOpacity>
-                  
+                    alignSelf: 'center',
+                  }}>
+                  <View
+                    style={{
+                      width: '100%',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <TouchableOpacity onPress={closeBottomSheet}>
+                      <Text
+                        style={{
+                          color: '#9B9B9B',
+                          fontSize: 16, // Adjust the font size as needed
+                          fontWeight: '600',
+                        }}>
+                        Cancel
+                      </Text>
+                    </TouchableOpacity>
 
-                      <TextInput
-                        style={styles.textInput1}
-                        placeholder="Question *"
-                        placeholderTextColor="#A5A5A5"
-                        value={text1}
-                        onChangeText={handleChangeText1}
-                      />
-
-
-  <TextInput
-                        style={styles.textInput}
-                        placeholder="Tell us more"
-                        placeholderTextColor="#A5A5A5"
-                        value={text}
-                        onChangeText={handleChangeText}
-                      />
-
-                    </View>
+                    <Text
+                      style={{
+                        color: '#161C1C',
+                        fontSize: 16, // Adjust the font size as needed
+                        fontWeight: '600',
+                      }}>
+                      Ask Question
+                    </Text>
+                    <TouchableOpacity onPress={closeBottomSheet}>
+                      <Text
+                        style={{
+                          color: '#1BBFA0',
+                          fontSize: 16, // Adjust the font size as needed
+                          fontWeight: '600',
+                        }}>
+                        Save
+                      </Text>
+                    </TouchableOpacity>
                   </View>
+
+                  <View
+                    style={{
+                      height: 20,
+                    }}
+                  />
+                  <TouchableOpacity
+                    onPress={openImagePicker}
+                    style={{
+                      height: 103,
+                      width: '100%',
+                      alignSelf: 'center',
+                      backgroundColor: '#DEF2ED',
+                      justifyContent: 'center',
+                      borderRadius: 20,
+                    }}>
+                    {imageUri ? (
+                      <Image
+                        source={{uri: imageUri}}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: 20,
+                        }}
+                      />
+                    ) : (
+                      <View
+                        style={{
+                          backgroundColor: '#DEF2ED',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          width: '100%',
+                          // borderRadius: 88,
+
+                          height: 103,
+                          borderRadius: 20,
+                        }}>
+                        <Image
+                          source={require('../../assets/element.png')}
+                          style={{
+                            width: '90%',
+                            // marginTop: 70,
+                            borderRadius: 20,
+                            height: 90,
+                          }}
+                        />
+                      </View>
+                    )}
+                  </TouchableOpacity>
+
+                  <TextInput
+                    style={styles.textInput1}
+                    placeholder="Question *"
+                    placeholderTextColor="#A5A5A5"
+                    value={text1}
+                    onChangeText={handleChangeText1}
+                  />
+
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="Tell us more"
+                    placeholderTextColor="#A5A5A5"
+                    value={text}
+                    onChangeText={handleChangeText}
+                  />
                 </View>
-              </Modal>
+              </View>
+            </View>
+          </Modal>
         </View>
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: "13%", // Adjust the bottom value as needed
+            bottom: 95, // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          onPress={openBottomSheet}
-          
-          >
+          onPress={openBottomSheet}>
           <View
             style={{
               height: 48,
@@ -672,7 +696,6 @@ export default function Community({navigation}) {
             />
           </View>
         </TouchableOpacity>
-
       </LinearGradient>
     </View>
   );
@@ -837,25 +860,23 @@ const styles = StyleSheet.create({
   textInput: {
     // borderColor: '#76D9C6',
     // borderWidth: 1,
-    marginTop:20,
+    marginTop: 20,
     // flex: 1,
     height: 130,
     width: '100%',
     padding: 10,
-    borderRadius:16,
+    borderRadius: 16,
     color: 'black',
-    backgroundColor:"#fff",
-
+    backgroundColor: '#fff',
   },
   textInput1: {
- 
-    backgroundColor:"#fff",
-    marginTop:20,
+    backgroundColor: '#fff',
+    marginTop: 20,
     // flex: 1,
     height: 56,
     width: '100%',
     padding: 10,
-    borderRadius:16,
+    borderRadius: 16,
     color: 'black',
   },
   checkedCheckbox: {

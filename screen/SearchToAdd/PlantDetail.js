@@ -8,8 +8,10 @@ import {
   StyleSheet,
   FlatList,
   Modal,
+  ImageBackground,
+  TouchableWithoutFeedback,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import FormInput1 from '../../Components/FormInput1';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -21,7 +23,6 @@ export default function PlantDetail({navigation}) {
   const [username1, setuserName1] = React.useState();
   const [username2, setuserName2] = React.useState();
   const [username3, setuserName3] = React.useState();
-
   const [selectedRadio1, setSelectedRadio1] = useState(0);
   const [potSize, setPotSize] = useState(3);
   const [potSize1, setPotSize1] = useState(5);
@@ -64,10 +65,12 @@ export default function PlantDetail({navigation}) {
     {
       id: '1',
       title: 'Indoor',
+      imageSource: require('../../assets/Indoor_icon.png'),
     },
     {
       id: '2',
       title: 'Outdoor',
+      imageSource: require('../../assets/Outdoor_icon.png'),
     },
   ];
   const data2 = [
@@ -124,10 +127,16 @@ export default function PlantDetail({navigation}) {
   };
   const [username, setuserName] = React.useState();
 
-  const image = [
-    require('../../assets/Slide1.png'),
-    require('../../assets/Slide1.png'),
-    require('../../assets/Slide1.png'),
+  // const image = [
+  //   require('../../assets/Slide1.png'),
+  //   require('../../assets/Slide1.png'),
+  //   require('../../assets/Slide1.png'),
+  // ];
+  const imageSliderData = [
+    // Replace with your image data
+    {id: 1, source: require('../../assets/Slide1.png')},
+    {id: 2, source: require('../../assets/Slide1.png')},
+    // Add more images as needed
   ];
   const data = [
     {
@@ -178,41 +187,168 @@ export default function PlantDetail({navigation}) {
   const openBottomSheet = () => {
     setIsBottomSheetVisible(true);
   };
+  const renderItem1 = ({item, index}) => (
+    <TouchableOpacity
+      onPress={() => handleRadioSelect1(index)}
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '49%',
+        marginRight: '2%',
+        height: 55,
+        borderWidth: 1,
+        borderColor: selectedRadio1 === index ? '#fff' : '#fff',
+        borderRadius: 8,
+        // marginVertical: 5,
+        backgroundColor: '#fff',
+        paddingHorizontal: 8,
+        justifyContent: 'space-between',
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Image
+          source={item.imageSource}
+          style={{
+            height: 24,
+            width: 24,
+            marginRight: 4,
+          }}
+        />
+        <Text
+          style={{
+            fontSize: 14,
+            color: selectedRadio1 === index ? '#9B9B9B' : '#9B9B9B',
+            fontWeight: '600',
+          }}>
+          {item.title}
+        </Text>
+      </View>
 
+      <View
+        style={{
+          width: 20,
+          height: 20,
+          borderWidth: 1.5,
+          // marginRight: 1,
+          borderColor: selectedRadio1 === index ? '#D7D7D7' : '#D7D7D7',
+          borderRadius: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            width: 12,
+            height: 12,
+            backgroundColor: selectedRadio1 === index ? '#D7D7D7' : '#fff',
+            borderRadius: 20,
+          }}></View>
+      </View>
+    </TouchableOpacity>
+  );
+
+  //First Modal
   const closeBottomSheet = () => {
     setIsBottomSheetVisible(false);
     setIsBottomSheetVisible1(true);
   };
-  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false); // Control the visibility of the bottom sheet
-  const [isBottomSheetVisible1, setIsBottomSheetVisible1] = useState(false);
-  const [isBottomSheetVisible2, setIsBottomSheetVisible2] = useState(false);
-  const [isBottomSheetVisible3, setIsBottomSheetVisible3] = useState(false); // Control the visibility of the bottom sheet
-  const [isBottomSheetVisible4, setIsBottomSheetVisible4] = useState(false);
-  const [isBottomSheetVisible5, setIsBottomSheetVisible5] = useState(false); // Control the visibility of the bottom sheet
-  // Control the visibility of the bottom sheet
-  // Control the visibility of the bottom sheet
-  // Control the visibility of the bottom sheet
+  const C1closeBottomSheet = () => {
+    setIsBottomSheetVisible(false);
+  };
 
+  //Second Modal
+  const closeBottomSheet1 = () => {
+    setIsBottomSheetVisible1(false);
+    setIsBottomSheetVisible2(true);
+  };
+  const C1closeBottomSheet1 = () => {
+    setIsBottomSheetVisible1(false);
+  };
+  const B1closeBottomSheet1 = () => {
+    setIsBottomSheetVisible1(false);
+    setIsBottomSheetVisible(true);
+  };
+
+  //Third Modal
   const closeBottomSheet2 = () => {
     setIsBottomSheetVisible2(false);
     setIsBottomSheetVisible3(true);
   };
+  const C1closeBottomSheet2 = () => {
+    setIsBottomSheetVisible2(false);
+  };
+  const B1closeBottomSheet2 = () => {
+    setIsBottomSheetVisible2(false);
+    setIsBottomSheetVisible1(true);
+  };
+
+  //Fourth Modal
   const closeBottomSheet3 = () => {
     setIsBottomSheetVisible3(false);
     setIsBottomSheetVisible4(true);
   };
+  const C1closeBottomSheet3 = () => {
+    setIsBottomSheetVisible3(false);
+  };
+  const B1closeBottomSheet3 = () => {
+    setIsBottomSheetVisible3(false);
+    setIsBottomSheetVisible2(true);
+  };
 
+  //Fifth Modal
   const closeBottomSheet4 = () => {
     setIsBottomSheetVisible4(false);
     setIsBottomSheetVisible5(true);
   };
+  const C1closeBottomSheet4 = () => {
+    setIsBottomSheetVisible4(false);
+  };
+  const B1closeBottomSheet4 = () => {
+    setIsBottomSheetVisible4(false);
+    setIsBottomSheetVisible3(true);
+  };
+
+  //Sixth Modal
   const closeBottomSheet5 = () => {
     setIsBottomSheetVisible5(false);
     // setIsBottomSheetVisible5(true);
   };
-  const closeBottomSheet1 = () => {
-    setIsBottomSheetVisible1(false);
-    setIsBottomSheetVisible2(true);
+  const C1closeBottomSheet5 = () => {
+    setIsBottomSheetVisible5(false);
+  };
+  const B1closeBottomSheet5 = () => {
+    setIsBottomSheetVisible5(false);
+    setIsBottomSheetVisible4(true);
+  };
+
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+  const [isBottomSheetVisible1, setIsBottomSheetVisible1] = useState(false);
+  const [isBottomSheetVisible2, setIsBottomSheetVisible2] = useState(false);
+  const [isBottomSheetVisible3, setIsBottomSheetVisible3] = useState(false);
+  const [isBottomSheetVisible4, setIsBottomSheetVisible4] = useState(false);
+  const [isBottomSheetVisible5, setIsBottomSheetVisible5] = useState(false);
+
+  // const [activeSlide, setActiveSlide] = useState(0);
+  const scrollViewRef = useRef(null);
+  const slideWidth = Dimensions.get('window').width;
+
+  const handleScroll = event => {
+    const slideIndex = Math.round(
+      event.nativeEvent.contentOffset.x / slideWidth,
+    );
+    setActiveSlide(slideIndex);
+  };
+
+  const scrollToSlide = index => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        x: index * slideWidth,
+        animated: true,
+      });
+    }
   };
   function renderItem({item, index}) {
     const backgroundColor = index % 2 === 0 ? '#fff' : '#F8F8F8';
@@ -257,20 +393,6 @@ export default function PlantDetail({navigation}) {
     );
   }
 
-  const renderImageItem = ({item}) => (
-    <Image
-      source={item}
-      style={{
-        width: '100%',
-        // borderRadius: 20,
-        // marginTop: 10,
-        height: 250,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        // Set the desired height for your images
-      }}
-    />
-  );
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
@@ -324,25 +446,49 @@ export default function PlantDetail({navigation}) {
           width: '100%',
           marginTop: -20,
         }}>
-        <Carousel
-          data={image}
-          renderItem={renderImageItem}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={Dimensions.get('window').width}
-          onSnapToItem={index => setActiveSlide(index)}
-        />
+        <ScrollView
+          ref={scrollViewRef}
+          horizontal
+          pagingEnabled
+          onScroll={handleScroll}
+          showsHorizontalScrollIndicator={false}>
+          {imageSliderData.map((item, index) => (
+            <Image
+              key={item.id}
+              source={item.source}
+              style={{
+                width: slideWidth,
+                height: 250,
+                borderBottomLeftRadius: 24,
+                borderBottomRightRadius: 24,
+              }}
+            />
+          ))}
+        </ScrollView>
+        <View style={{flexDirection: 'row', marginLeft: 20}}>
+          {imageSliderData.map((item, index) => (
+            <TouchableOpacity
+              key={item.id}
+              onPress={() => scrollToSlide(index)}
+              style={{
+                width: index === activeSlide ? 16 : 8,
+                height: 8,
+                marginTop: -95,
 
-        {/* Pagination */}
-        <Pagination
-          dotsLength={image.length}
-          activeDotIndex={activeSlide}
-          containerStyle={{}}
-        />
+                zIndex: 10,
+                borderRadius: 4,
+                backgroundColor: index === activeSlide ? '#1BBFA0' : '#DEF2ED',
+                margin: 4,
+              }}
+            />
+          ))}
+        </View>
       </View>
       <View
         style={{
           width: '90%',
           alignSelf: 'center',
+          marginTop: -40,
         }}>
         <Text
           style={{
@@ -362,6 +508,8 @@ export default function PlantDetail({navigation}) {
             // alignSelf: 'center',
             // fontWeight:"600",
             textAlign: 'center',
+            marginBottom: 10,
+
             // marginTop: 10,
           }}>
           Scindapsus silvery anne
@@ -399,10 +547,6 @@ export default function PlantDetail({navigation}) {
                   marginLeft: 10,
                   fontSize: 12,
                   color: '#161C1C',
-                  // alignSelf: 'center',
-                  // fontWeight:"600",
-                  // textAlign:"center"
-                  // marginTop: 10,
                 }}>
                 Water
               </Text>
@@ -411,10 +555,6 @@ export default function PlantDetail({navigation}) {
                   marginLeft: 10,
                   fontSize: 12,
                   color: '#9B9B9B',
-                  // alignSelf: 'center',
-                  // fontWeight:"600",
-                  // textAlign:"center"
-                  // marginTop: 10,
                 }}>
                 Every 7-10 days
               </Text>
@@ -585,7 +725,7 @@ export default function PlantDetail({navigation}) {
         <Text
           style={{
             fontSize: 16,
-
+            color: '#9B9B9B',
             marginTop: 10,
           }}>
           Pothos (Epipremnum aureum) is one of the easiest houseplants to grow
@@ -598,6 +738,7 @@ export default function PlantDetail({navigation}) {
 
         <View
           style={{
+            marginBottom: 30,
             width: '100%',
             marginTop: 10,
             justifyContent: 'space-between',
@@ -627,6 +768,7 @@ export default function PlantDetail({navigation}) {
       <View
         style={{
           width: '100%',
+          marginBottom: 60,
         }}>
         <FlatList
           data={data}
@@ -634,324 +776,453 @@ export default function PlantDetail({navigation}) {
           keyExtractor={item => item.id}
         />
       </View>
+
       <Modal
         transparent={true}
         visible={isBottomSheetVisible}
         animationType="slide"
         onRequestClose={closeBottomSheet}>
-        <View style={styles.modalContainer}>
-          {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
-            <TouchableOpacity
-              onPress={openImagePicker}
-              style={{
-                height: 88,
-                width: 88,
-                marginTop: -50,
-
-                alignSelf: 'center',
-                backgroundColor: '#EDEDED',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 88,
-              }}>
-              {imageUri ? (
-                <Image
-                  source={{uri: imageUri}}
-                  style={{width: '100%', height: '100%', borderRadius: 88}}
-                />
-              ) : (
-                <View
-                  style={{
-                    backgroundColor: '#F4F4F4',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: 88,
-                    borderRadius: 88,
-                    height: 88,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      color: '#6146AE',
-                      textAlign: 'center',
-                      fontWeight: 'normal',
-                    }}>
-                    Add new photo
-                  </Text>
-                </View>
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity onPress={openImagePicker}>
-              <Text
-                style={{
-                  // height:20, width:100, elevation:5,
-                  fontSize: 20,
-                  color: '#1BBFA0',
-                  alignSelf: 'center',
-                  fontWeight: '600',
-                  marginBottom: 10,
-                }}>
-                Change Photo
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={closeBottomSheet}>
-              <Text>Close</Text>
-            </TouchableOpacity>
-            <FormInput1
-              // style={styles.input}
-              onChangeText={username => setuserName(username)}
-              // value={text}
-              labelValue={username}
-              // secureTextEntry={true}
-              // keyboardType="email-address"
-              placeholder="Garden Full Name"
-              autoCapitalize="none"
-              autocorrect={false}
-            />
-            <Text
-              style={{
-                // marginLeft:10,
-                fontSize: 20,
-                color: '#161C1C',
-                // alignSelf: 'center',
-                fontWeight: '600',
-                // textAlign:"center"
-                marginTop: 10,
-              }}>
-              Choose space
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#9B9B9B',
-              }}>
-              Where do you keep this plant?
-            </Text>
-
+        <ScrollView>
+          <View style={styles.modalContainer}>
             <View
               style={{
-                width: '100%',
-                marginTop: 20,
-                height: 108,
-                alignSelf: 'center',
-                borderWidth: 1,
-                borderColor: '#DEF2ED',
-                borderRadius: 16,
-                flexDirection: 'row',
-                // justifyContent:"center",
-                paddingHorizontal: 10,
+                backgroundColor: '#F8F8F8',
+
+                paddingHorizontal: 16,
+
                 alignItems: 'center',
+                // width:"100%",
+                height: Dimensions.get('window').height * 1,
               }}>
               <View
                 style={{
-                  width: 92,
-                  // marginTop:20,
-                  // backgroundColor:"#DEF2ED",
-                  height: 92,
+                  height: 10,
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity onPress={C1closeBottomSheet}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/ArrowLeft.png')}
+                      style={{
+                        width: 8,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={C1closeBottomSheet}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/closee.png')}
+                      style={{
+                        width: 15,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity
+                onPress={openImagePicker}
+                style={{
+                  height: 78,
+                  width: 78,
+                  marginTop: 20,
+                  marginLeft: 0.5,
+                  alignSelf: 'center',
+                  backgroundColor: '#EDEDED',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 78,
+                }}>
+                {imageUri ? (
+                  <Image
+                    source={{uri: imageUri}}
+                    style={{width: '100%', height: '100%', borderRadius: 78}}
+                  />
+                ) : (
+                  <View
+                    style={{
+                      backgroundColor: '#F4F4F4',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      marginLeft: 0.5,
+
+                      width: 78,
+                      borderRadius: 78,
+                      height: 78,
+                    }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: '#6146AE',
+                        textAlign: 'center',
+                        fontWeight: 'normal',
+                      }}>
+                      Add new photo
+                    </Text>
+                  </View>
+                )}
+              </TouchableOpacity>
+              <TouchableOpacity onPress={openImagePicker}>
+                <View
+                  style={{
+                    width: 90,
+                    height: 26,
+                    backgroundColor: '#fff',
+                    elevation: 3,
+                    marginTop: -3,
+                    flexDirection: 'row',
+                    borderRadius: 16,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/Regular.png')}
+                    style={{width: 10, height: 10}}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 10,
+                      marginLeft: 3,
+
+                      color: '#1BBFA0',
+                    }}>
+                    Change Photo
+                  </Text>
+                </View>
+              </TouchableOpacity>
+
+              <View
+                style={{
+                  height: 10,
+                }}
+              />
+              <FormInput1
+                // style={styles.input}
+                onChangeText={username => setuserName(username)}
+                // value={text}
+                labelValue={username}
+                // secureTextEntry={true}
+                // keyboardType="email-address"
+                placeholder="Garden Full Name"
+                autoCapitalize="none"
+                autocorrect={false}
+              />
+              <Text
+                style={{
+                  // marginLeft:10,
+                  fontSize: 20,
+                  color: '#161C1C',
+                  // alignSelf: 'center',
+                  fontWeight: '600',
+                  // textAlign:"center"
+                  marginTop: 10,
+                }}>
+                Choose space
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#9B9B9B',
+                }}>
+                Where do you keep this plant?
+              </Text>
+
+              <View
+                style={{
+                  width: '100%',
+                  marginTop: 20,
+                  height: 108,
                   alignSelf: 'center',
                   borderWidth: 1,
                   borderColor: '#DEF2ED',
                   borderRadius: 16,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <View
-                  style={{
-                    height: 40,
-                    width: '90%',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Image
-                    source={require('../../assets/A.png')}
-                    style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                  <Image
-                    source={require('../../assets/A.png')}
-                    style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                </View>
-                <View
-                  style={{
-                    height: 40,
-                    width: '94%',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Image
-                    source={require('../../assets/A.png')}
-                    style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                  <Image
-                    source={require('../../assets/A.png')}
-                    style={{
-                      height: 38,
-                      width: 38,
-                      borderRadius: 8,
-                    }}></Image>
-                </View>
-              </View>
-              <View>
-                <Text
-                  style={{
-                    marginLeft: 10,
-                    fontSize: 16,
-                    color: '#161C1C',
-                    // alignSelf: 'center',
-                    fontWeight: '600',
-                    // textAlign:"center"
-                    // marginTop: 10,
-                  }}>
-                  Dining room
-                </Text>
-                <Text
-                  style={{
-                    marginLeft: 10,
-                    fontSize: 12,
-                    color: '#9B9B9B',
-                    // alignSelf: 'center',
-                    fontWeight: '600',
-                    // textAlign:"center"
-                    // marginTop: 10,
-                  }}>
-                  4 plant (1 need care)
-                </Text>
-              </View>
-            </View>
-
-            <TouchableOpacity style={styles.button1} onPress={closeBottomSheet}>
-              <Text style={styles.buttonText1}>Create Space</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button} onPress={closeBottomSheet}>
-              <Text style={styles.buttonText}>Next</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-      <Modal
-        transparent={true}
-        visible={isBottomSheetVisible1}
-        animationType="slide"
-        onRequestClose={closeBottomSheet1}>
-        <View style={styles.modalContainer}>
-          {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
-            <Image
-              source={
-                SelectedImageUri
-                  ? {uri: SelectedImageUri}
-                  : require('../../assets/icon4.png')
-              }
-              style={{
-                width: 88,
-                height: 88,
-                borderRadius: 88,
-                alignSelf: 'center',
-                marginTop: -50,
-              }}
-            />
-
-            <Text
-              style={{
-                fontSize: 20,
-                color: '#161C1C',
-                fontWeight: '600',
-              }}>
-              Create Space
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#9B9B9B',
-                // fontWeight: '600',
-              }}>
-              Choose location to get plant care tips
-            </Text>
-
-            <FormInput
-              // style={styles.input}
-              onChangeText={username1 => setuserName1(username1)}
-              // value={text}
-              labelValue={username1}
-              // secureTextEntry={true}
-              // keyboardType="email-address"
-              placeholder="Space Name"
-              autoCapitalize="none"
-              autocorrect={false}
-            />
-
-            {data1.map((item, index) => (
-              <TouchableOpacity
-                key={item.id}
-                onPress={() => handleRadioSelect1(index)}
-                style={{
                   flexDirection: 'row',
-                  alignItems: 'center',
-                  width: '100%',
-                  height: 55,
-                  borderWidth: 1,
-                  borderColor: selectedRadio1 === index ? '#1BBFA0' : '#DEF2ED',
-                  borderRadius: 8,
-                  marginVertical: 5,
+                  // justifyContent:"center",
                   paddingHorizontal: 10,
+                  alignItems: 'center',
                 }}>
                 <View
                   style={{
-                    // position: 'absolute',
-                    // right: 10,
-                    width: 20,
-                    height: 20,
-                    borderWidth: 1.5,
-                    marginRight: 10,
-                    // borderColor: '#D9D6DF',
-                    borderColor:
-                      selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
-                    borderRadius: 20,
+                    width: 92,
+                    // marginTop:20,
+                    // backgroundColor:"#DEF2ED",
+                    height: 92,
+                    alignSelf: 'center',
+                    borderWidth: 1,
+                    borderColor: '#DEF2ED',
+                    borderRadius: 16,
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
                   <View
                     style={{
-                      width: 12,
-                      height: 12,
-                      backgroundColor:
-                        selectedRadio1 === index ? '#1BBFA0' : '#D7D7D7',
-                      borderRadius: 20,
-                    }}></View>
+                      height: 40,
+                      width: '90%',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}></Image>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}></Image>
+                  </View>
+                  <View
+                    style={{
+                      height: 40,
+                      width: '94%',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                    }}>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}></Image>
+                    <Image
+                      source={require('../../assets/A.png')}
+                      style={{
+                        height: 38,
+                        width: 38,
+                        borderRadius: 8,
+                      }}></Image>
+                  </View>
                 </View>
-
                 <View>
                   <Text
                     style={{
-                      fontSize: 14,
-                      color: selectedRadio1 === index ? '#161C1C' : '#9B9B9B',
+                      marginLeft: 10,
+                      fontSize: 16,
+                      color: '#161C1C',
+                      // alignSelf: 'center',
                       fontWeight: '600',
+                      // textAlign:"center"
+                      // marginTop: 10,
                     }}>
-                    {item.title}
+                    Dining room
+                  </Text>
+                  <Text
+                    style={{
+                      marginLeft: 10,
+                      fontSize: 12,
+                      color: '#9B9B9B',
+                      // alignSelf: 'center',
+                      fontWeight: '600',
+                      // textAlign:"center"
+                      // marginTop: 10,
+                    }}>
+                    4 plant (1 need care)
                   </Text>
                 </View>
-              </TouchableOpacity>
-            ))}
+              </View>
 
-            <TouchableOpacity style={styles.button} onPress={closeBottomSheet1}>
-              <Text style={styles.buttonText}>Create</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button1}
+                onPress={closeBottomSheet}>
+                <Text style={styles.buttonText1}>Create Space</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={closeBottomSheet}>
+                <Text style={styles.buttonText}>Next</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </ScrollView>
+      </Modal>
+
+      <Modal
+        transparent={true}
+        visible={isBottomSheetVisible1}
+        animationType="slide"
+        onRequestClose={closeBottomSheet1}>
+        <ScrollView>
+          <View style={styles.modalContainer}>
+            <View
+              style={{
+                backgroundColor: '#F8F8F8',
+
+                paddingHorizontal: 16,
+
+                alignItems: 'center',
+                // width:"100%",
+                height: Dimensions.get('window').height * 1,
+              }}>
+              <View
+                style={{
+                  height: 10,
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity onPress={B1closeBottomSheet1}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/ArrowLeft.png')}
+                      style={{
+                        width: 8,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={C1closeBottomSheet1}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/closee.png')}
+                      style={{
+                        width: 15,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <Image
+                source={
+                  SelectedImageUri
+                    ? {uri: SelectedImageUri}
+                    : require('../../assets/icon4.png')
+                }
+                style={{
+                  height: 78,
+                  width: 78,
+                  marginTop: 20,
+                  marginLeft: 0.5,
+                  borderRadius: 88,
+                  alignSelf: 'center',
+                }}
+              />
+
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: '#161C1C',
+                  fontWeight: '600',
+                  marginTop: 20,
+                }}>
+                Create Space
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  marginBottom: 20,
+                  color: '#9B9B9B',
+                  // fontWeight: '600',
+                }}>
+                Choose location to get plant care tips
+              </Text>
+
+              <FormInput
+                // style={styles.input}
+                onChangeText={username1 => setuserName1(username1)}
+                // value={text}
+                labelValue={username1}
+                // secureTextEntry={true}
+                // keyboardType="email-address"
+                placeholder="Space Name"
+                autoCapitalize="none"
+                autocorrect={false}
+              />
+              <View
+                style={{
+                  height: 70,
+                }}>
+                <FlatList
+                  data={data1}
+                  renderItem={renderItem1}
+                  keyExtractor={item => item.id.toString()}
+                  numColumns={2} // Set the number of columns to 2
+                  contentContainerStyle={{paddingHorizontal: '2%', height: 55}} // Adjust the content container style
+                />
+              </View>
+              <TouchableOpacity
+                style={{
+                  width: '100%',
+                  height: 56,
+                  borderRadius: 16,
+                  alignSelf: 'center',
+                  backgroundColor: '#1BBFA0',
+                  justifyContent: 'center', // Center content horizontally
+                  alignItems: 'center',
+                  marginTop: 100,
+                }}
+                onPress={closeBottomSheet1}>
+                <Text style={styles.buttonText}>Create</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </Modal>
       <Modal
         transparent={true}
@@ -959,8 +1230,73 @@ export default function PlantDetail({navigation}) {
         animationType="slide"
         onRequestClose={closeBottomSheet2}>
         <View style={styles.modalContainer}>
-          {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <View
+            style={{
+              backgroundColor: '#F8F8F8',
+
+              paddingHorizontal: 16,
+
+              alignItems: 'center',
+              // width:"100%",
+              height: Dimensions.get('window').height * 1,
+            }}>
+            <View
+              style={{
+                height: 10,
+              }}
+            />
+            <View
+              style={{
+                width: '100%',
+
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={B1closeBottomSheet2}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/ArrowLeft.png')}
+                    style={{
+                      width: 8,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={C1closeBottomSheet2}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/closee.png')}
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
+
             <Image
               source={
                 SelectedImageUri
@@ -968,17 +1304,19 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: 20,
+                marginLeft: 0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
               }}
             />
 
             <Text
               style={{
                 fontSize: 20,
+                marginTop: 25,
                 color: '#161C1C',
                 fontWeight: '600',
               }}>
@@ -989,6 +1327,7 @@ export default function PlantDetail({navigation}) {
                 fontSize: 14,
                 color: '#9B9B9B',
                 // fontWeight: '600',
+                marginBottom: 20,
               }}>
               How much light does your plant get?
             </Text>
@@ -1058,8 +1397,72 @@ export default function PlantDetail({navigation}) {
         animationType="slide"
         onRequestClose={closeBottomSheet3}>
         <View style={styles.modalContainer}>
-          {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <View
+            style={{
+              backgroundColor: '#F8F8F8',
+
+              paddingHorizontal: 16,
+
+              alignItems: 'center',
+              // width:"100%",
+              height: Dimensions.get('window').height * 1,
+            }}>
+            <View
+              style={{
+                height: 10,
+              }}
+            />
+            <View
+              style={{
+                width: '100%',
+
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={B1closeBottomSheet3}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/ArrowLeft.png')}
+                    style={{
+                      width: 8,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={C1closeBottomSheet3}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/closee.png')}
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
             <Image
               source={
                 SelectedImageUri
@@ -1067,17 +1470,19 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: 20,
+                marginLeft: 0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
               }}
             />
 
             <Text
               style={{
                 fontSize: 20,
+                marginTop: 20,
                 color: '#161C1C',
                 fontWeight: '600',
               }}>
@@ -1088,6 +1493,7 @@ export default function PlantDetail({navigation}) {
                 fontSize: 14,
                 color: '#9B9B9B',
                 // fontWeight: '600',
+                marginBottom: 20,
               }}>
               What soil mixture do you use?
             </Text>
@@ -1158,7 +1564,72 @@ export default function PlantDetail({navigation}) {
         onRequestClose={closeBottomSheet4}>
         <View style={styles.modalContainer}>
           {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
+          <View
+            style={{
+              backgroundColor: '#F8F8F8',
+
+              paddingHorizontal: 16,
+
+              alignItems: 'center',
+              // width:"100%",
+              height: Dimensions.get('window').height * 1,
+            }}>
+            <View
+              style={{
+                height: 10,
+              }}
+            />
+            <View
+              style={{
+                width: '100%',
+
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={B1closeBottomSheet4}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/ArrowLeft.png')}
+                    style={{
+                      width: 8,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={C1closeBottomSheet4}>
+                <View
+                  style={{
+                    height: 40,
+                    width: 40,
+                    borderWidth: 1,
+                    borderColor: '#E0E0E0',
+                    backgroundColor: '#fff',
+                    borderRadius: 12,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    source={require('../../assets/closee.png')}
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
             <Image
               source={
                 SelectedImageUri
@@ -1166,19 +1637,22 @@ export default function PlantDetail({navigation}) {
                   : require('../../assets/icon4.png')
               }
               style={{
-                width: 88,
-                height: 88,
+                height: 78,
+                width: 78,
+                marginTop: 20,
+                marginLeft: 0.5,
                 borderRadius: 88,
                 alignSelf: 'center',
-                marginTop: -50,
               }}
             />
 
             <Text
               style={{
+                marginTop: 10,
                 fontSize: 20,
                 color: '#161C1C',
                 fontWeight: '600',
+                // marginBottom:10
               }}>
               Pot Size
             </Text>
@@ -1190,7 +1664,41 @@ export default function PlantDetail({navigation}) {
               }}>
               Pick the height and width of the pot
             </Text>
-
+            <View
+              style={{
+                width: '70%',
+                zIndex: 20,
+                position: 'absolute',
+                right: -75,
+                top: 280,
+                // marginTop:-30,
+                transform: [{rotate: '90deg'}],
+              }}>
+              <Slider
+                value={potSize1}
+                onValueChange={value => setPotSize1(value)}
+                minimumValue={2}
+                maximumValue={20}
+                step={1}
+                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
+                maximumTrackTintColor="#C9C9C9"
+                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbStyle={{
+                  borderWidth: 2,
+                  borderColor: '#fff',
+                  elevation: 4,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#13867B',
+                  // transform: [{ rotate: '90deg' }],
+                  textAlign: 'center',
+                }}>
+                Width ≈ {potSize1} in
+              </Text>
+            </View>
             <Image
               source={require('../../assets/Plot.png')}
               style={{
@@ -1199,9 +1707,10 @@ export default function PlantDetail({navigation}) {
                 marginTop: 20,
               }}
             />
+
             <View
               style={{
-                width: '100%',
+                width: '75%',
               }}>
               <Slider
                 value={potSize}
@@ -1210,7 +1719,13 @@ export default function PlantDetail({navigation}) {
                 maximumValue={20}
                 step={1}
                 minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
-                maximumTrackTintColor="#9B9B9B"
+                maximumTrackTintColor="#C9C9C9"
+                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbStyle={{
+                  borderWidth: 2,
+                  borderColor: '#fff',
+                  elevation: 4,
+                }}
               />
             </View>
             <Text
@@ -1220,28 +1735,7 @@ export default function PlantDetail({navigation}) {
               }}>
               Height ≈ {potSize} in
             </Text>
-            <View
-              style={{
-                width: '100%',
-              }}>
-              <Slider
-                value={potSize1}
-                onValueChange={value => setPotSize1(value)}
-                minimumValue={0}
-                maximumValue={20}
-                step={1}
-                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
-                maximumTrackTintColor="#9B9B9B"
-              />
-            </View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#13867B',
-              }}>
-              {' '}
-              Width ≈ {potSize1} in
-            </Text>
+
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet4}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
@@ -1253,157 +1747,308 @@ export default function PlantDetail({navigation}) {
         visible={isBottomSheetVisible5}
         animationType="slide"
         onRequestClose={closeBottomSheet5}>
-        <View style={styles.modalContainer}>
-          {/* Your bottom sheet content goes here */}
-          <View style={styles.bottomSheet}>
-            <Image
-              source={
-                SelectedImageUri
-                  ? {uri: SelectedImageUri}
-                  : require('../../assets/icon4.png')
-              }
+        <ScrollView>
+          <View style={styles.modalContainer}>
+            {/* Your bottom sheet content goes here */}
+            <View
               style={{
-                width: 88,
-                height: 88,
-                borderRadius: 88,
-                alignSelf: 'center',
-                marginTop: -50,
-              }}
-            />
+                backgroundColor: '#F8F8F8',
 
-            <Text
-              style={{
-                fontSize: 20,
-                color: '#161C1C',
-                fontWeight: '600',
+                paddingHorizontal: 16,
+
+                alignItems: 'center',
+                // width:"100%",
+                height: Dimensions.get('window').height * 1,
               }}>
-              Watering Plant
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#9B9B9B',
-                // fontWeight: '600',
-              }}>
-              When did you last water your plant?
-            </Text>
-            <View
-              style={{
-                marginTop: 10,
-              }}
-            />
-            <View
-              style={{
-                height: 55,
-                width: '100%',
-              }}>
-              <FlatList
-                data={data4}
-                horizontal={true} // Set horizontal to true
-                renderItem={({item, index}) => (
-                  <TouchableOpacity
-                    key={item.id}
-                    onPress={() => handleRadioSelect4(index)}
-                    style={{
-                      // flexDirection: 'row',
-                      alignItems: 'center',
-                      width: 100, // Adjust the width as needed
-                      height: 55,
-                      borderWidth: 1,
-                      borderColor:
-                        selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
-                      borderRadius: 8,
-                      backgroundColor:
-                        selectedRadio4 === index ? '#DEF2ED' : '#fff',
-                      marginRight: 10,
-                      marginVertical: 5,
-                      paddingHorizontal: 10,
-                      justifyContent: 'center',
-                    }}>
-                    <View>
-                      <Text
-                        style={{
-                          fontSize: 14,
-                          color:
-                            selectedRadio4 === index ? '#1BBFA0' : '#9B9B9B',
-                          fontWeight: '600',
-                        }}>
-                        {item.title}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                )}
-                keyExtractor={item => item.id}
+              <View
+                style={{
+                  height: 10,
+                }}
               />
-            </View>
-            <Text style={styles.loginDescription1}>Select a Date</Text>
-            <TouchableOpacity
-              onPress={() => setShowDatePicker(true)} // Show date picker when the text is pressed
-              style={{
-                height: 40,
-                borderBottomWidth: 1,
-                borderColor: '#D9D6DF',
-                justifyContent: 'center',
-              }}>
+              <View
+                style={{
+                  width: '100%',
+
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity onPress={B1closeBottomSheet5}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/ArrowLeft.png')}
+                      style={{
+                        width: 8,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={C1closeBottomSheet5}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      borderWidth: 1,
+                      borderColor: '#E0E0E0',
+                      backgroundColor: '#fff',
+                      borderRadius: 12,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      source={require('../../assets/closee.png')}
+                      style={{
+                        width: 15,
+                        height: 15,
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <Image
+                source={
+                  SelectedImageUri
+                    ? {uri: SelectedImageUri}
+                    : require('../../assets/icon4.png')
+                }
+                style={{
+                  height: 78,
+                  width: 78,
+                  marginTop: 20,
+                  marginLeft: 0.5,
+                  borderRadius: 88,
+                  alignSelf: 'center',
+                }}
+              />
+
               <Text
                 style={{
-                  color: '#000000',
+                  fontSize: 20,
+                  color: '#161C1C',
+                  fontWeight: '600',
+                  marginTop: 20,
                 }}>
-                {dateOfBirth.toDateString()}
+                Watering Plant
               </Text>
-            </TouchableOpacity>
-            {showDatePicker && (
-              <DateTimePicker
-                testID="dateTimePicker"
-                value={dateOfBirth}
-                mode="date"
-                is24Hour={true}
-                display="default"
-                onChange={handleDateChange}
-              />
-            )}
-            <View
-              style={{
-                width: '100%',
-              }}>
               <Text
                 style={{
                   fontSize: 14,
-                  color: '#161C1C',
-                  fontWeight: 'bold',
-                  marginTop: 10,
+                  marginBottom: 10,
+                  color: '#9B9B9B',
+                  // fontWeight: '600',
                 }}>
-                When are you free during the day?
+                When did you last water your plant?
               </Text>
-              <FormInput
-                // style={styles.input}
-                onChangeText={username2 => setuserName2(username2)}
-                // value={text}
-                labelValue={username2}
-                // secureTextEntry={true}
-                // keyboardType="email-address"
-                placeholder="Morning"
-                autoCapitalize="none"
-                autocorrect={false}
+              <View
+                style={{
+                  marginTop: 10,
+                }}
               />
-              <FormInput
-                // style={styles.input}
-                onChangeText={username3 => setuserName3(username3)}
-                // value={text}
-                labelValue={username3}
-                // secureTextEntry={true}
-                // keyboardType="email-address"
-                placeholder="09:00"
-                autoCapitalize="none"
-                autocorrect={false}
+              <View
+                style={{
+                  height: 42,
+                  width: '100%',
+                  marginBottom: 20,
+                  alignSelf: 'center',
+                  alignItems: 'center',
+                }}>
+                <FlatList
+                  data={data4}
+                  horizontal={true} // Set horizontal to true
+                  renderItem={({item, index}) => (
+                    <TouchableOpacity
+                      key={item.id}
+                      onPress={() => handleRadioSelect4(index)}
+                      style={{
+                        // flexDirection: 'row',
+                        alignItems: 'center',
+                        width: 97, // Adjust the width as needed
+                        height: 37,
+                        // marginBottom:30,
+                        borderWidth: 1,
+                        borderColor:
+                          selectedRadio4 === index ? '#1BBFA0' : '#DEF2ED',
+                        borderRadius: 8,
+                        backgroundColor:
+                          selectedRadio4 === index ? '#DEF2ED' : '#fff',
+                        marginRight: 10,
+                        marginVertical: 5,
+                        paddingHorizontal: 10,
+                        justifyContent: 'center',
+                      }}>
+                      <View>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            color:
+                              selectedRadio4 === index ? '#1BBFA0' : '#9B9B9B',
+                            fontWeight: '600',
+                          }}>
+                          {item.title}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={item => item.id}
+                />
+              </View>
+              <View
+                style={{
+                  height: 1,
+                  width: '100%',
+                  marginVertical: 10,
+                  backgroundColor: '#DCDCDC',
+                }}
               />
-            </View>
+              <View
+                style={{
+                  width: '100%',
+                  // backgroundColor:"pink",
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  // marginTop:20
+                }}>
+                <Text style={styles.loginDescription1}>Select a Date</Text>
+                <View>
+                  <TouchableOpacity
+                    onPress={() => setShowDatePicker(true)} // Show date picker when the text is pressed
+                    style={{
+                      height: 40,
+                      // borderBottomWidth: 1,
+                      borderColor: '#D9D6DF',
+                      justifyContent: 'center',
+                    }}>
+                    <Text
+                      style={{
+                        color: '#000000',
+                      }}>
+                      {dateOfBirth.toDateString()}
+                    </Text>
+                  </TouchableOpacity>
+                  {showDatePicker && (
+                    <DateTimePicker
+                      testID="dateTimePicker"
+                      value={dateOfBirth}
+                      mode="date"
+                      is24Hour={true}
+                      display="default"
+                      onChange={handleDateChange}
+                    />
+                  )}
+                </View>
+              </View>
+              <View
+                style={{
+                  height: 1,
+                  width: '100%',
+                  marginVertical: 10,
+                  backgroundColor: '#DCDCDC',
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#161C1C',
+                    fontWeight: 'bold',
+                    marginTop: 10,
+                  }}>
+                  When are you free during the day?
+                </Text>
+                <View
+                  style={{
+                    width: '100%',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{
+                      width: '47%',
+                      alignItems: 'center',
+                    }}>
+                    <FormInput
+                      // style={styles.input}
+                      onChangeText={username2 => setuserName2(username2)}
+                      // value={text}
+                      labelValue={username2}
+                      // secureTextEntry={true}
+                      // keyboardType="email-address"
+                      placeholder="Morning"
+                      autoCapitalize="none"
+                      autocorrect={false}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      width: '47%',
+                      alignItems: 'center',
+                    }}>
+                    <FormInput
+                      // style={styles.input}
+                      onChangeText={username3 => setuserName3(username3)}
+                      // value={text}
+                      labelValue={username3}
+                      // secureTextEntry={true}
+                      // keyboardType="email-address"
+                      placeholder="09:00"
+                      autoCapitalize="none"
+                      autocorrect={false}
+                    />
+                  </View>
+                </View>
 
-            <TouchableOpacity style={styles.button} onPress={closeBottomSheet5}>
-              <Text style={styles.buttonText}>Add Plant</Text>
-            </TouchableOpacity>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
+                  <View
+                    style={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 24,
+                      backgroundColor: '#F8F8F8',
+                      borderWidth: 2,
+                      borderColor: '#D3D3D3',
+                    }}></View>
+
+                  <Text
+                    style={{
+                      marginLeft: 10,
+                      fontSize: 14,
+                      color: '#161C1C',
+                      // textAlign: 'center',
+                      fontWeight: '500',
+                    }}>
+                    Don’t have the information
+                  </Text>
+                </View>
+              </View>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={closeBottomSheet5}>
+                <Text style={styles.buttonText}>Add Plant</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </Modal>
     </ScrollView>
   );
@@ -1427,7 +2072,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1BBFA0',
     justifyContent: 'center', // Center content horizontally
     alignItems: 'center', // Center content vertically
-    marginTop: 20, // Adjust the margin as needed
+    marginTop: 50, // Adjust the margin as needed
   },
   button1: {
     width: '100%',
@@ -1487,7 +2132,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#312651',
     fontWeight: '600',
-    marginTop: 20,
+    // marginTop: 20,
   },
   loginDescription2: {
     fontSize: 15,
