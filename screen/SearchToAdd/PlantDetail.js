@@ -8,7 +8,7 @@ import {
   StyleSheet,
   FlatList,
   Modal,
-  ImageBackground,
+  Animated,
   TouchableWithoutFeedback,
 } from 'react-native';
 import React, {useState, useRef} from 'react';
@@ -16,7 +16,8 @@ import Carousel, {Pagination} from 'react-native-snap-carousel';
 import FormInput1 from '../../Components/FormInput1';
 import ImagePicker from 'react-native-image-crop-picker';
 import FormInput from '../../Components/FormInput';
-import Slider from 'react-native-slider'; // Import the Slider component
+import Slider from '@react-native-community/slider';
+// Import the Slider component
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
 
 export default function PlantDetail({navigation}) {
@@ -24,8 +25,8 @@ export default function PlantDetail({navigation}) {
   const [username2, setuserName2] = React.useState();
   const [username3, setuserName3] = React.useState();
   const [selectedRadio1, setSelectedRadio1] = useState(0);
-  const [potSize, setPotSize] = useState(3);
-  const [potSize1, setPotSize1] = useState(5);
+  const [potSize, setPotSize] = useState(4);
+  const [potSize2, setPotSize2] = useState(5);
   const [selectedRadio4, setSelectedRadio4] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -33,6 +34,12 @@ export default function PlantDetail({navigation}) {
     const currentDate = selectedDate || dateOfBirth;
     setShowDatePicker(Platform.OS === 'ios'); // Show the date picker on iOS; on Android, it's automatic
     setDateOfBirth(currentDate);
+  };
+  const [potSize1, setPotSize1] = useState(5);
+  const animatedValue = new Animated.Value(potSize1);
+
+  const handleSliderChange = value => {
+    setPotSize1(value);
   };
 
   const data4 = [
@@ -1676,15 +1683,18 @@ export default function PlantDetail({navigation}) {
               }}>
               <Slider
                 value={potSize1}
-                onValueChange={value => setPotSize1(value)}
+                onValueChange={handleSliderChange}
                 minimumValue={2}
                 maximumValue={20}
                 step={1}
-                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
+                minimumTrackTintColor="#1BBFA0"
                 maximumTrackTintColor="#C9C9C9"
-                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbTintColor="#1BBFA0"
                 thumbStyle={{
-                  borderWidth: 2,
+                  width: 60, // Adjust the width
+                  height: 60, // Adjust the height
+                  borderRadius: 15, // Adjust the borderRadius to make it round
+                  borderWidth: 6,
                   borderColor: '#fff',
                   elevation: 4,
                 }}
@@ -1712,17 +1722,25 @@ export default function PlantDetail({navigation}) {
               style={{
                 width: '75%',
               }}>
+              <View
+                style={{
+                  marginTop: 30,
+                }}
+              />
               <Slider
                 value={potSize}
                 onValueChange={value => setPotSize(value)}
                 minimumValue={0}
                 maximumValue={20}
                 step={1}
-                minimumTrackTintColor="#1BBFA0" // Change the color of the filled portion
+                minimumTrackTintColor="#1BBFA0"
                 maximumTrackTintColor="#C9C9C9"
-                thumbTintColor="#1BBFA0" // Change the color of the thumb/indicator
+                thumbTintColor="#1BBFA0"
                 thumbStyle={{
-                  borderWidth: 2,
+                  width: 60, // Adjust the width
+                  height: 60, // Adjust the height
+                  borderRadius: 15, // Adjust the borderRadius to make it round
+                  borderWidth: 6,
                   borderColor: '#fff',
                   elevation: 4,
                 }}
