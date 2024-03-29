@@ -10,10 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@gilbarbara/react-range-slider": "^0.7.0",
+    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-community/cli": "^11.3.8",
     "@react-native-community/datetimepicker": "^7.6.0",
     "@react-native-community/geolocation": "^3.1.0",
+    "@react-native-community/slider": "^4.5.0",
     "@react-native-picker/picker": "^2.5.0",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
