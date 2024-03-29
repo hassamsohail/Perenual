@@ -18,14 +18,17 @@ import ImagePicker from 'react-native-image-crop-picker';
 import FormInput from '../../Components/FormInput';
 import Slider from '@react-native-community/slider';
 // Import the Slider component
+
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
+import Test from '../Test';
+import Test2 from '../Test2';
 
 export default function PlantDetail({navigation}) {
   const [username1, setuserName1] = React.useState();
   const [username2, setuserName2] = React.useState();
   const [username3, setuserName3] = React.useState();
   const [selectedRadio1, setSelectedRadio1] = useState(0);
-  const [potSize, setPotSize] = useState(4);
+  const [potSize, setPotSize] = useState(10);
   const [potSize2, setPotSize2] = useState(5);
   const [selectedRadio4, setSelectedRadio4] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
@@ -1679,35 +1682,8 @@ export default function PlantDetail({navigation}) {
                 right: -75,
                 top: 280,
                 // marginTop:-30,
-                transform: [{rotate: '90deg'}],
               }}>
-              <Slider
-                value={potSize1}
-                onValueChange={handleSliderChange}
-                minimumValue={2}
-                maximumValue={20}
-                step={1}
-                minimumTrackTintColor="#1BBFA0"
-                maximumTrackTintColor="#C9C9C9"
-                thumbTintColor="#1BBFA0"
-                thumbStyle={{
-                  width: 60, // Adjust the width
-                  height: 60, // Adjust the height
-                  borderRadius: 15, // Adjust the borderRadius to make it round
-                  borderWidth: 6,
-                  borderColor: '#fff',
-                  elevation: 4,
-                }}
-              />
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#13867B',
-                  // transform: [{ rotate: '90deg' }],
-                  textAlign: 'center',
-                }}>
-                Width ≈ {potSize1} in
-              </Text>
+              <Test2/>
             </View>
             <Image
               source={require('../../assets/Plot.png')}
@@ -1727,32 +1703,9 @@ export default function PlantDetail({navigation}) {
                   marginTop: 30,
                 }}
               />
-              <Slider
-                value={potSize}
-                onValueChange={value => setPotSize(value)}
-                minimumValue={0}
-                maximumValue={20}
-                step={1}
-                minimumTrackTintColor="#1BBFA0"
-                maximumTrackTintColor="#C9C9C9"
-                thumbTintColor="#1BBFA0"
-                thumbStyle={{
-                  width: 60, // Adjust the width
-                  height: 60, // Adjust the height
-                  borderRadius: 15, // Adjust the borderRadius to make it round
-                  borderWidth: 6,
-                  borderColor: '#fff',
-                  elevation: 4,
-                }}
-              />
+              <Test/>
             </View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#13867B',
-              }}>
-              Height ≈ {potSize} in
-            </Text>
+          
 
             <TouchableOpacity style={styles.button} onPress={closeBottomSheet4}>
               <Text style={styles.buttonText}>Next</Text>
