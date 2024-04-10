@@ -1682,8 +1682,27 @@ export default function PlantDetail({navigation}) {
                 right: -75,
                 top: 280,
                 // marginTop:-30,
+                transform: [{rotate: '90deg'}],
+
               }}>
-              <Test2/>
+          <Slider
+                value={potSize1}
+                onValueChange={handleSliderChange}
+                minimumValue={2}
+                maximumValue={20}
+                step={1}
+                minimumTrackTintColor="#1BBFA0"
+                maximumTrackTintColor="#C9C9C9"
+                thumbTintColor="#1BBFA0"
+                thumbStyle={{
+                  width: 60, // Adjust the width
+                  height: 60, // Adjust the height
+                  borderRadius: 15, // Adjust the borderRadius to make it round
+                  borderWidth: 6,
+                  borderColor: '#fff',
+                  elevation: 4,
+                }}
+              />
             </View>
             <Image
               source={require('../../assets/Plot.png')}
